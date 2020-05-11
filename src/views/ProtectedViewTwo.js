@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { withAuth } from "../context/authContext";
+import { withTheme } from "../context/themeContext";
 
 class ProtectedViewTwo extends Component {
   render() {
@@ -8,7 +9,7 @@ class ProtectedViewTwo extends Component {
     return (
       <div>
         <h1>ProtectedView</h1>
-        <button onClick={handleLogout}>Loogut</button>
+        <button onClick={handleLogout}>Logout</button>
         <Link to={`/protectedview`}>ProtectedView</Link>
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withTheme } from "../context/themeContext";
 
 class Homepage extends Component {
   render() {
