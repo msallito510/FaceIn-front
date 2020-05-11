@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { withAuth } from '../context/authContext';
 
 class Homepage extends Component {
   render() {

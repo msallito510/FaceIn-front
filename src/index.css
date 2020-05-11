@@ -4,7 +4,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
   /* change font-family here */
-  font-family: "Montserrat", "Raleway", sans-serif;
+  font-family: "Libre Baskerville", serif, "Montserrat", sans-serif;
   /* background: #fff;
   overflow: hidden; */
   -webkit-font-smoothing: antialiased;
@@ -14,7 +14,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-  /* font-family: "Montserrat", sans-serif; */
 }
 
 body.light {
