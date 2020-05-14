@@ -20,7 +20,7 @@ import Homepage from './views/Homepage';
 
 // private views
 import Events from './views/Events';
-import Attend from './views/Attend';
+import UploadSelfie from './views/UploadSelfie';
 import ProtectedViewTwo from './views/ProtectedViewTwo';
 
 // error view
@@ -42,7 +42,7 @@ class App extends Component {
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/events" component={Events} />
-            <PrivateRoute exact path="/attend" component={Attend} />
+            <PrivateRoute exact path="/uploadSelfie" component={UploadSelfie} />
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
             <Route path="*" component={ErrorPage} />
           </Switch>

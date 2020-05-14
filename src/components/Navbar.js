@@ -18,7 +18,7 @@ class Navbar extends Component {
               {user ? <NavLink to="/protectedview">ProtectedView</NavLink> : <div></div>}
             </li>
             <li>
-              {user ? <NavLink to="/attend">Attend</NavLink> : <div></div>}
+              {user ? <NavLink to="/uploadSelfie">Upload Selfie</NavLink> : <div></div>}
             </li>
             <li>
               {user ? <NavLink to="/protectedviewtwo">ProtectedViewTwo</NavLink> : <div></div>}

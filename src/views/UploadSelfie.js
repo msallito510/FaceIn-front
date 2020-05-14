@@ -5,7 +5,7 @@ import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 
 
-class Attend extends Component {
+class UploadSelfie extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +34,7 @@ class Attend extends Component {
     const { handleLogout } = this.props;
     return (
       <div className="App" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1>Attend page</h1>
+        <h1>Upload Selfie</h1>
         <WebCamPicture landmarkPicture={this.landmarkWebCamPicture} />
         <canvas ref={this.canvasPicWebCam} width={350} height={350} />
       </div>
@@ -42,4 +42,4 @@ class Attend extends Component {
   }
 }
 
-export default withAuth(withTheme(Attend));
+export default withAuth(withTheme(UploadSelfie));

@@ -31,10 +31,9 @@ class WebCamPicure extends Component {
     const { handleLogout } = this.props;
     return (
       <div className="App" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1>Attend page</h1>
-        <button onClick={handleLogout}>Logout</button>
-        <Link to={`/attend`}>Attend</Link>
-        <h1>webcam</h1>
+        {/* <button onClick={handleLogout}>Logouts</button> */}
+        {/* <Link to={`/attend`}>Attend</Link> */}
+        <h1>smile :)</h1>
         <Webcam
           audio={false}
           height={350}
