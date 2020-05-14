@@ -8,7 +8,7 @@ class ProtectedViewTwo extends Component {
     const { handleLogout } = this.props;
     return (
       <div>
-        <h1>ProtectedView</h1>
+        <h1>ProtectedViewTwo</h1>
         <button onClick={handleLogout}>Logout</button>
         <Link to={`/protectedview`}>ProtectedView</Link>
       </div>

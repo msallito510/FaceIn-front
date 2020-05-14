@@ -23,6 +23,8 @@ import PrivateView from './views/PrivateView';
 import ProtectedView from './views/ProtectedView';
 import ProtectedViewTwo from './views/ProtectedViewTwo';
 
+import PlacesAll from './views/PlacesAll';
+
 // error view
 import ErrorPage from "./views/ErrorPage";
 
@@ -44,6 +46,7 @@ class App extends Component {
             <PrivateRoute exact path="/private" component={PrivateView} />
             <PrivateRoute exact path="/protectedview" component={ProtectedView} />
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
+            <PrivateRoute exact path="/places" component={PlacesAll} />
             <Route path="*" component={ErrorPage} />
           </Switch>
         </Router>

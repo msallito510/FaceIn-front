@@ -21,6 +21,9 @@ class Navbar extends Component {
               {user ? <NavLink to="/protectedviewtwo">ProtectedViewTwo</NavLink> : <div></div>}
             </li>
             <li>
+              {user ? <NavLink to="/places">Places</NavLink> : <div></div>}
+            </li>
+            <li>
               <button
                 onClick={changeTheme}
                 style={{
