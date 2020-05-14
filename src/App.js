@@ -27,6 +27,7 @@ import PlacesAll from './views/PlacesAll';
 
 // error view
 import ErrorPage from "./views/ErrorPage";
+import PlaceDetail from './views/PlaceDetail';
 
 // styles
 // import { aaa } from "./styles/styledComponents";
@@ -46,7 +47,10 @@ class App extends Component {
             <PrivateRoute exact path="/private" component={PrivateView} />
             <PrivateRoute exact path="/protectedview" component={ProtectedView} />
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
+
             <PrivateRoute exact path="/places" component={PlacesAll} />
+            <PrivateRoute exact path="/places/:id" component={PlaceDetail} />
+
             <Route path="*" component={ErrorPage} />
           </Switch>
         </Router>
