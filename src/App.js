@@ -19,8 +19,8 @@ import Signup from './views/auth/Signup';
 import Homepage from './views/Homepage';
 
 // private views
-import PrivateView from './views/PrivateView';
-import ProtectedView from './views/ProtectedView';
+import Events from './views/Events';
+import Attend from './views/Attend';
 import ProtectedViewTwo from './views/ProtectedViewTwo';
 
 // error view
@@ -41,8 +41,8 @@ class App extends Component {
             <Route exact path="/" component={Homepage} />
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
-            <PrivateRoute exact path="/private" component={PrivateView} />
-            <PrivateRoute exact path="/protectedview" component={ProtectedView} />
+            <PrivateRoute exact path="/events" component={Events} />
+            <PrivateRoute exact path="/attend" component={Attend} />
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
             <Route path="*" component={ErrorPage} />
           </Switch>
