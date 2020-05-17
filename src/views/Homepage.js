@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { withTheme } from "../context/themeContext";
+import Navlist from "../components/Navlist";
 
 class Homepage extends Component {
   render() {
-    return <div>Homepage for registered users and not registered users</div>;
+    return (<div>
+      <Navlist />
+    </div>);
   }
 }
 

@@ -18,16 +18,18 @@ import Signup from './views/auth/Signup';
 
 import Homepage from './views/Homepage';
 
-// private views
-import PrivateView from './views/PrivateView';
-import ProtectedView from './views/ProtectedView';
-import ProtectedViewTwo from './views/ProtectedViewTwo';
+// private views and components
+import UserProfile from './views/UserProfile';
+import Events from './views/Events';
+import EventDetail from './views/EventDetail';
+import AddEvent from './views/events/AddEvent'
 
+import PlaceDetail from './views/PlaceDetail';
 import PlacesAll from './views/PlacesAll';
+import ProtectedViewTwo from './views/ProtectedViewTwo';
 
 // error view
 import ErrorPage from "./views/ErrorPage";
-import PlaceDetail from './views/PlaceDetail';
 
 // styles
 // import { aaa } from "./styles/styledComponents";
@@ -39,13 +41,15 @@ class App extends Component {
         {/* <ToastContainer autoClose={2000} /> */}
         <Router>
           <Body />
-          <Navbar />
           <Switch>
             <Route exact path="/" component={Homepage} />
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
-            <PrivateRoute exact path="/private" component={PrivateView} />
-            <PrivateRoute exact path="/protectedview" component={ProtectedView} />
+            <PrivateRoute exact path="/user-profile" component={UserProfile} />
+            <PrivateRoute exact path="/events" component={Events} />
+            <PrivateRoute exact path="/events/:id" component={EventDetail} />
+            <PrivateRoute exact path="/add-event" component={AddEvent} />
+
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
 
             <PrivateRoute exact path="/places" component={PlacesAll} />
@@ -53,6 +57,7 @@ class App extends Component {
 
             <Route path="*" component={ErrorPage} />
           </Switch>
+          <Navbar />
         </Router>
       </>
     );
