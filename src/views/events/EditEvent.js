@@ -5,8 +5,9 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 
-class AddEvent extends Component {
+class EditEvent extends Component {
   state = {
+    eventId: "",
     title: "",
     description: "",
     frequency: "",
@@ -21,12 +22,24 @@ class AddEvent extends Component {
   }
 
   async componentDidMount() {
+    const { match: { params: { id } } } = this.props;
 
     try {
+      const event = await eventService.getEventById(id);
       const tags = await tagService.getAllTags();
-      const tagId = tags[0]._id;
+      const tagId = await tagService.getTagById(event.tag._id);
+      // const tagId = tags[0]._id;
 
       this.setState({
+        eventId: event._id,
+        title: event.title,
+        description: event.description,
+        frequency: event.frequency,
+        dateStart: event.dateStart,
+        dateEnd: event.dateEnd,
+        timeStart: event.timeStart,
+        timeEnd: event.timeEnd,
+        price: event.price,
         tags,
         tagId,
         loading: false
@@ -66,6 +79,7 @@ class AddEvent extends Component {
     // const event = this.state;
 
     const {
+      eventId,
       title,
       description,
       frequency,
@@ -80,7 +94,7 @@ class AddEvent extends Component {
     console.log(description);
 
 
-    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
+    await eventService.updateEvent(eventId, title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
 
 
     // await eventService.addEvent(event)
@@ -98,9 +112,10 @@ class AddEvent extends Component {
       tags,
       loading
     } = this.state;
+
     return (
       <div>
-        <h1>Add a Event</h1>
+        <h1>Edit a Event</h1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Title</label>
@@ -200,4 +215,4 @@ class AddEvent extends Component {
   }
 }
 
-export default withAuth(withTheme(AddEvent));
+export default withAuth(withTheme(EditEvent));

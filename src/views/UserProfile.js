@@ -20,8 +20,8 @@ const UserProfile = ({ user }) => {
                 </NavLink> : <div></div>}
               </li>
               <li>
-                {user ? <NavLink to="/user-events">
-                  <h3>User events</h3>
+                {user ? <NavLink to="/user-events" user={user}>
+                  <h3>Edit</h3>
                 </NavLink> : <div></div>}
               </li>
             </ul>
@@ -29,7 +29,7 @@ const UserProfile = ({ user }) => {
         </section>
       </div>
       <div>
-        <h3>Place/Institution</h3>
+        <h3>Place</h3>
         <section>
           <nav>
             <ul>

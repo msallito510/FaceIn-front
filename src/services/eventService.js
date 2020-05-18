@@ -68,11 +68,38 @@ class EventService {
       .then(({ data: event }) => event);
   }
 
-  updateEvent(event) {
+  updateEvent(
+    eventId,
+    title,
+    description,
+    frequency,
+    dateStart,
+    dateEnd,
+    timeStart,
+    timeEnd,
+    price,
+    tagId, ) {
     return this.axios
-      .put(`/api/events/${event._id}/update`, event)
-      .then(({ data: event }) => event);
+      .put(`/api/events/${eventId}/edit`, {
+        title,
+        description,
+        frequency,
+        dateStart,
+        dateEnd,
+        timeStart,
+        timeEnd,
+        price,
+        tagId,
+      })
+      .then(({ data }) => data);
   }
+
+
+  // updateEvent(event) {
+  //   return this.axios
+  //     .put(`/api/events/${event._id}/edit`, event)
+  //     .then(({ data: event }) => event);
+  // }
 
   // solo para owner
   deleteEvent(event) {

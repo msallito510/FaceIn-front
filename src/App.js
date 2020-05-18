@@ -22,7 +22,9 @@ import Homepage from './views/Homepage';
 import UserProfile from './views/UserProfile';
 import Events from './views/Events';
 import EventDetail from './views/EventDetail';
-import AddEvent from './views/events/AddEvent'
+import AddEvent from './views/events/AddEvent';
+import UserEventList from './views/events/UserEventList';
+import EditEvent from './views/events/EditEvent';
 
 import PlaceDetail from './views/PlaceDetail';
 import PlacesAll from './views/PlacesAll';
@@ -49,6 +51,8 @@ class App extends Component {
             <PrivateRoute exact path="/events" component={Events} />
             <PrivateRoute exact path="/events/:id" component={EventDetail} />
             <PrivateRoute exact path="/add-event" component={AddEvent} />
+            <PrivateRoute exact path="/user-events" component={UserEventList} />
+            <PrivateRoute exact path="/event-edit/:id" component={EditEvent} />
 
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
 

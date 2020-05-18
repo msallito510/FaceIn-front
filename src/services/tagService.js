@@ -13,6 +13,11 @@ class TagService {
       .then(({ data: tags }) => tags);
   }
 
+  getTagById(id) {
+    return this.axios.get(`/api/tags/${id}`)
+      .then(({ data: tag }) => tag);
+  }
+
   addTag() {
     return this.axios.post("/api/tags/add")
       .then(({ data: users }) => users);
