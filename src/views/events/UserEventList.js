@@ -13,7 +13,7 @@ class UserEventList extends Component {
 
   async componentDidMount() {
     try {
-      const events = await eventService.getAllEvents()
+      const events = await eventService.getAllEventsByOwner()
 
       this.setState({
         events,
@@ -27,6 +27,12 @@ class UserEventList extends Component {
     }
   }
 
+  handleDelete = async (eventId) => {
+
+    await eventService.deleteEvent(eventId)
+
+  };
+
   render() {
     const { events, loading } = this.state;
     const { user } = this.props;
@@ -37,21 +43,22 @@ class UserEventList extends Component {
         {loading && <div>loading...</div>}
         {!loading && events.map((event) => {
           return (
-
             <div div key={event._id}>
               <div>
                 <h2>{event.title}</h2>
+                <h2>{event.description}</h2>
               </div>
               <div>
                 <Link to={`/event-edit/${event._id}`}>edit</Link>
-
+              </div>
+              <div>
+                <button onClick={() => this.handleDelete(event._id)} >delete</button>
               </div>
             </div>
-
           );
         })
         }
-      </div >
+      </div>
     );
   }
 }
