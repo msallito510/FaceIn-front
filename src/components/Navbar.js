@@ -15,7 +15,7 @@ class Navbar extends Component {
               <NavLink to="/">Homepage</NavLink>
             </li>
             <li>
-              {user ? <NavLink to="/search-page">
+              {user ? <NavLink to="/search">
                 <h3>Search</h3>
               </NavLink> : <div></div>}
             </li>

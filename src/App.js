@@ -25,6 +25,7 @@ import EventDetail from './views/EventDetail';
 import AddEvent from './views/events/AddEvent';
 import UserEventList from './views/events/UserEventList';
 import EditEvent from './views/events/EditEvent';
+import SearchEvent from './views/events/SearchEvent';
 
 import PlaceDetail from './views/PlaceDetail';
 import PlacesAll from './views/PlacesAll';
@@ -43,6 +44,7 @@ class App extends Component {
         {/* <ToastContainer autoClose={2000} /> */}
         <Router>
           <Body />
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Homepage} />
             <AnonRoute exact path="/login" component={Login} />
@@ -53,6 +55,7 @@ class App extends Component {
             <PrivateRoute exact path="/add-event" component={AddEvent} />
             <PrivateRoute exact path="/user-events" component={UserEventList} />
             <PrivateRoute exact path="/event-edit/:id" component={EditEvent} />
+            <PrivateRoute exact path="/search" component={SearchEvent} />
 
             <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
 
@@ -61,7 +64,6 @@ class App extends Component {
 
             <Route path="*" component={ErrorPage} />
           </Switch>
-          <Navbar />
         </Router>
       </>
     );
