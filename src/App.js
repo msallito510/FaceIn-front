@@ -31,6 +31,7 @@ import PlaceDetail from './views/places/PlaceDetail';
 import PlacesAll from './views/places/PlacesAll';
 import AddPlace from './views/places/AddPlace';
 import EditPlace from './views/places/EditPlace';
+import Rating from './views/places/PlaceRating';
 
 import ProtectedViewTwo from './views/ProtectedViewTwo';
 
@@ -66,6 +67,7 @@ class App extends Component {
             <PrivateRoute exact path="/places/:id" component={PlaceDetail} />
             <PrivateRoute exact path="/add-place" component={AddPlace} />
             <PrivateRoute exact path="/place-edit/:id" component={EditPlace} />
+            <PrivateRoute exact path="/rating/:id" component={Rating} />
 
             <Route path="*" component={ErrorPage} />
           </Switch>

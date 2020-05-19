@@ -40,7 +40,7 @@ class SearchEvent extends Component {
 
 
   render() {
-    const { events, filter, loading } = this.state;
+    const { filter, loading } = this.state;
 
     return (
       <div>

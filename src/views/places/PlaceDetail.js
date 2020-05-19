@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import placeService from "../../services/placeService";
+import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
 
 class PlaceDetail extends Component {
   state = {
     place: {},
     isOwner: false,
+    ratings: [],
     loading: true,
   }
 
@@ -16,11 +18,13 @@ class PlaceDetail extends Component {
     const { match: { params: { id } }, user } = this.props;
 
     try {
-      const place = await placeService.getPlaceById(id)
+      const place = await placeService.getPlaceById(id);
+      const ratings = await ratingService.getAllRatings();
 
       this.setState({
         place,
         isOwner: (user.hasPlace === id) ? true : false,
+        ratings,
         loading: false
       })
     } catch (error) {
@@ -38,14 +42,28 @@ class PlaceDetail extends Component {
   };
 
   render() {
-    const { place, isOwner, loading } = this.state;
+    const { place, ratings, isOwner, loading } = this.state;
     // const { handleLogout } = this.props;
     return (
       <div>
         <h1>PlaceDetail</h1>
         {loading && <div>loading...</div>}
-        {!loading && <PlaceCard place={place} />}
-        {isOwner &&
+        {!loading &&
+          <div>
+            <div><PlaceCard place={place} /></div>
+            <div>
+              {ratings.map((rating) =>
+                <div>
+                  <h2>{rating.title}</h2>
+                  <p>{rating.description}</p>
+                  <p>stars - {rating.stars}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        }
+
+        {isOwner ?
           <div>
             <div>
               <Link to={`/place-edit/${place._id}`}>edit</Link>
@@ -53,6 +71,8 @@ class PlaceDetail extends Component {
             <div>
               <button onClick={() => this.handleDelete(place)} >delete</button>
             </div>
+          </div> : <div>
+            <Link to={`/rating/${place._id}`}>Rating</Link>
           </div>
 
         }

@@ -7,7 +7,7 @@ import { Icon } from "leaflet";
 const PlaceCard = (props) => {
   const { place: { placeName, address, coordinatesLatLong: { Latitude, Longitude } } } = props;
   const pin = new Icon({
-    iconUrl: 'http://leafletjs.com/examples/custom-icons/leaf-green.png',
+    iconUrl: 'https://www.seekpng.com/png/full/11-119662_current-locations-location-icon-blue-vector.png',
     iconSize: [50, 50]
   });
 
@@ -31,7 +31,7 @@ const PlaceCard = (props) => {
           <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
         </Marker>
       </Map>
-    </div>
+    </div >
   );
 };
 

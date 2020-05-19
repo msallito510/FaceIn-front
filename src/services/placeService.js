@@ -42,6 +42,12 @@ class PlaceService {
       .then(({ data }) => data);
   }
 
+  addRating(place) {
+    return this.axios
+      .post(`/api/places/${place.id}/add-rating`, place)
+      .then(({ data: place }) => place);
+  }
+
   deletePlace(place) {
     return this.axios
       .delete(`/api/places/${place._id}/delete`, place)
