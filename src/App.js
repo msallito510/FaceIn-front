@@ -21,14 +21,14 @@ import Homepage from './views/Homepage';
 // private views and components
 import UserProfile from './views/UserProfile';
 import Events from './views/events/Events';
-import EventDetail from './views/EventDetail';
+import EventDetail from './views/events/EventDetail';
 import AddEvent from './views/events/AddEvent';
 import UserEventList from './views/events/UserEventList';
 import EditEvent from './views/events/EditEvent';
 import SearchEvent from './views/events/SearchEvent';
 
-import PlaceDetail from './views/PlaceDetail';
-import PlacesAll from './views/PlacesAll';
+import PlaceDetail from './views/places/PlaceDetail';
+import PlacesAll from './views/places/PlacesAll';
 import AddPlace from './views/places/AddPlace';
 import EditPlace from './views/places/EditPlace';
 

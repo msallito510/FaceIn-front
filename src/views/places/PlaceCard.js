@@ -1,6 +1,6 @@
 import React from 'react';
-import { withAuth } from '../context/authContext';
-import { withTheme } from '../context/themeContext';
+import { withAuth } from '../../context/authContext';
+import { withTheme } from '../../context/themeContext';
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 

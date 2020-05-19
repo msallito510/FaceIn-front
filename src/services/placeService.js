@@ -9,14 +9,15 @@ class PlaceService {
   }
 
   addPlace(placeName, address, city, country) {
+    const place = {
+      placeName,
+      address,
+      city,
+      country
+    }
     return this.axios
-      .put(`/api/places/add`, {
-        placeName,
-        address,
-        city,
-        country
-      })
-      .then(({ data }) => data);
+      .post(`/api/places/add`, place)
+      .then(({ data: place }) => place);
   }
 
   getAllPlaces() {

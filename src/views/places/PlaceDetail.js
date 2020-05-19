@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../context/authContext";
-import { withTheme } from "../context/themeContext";
-import placeService from "../services/placeService";
-import PlaceCard from './PlaceCard';
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
+import placeService from "../../services/placeService";
+import PlaceCard from '../places/PlaceCard';
 
 class PlaceDetail extends Component {
   state = {

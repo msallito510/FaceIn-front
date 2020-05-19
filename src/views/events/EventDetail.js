@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../context/authContext";
-import { withTheme } from "../context/themeContext";
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
 
-import eventService from "../services/eventService";
-import EventCard from "../components/EventCard";
+import eventService from "../../services/eventService";
+import EventCard from "../../components/EventCard";
 
 
 class EventDetail extends Component {
