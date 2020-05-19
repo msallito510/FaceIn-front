@@ -20,7 +20,7 @@ import Homepage from './views/Homepage';
 
 // private views and components
 import UserProfile from './views/UserProfile';
-import Events from './views/Events';
+import Events from './views/events/Events';
 import EventDetail from './views/EventDetail';
 import AddEvent from './views/events/AddEvent';
 import UserEventList from './views/events/UserEventList';
@@ -29,6 +29,9 @@ import SearchEvent from './views/events/SearchEvent';
 
 import PlaceDetail from './views/PlaceDetail';
 import PlacesAll from './views/PlacesAll';
+import AddPlace from './views/places/AddPlace';
+import EditPlace from './views/places/EditPlace';
+
 import ProtectedViewTwo from './views/ProtectedViewTwo';
 
 // error view
@@ -61,6 +64,8 @@ class App extends Component {
 
             <PrivateRoute exact path="/places" component={PlacesAll} />
             <PrivateRoute exact path="/places/:id" component={PlaceDetail} />
+            <PrivateRoute exact path="/add-place" component={AddPlace} />
+            <PrivateRoute exact path="/place-edit/:id" component={EditPlace} />
 
             <Route path="*" component={ErrorPage} />
           </Switch>

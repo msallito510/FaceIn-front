@@ -62,8 +62,6 @@ class AddEvent extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // const { user: { user } } = this.props;
-    // const event = this.state;
 
     const {
       title,

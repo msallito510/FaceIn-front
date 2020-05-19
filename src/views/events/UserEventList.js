@@ -36,7 +36,7 @@ class UserEventList extends Component {
   render() {
     const { events, loading } = this.state;
     const { user } = this.props;
-    {/* {user.eventsOwner === event._id &&} */ }
+    
     return (
       <div>
         <h1>user event</h1>

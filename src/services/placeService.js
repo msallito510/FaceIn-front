@@ -8,6 +8,17 @@ class PlaceService {
     });
   }
 
+  addPlace(placeName, address, city, country) {
+    return this.axios
+      .put(`/api/places/add`, {
+        placeName,
+        address,
+        city,
+        country
+      })
+      .then(({ data }) => data);
+  }
+
   getAllPlaces() {
     return this.axios.get("/api/places")
       .then(({ data: places }) => places);
@@ -18,13 +29,18 @@ class PlaceService {
       .then(({ data: place }) => place);
   }
 
-  updatePlace(place) {
+  updatePlace(placeId, placeName, address, city, country) {
     return this.axios
-      .put(`/api/places/${place._id}/update`, place)
-      .then(({ data: place }) => place);
+      .put(`/api/places/${placeId}/edit`, {
+        placeId,
+        placeName,
+        address,
+        city,
+        country
+      })
+      .then(({ data }) => data);
   }
 
-  // solo para owner
   deletePlace(place) {
     return this.axios
       .delete(`/api/places/${place._id}/delete`, place)

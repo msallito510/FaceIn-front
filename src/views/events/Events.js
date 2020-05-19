@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../context/authContext";
-import { withTheme } from "../context/themeContext";
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
 
-import eventService from "../services/eventService";
+import eventService from "../../services/eventService";
 
 class Events extends Component {
   state = {

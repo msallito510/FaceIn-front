@@ -1,9 +1,13 @@
 import React from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
+
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UserProfile = ({ user }) => {
+  // const { handleLogout } = this.props;
+  
   return (
     <div>
       <div>
@@ -34,19 +38,22 @@ const UserProfile = ({ user }) => {
           <nav>
             <ul>
               <li>
-                {user ? <NavLink to="/add-institution">
-                  <h3>Add institution</h3>
+                {user ? <NavLink to="/add-place">
+                  <h3>Add a place</h3>
                 </NavLink> : <div></div>}
               </li>
               <li>
-                {user ? <NavLink to="/user-institutions">
-                  <h3>User institutions</h3>
+                {user ? <NavLink to="/user-place">
+                  <h3>Edit your place</h3>
                 </NavLink> : <div></div>}
               </li>
             </ul>
           </nav>
         </section>
       </div>
+
+      {/* <button onClick={handleLogout}>Logout</button> */}
+      {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
     </div>
   );
 };

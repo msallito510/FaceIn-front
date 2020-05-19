@@ -75,8 +75,6 @@ class EditEvent extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // const { user: { user } } = this.props;
-    // const event = this.state;
 
     const {
       eventId,
@@ -90,14 +88,9 @@ class EditEvent extends Component {
       price,
       tagId
     } = this.state;
-    console.log(title);
-    console.log(description);
-
 
     await eventService.updateEvent(eventId, title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
 
-
-    // await eventService.addEvent(event)
   };
 
   render() {
