@@ -43,8 +43,10 @@ class EditPlace extends Component {
     });
 
   }
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
+
+    const { history: { push } } = this.props;
 
     const {
       placeId,
@@ -54,7 +56,9 @@ class EditPlace extends Component {
       country
     } = this.state;
 
-    await placeService.updatePlace(placeId, placeName, address, city, country);
+    placeService.updatePlace(placeId, placeName, address, city, country)
+      .then(() => { push(`/user-profile`); })
+      .catch(error => console.log(error));
 
   };
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withTheme } from "../context/themeContext";
-import Navlist from "../components/Navlist";
+import Navlist from "../components/HomeList";
 
 class Homepage extends Component {
   render() {

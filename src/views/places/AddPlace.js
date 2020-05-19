@@ -43,6 +43,8 @@ class AddPlace extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { history: { push } } = this.props;
+
     const {
       placeName,
       address,
@@ -50,7 +52,9 @@ class AddPlace extends Component {
       country
     } = this.state;
 
-    await placeService.addPlace(placeName, address, city, country);
+    await placeService.addPlace(placeName, address, city, country)
+      .then(() => { push(`/user-profile`); })
+      .catch(error => console.log(error));
 
   };
 
