@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { Title, Wrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import { TitleB, Wrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // for notifications:
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -53,7 +53,7 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <Wrapper>
-        <Title>Login</Title>
+        <TitleB>Login</TitleB>
         <form onSubmit={this.handleFormSubmit}>
           <Input
             type="text"

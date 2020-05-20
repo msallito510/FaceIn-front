@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { NavLink } from "react-router-dom";
-import { MenuBarUl as MenuBarUl, MenuBarLi } from "../styles/styledComponents";
+import { MenuBarUl, MenuBarLi } from "../styles/styledComponents";
 import { SearchIcon, HeartIcon, UserIcon, HomeIcon } from "../styles/icon-style";
 
 class Navbar extends Component {

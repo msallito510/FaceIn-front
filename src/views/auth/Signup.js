@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { Title, Wrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import { TitleB, Wrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -46,7 +46,7 @@ class Signup extends Component {
     const { username, password, email } = this.state;
     return (
       <Wrapper>
-        <Title>Sign up</Title>
+        <TitleB>Sign up</TitleB>
         <form onSubmit={this.handleFormSubmit}>
           <Input
             type="text"
