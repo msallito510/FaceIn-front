@@ -20,7 +20,7 @@ class Navbar extends Component {
               </NavLink> : <div></div>}
             </li>
             <li>
-              {user ? <NavLink to="/like-page">
+              {user ? <NavLink to="/likes">
                 <h3>Like</h3>
               </NavLink> : <div></div>}
             </li>

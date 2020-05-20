@@ -24,6 +24,11 @@ const UserProfile = ({ user }) => {
               <h3>Edit</h3>
             </Link> : <div></div>}
           </div>
+          <div>
+            {user ? <Link to="/attend" user={user}>
+              <h3>Attend</h3>
+            </Link> : <div></div>}
+          </div>
         </section>
       </div>
       <div>

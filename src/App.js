@@ -26,6 +26,8 @@ import AddEvent from './views/events/AddEvent';
 import UserEventList from './views/events/UserEventList';
 import EditEvent from './views/events/EditEvent';
 import SearchEvent from './views/events/SearchEvent';
+import WhatIsHotEvents from './views/events/WhatIsHotEvents';
+import UserLikes from './views/events/UserLikeEvents';
 
 import PlaceDetail from './views/places/PlaceDetail';
 import PlacesAll from './views/places/PlacesAll';
@@ -33,7 +35,6 @@ import AddPlace from './views/places/AddPlace';
 import EditPlace from './views/places/EditPlace';
 import Rating from './views/places/PlaceRating';
 
-import ProtectedViewTwo from './views/ProtectedViewTwo';
 
 // error view
 import ErrorPage from "./views/ErrorPage";
@@ -61,7 +62,8 @@ class App extends Component {
             <PrivateRoute exact path="/event-edit/:id" component={EditEvent} />
             <PrivateRoute exact path="/search" component={SearchEvent} />
 
-            <PrivateRoute exact path="/protectedviewtwo" component={ProtectedViewTwo} />
+            <PrivateRoute exact path="/whatishot" component={WhatIsHotEvents} />
+            <PrivateRoute exact path="/likes" component={UserLikes} />
 
             <PrivateRoute exact path="/places" component={PlacesAll} />
             <PrivateRoute exact path="/places/:id" component={PlaceDetail} />

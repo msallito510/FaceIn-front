@@ -18,7 +18,7 @@ class HomeList extends Component {
           </Link> : <div></div>}
         </div>
         <div>
-          {user ? <Link to="/protectedviewtwo">
+          {user ? <Link to="/whatishot">
             <img src="/images/" alt="what´s hot" />
             <h1>What´s hot</h1>
           </Link> : <div></div>}
