@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { TitleB, Wrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import { TitleDh1, EventCardWrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // for notifications:
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -52,8 +52,8 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <Wrapper>
-        <TitleB>Login</TitleB>
+      <EventCardWrapper>
+        <TitleDh1>Login</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
           <Input
             type="text"
@@ -78,7 +78,7 @@ class Login extends Component {
             <Span>sign up</Span>
           </Link>
         </ButtonPLeft>
-      </Wrapper>
+      </EventCardWrapper>
     );
   }
 }

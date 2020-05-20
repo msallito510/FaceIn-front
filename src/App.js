@@ -35,12 +35,8 @@ import AddPlace from './views/places/AddPlace';
 import EditPlace from './views/places/EditPlace';
 import Rating from './views/places/PlaceRating';
 
-
 // error view
 import ErrorPage from "./views/ErrorPage";
-
-// styles
-// import { aaa } from "./styles/styledComponents";
 
 class App extends Component {
   render() {
@@ -51,9 +47,9 @@ class App extends Component {
           <Body />
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Homepage} />
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
+            <PrivateRoute exact path="/" component={Homepage} />
             <PrivateRoute exact path="/user-profile" component={UserProfile} />
             <PrivateRoute exact path="/events" component={Events} />
             <PrivateRoute exact path="/events/:id" component={EventDetail} />

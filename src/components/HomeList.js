@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
-import { Link } from "react-router-dom";
 
-import { TitleW, HomeBackground, GeneralBackground, HomeAllEvents, HomeWhatsHot, HomeUserLikes, TitleCardW, TitleCardB, StyledLink, HomeCard } from "../styles/styledComponents";
+import {
+  TitleLh1,
+  BoldTitleCardLh1,
+  BoldTitleCardDh1,
+  HomeBackground,
+  GeneralBackground,
+  HomeAllEvents,
+  HomeWhatsHot,
+  HomeUserLikes,
+  StyledLink,
+  HomeCard
+} from "../styles/styledComponents";
+
 
 class HomeList extends Component {
   render() {
     const { user, handleLogout, theme, changeTheme } = this.props;
     return (
       <HomeBackground>
-        <TitleW>Barcelona</TitleW>
+        <TitleLh1>Barcelona</TitleLh1>
         {/* <button
           onClick={changeTheme}
           style={{
@@ -22,19 +33,19 @@ class HomeList extends Component {
           <HomeCard>
             {user ? <StyledLink to="/events">
               <HomeAllEvents />
-              <TitleCardW>All Events</TitleCardW>
+              <BoldTitleCardLh1>All Events</BoldTitleCardLh1>
             </StyledLink> : <div></div>}
           </HomeCard>
           <HomeCard>
             {user ? <StyledLink to="/whatishot">
               <HomeWhatsHot />
-              <TitleCardW>What´s hot</TitleCardW>
+              <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
             </StyledLink> : <div></div>}
           </HomeCard>
           <HomeCard>
             {user ? <StyledLink to="/places">
               <HomeUserLikes />
-              <TitleCardB>User Likes</TitleCardB>
+              <BoldTitleCardDh1>User Likes</BoldTitleCardDh1>
             </StyledLink> : <div></div>}
           </HomeCard>
 

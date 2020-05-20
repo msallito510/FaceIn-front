@@ -6,6 +6,9 @@ import { Location } from '@styled-icons/evil/Location';
 import { Home } from '@styled-icons/feather/Home';
 import { ToggleLeft } from '@styled-icons/boxicons-regular/ToggleLeft';
 import { ToggleRight } from '@styled-icons/boxicons-solid/ToggleRight';
+import { PlusCircle } from '@styled-icons/feather/PlusCircle';
+import { Edit } from '@styled-icons/feather/Edit';
+import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 
 
 export const SearchIcon = styled(Search)`
@@ -39,5 +42,35 @@ export const ThemeLightIcon = styled(ToggleLeft)`
 
 export const ThemeDarkIcon = styled(ToggleRight)`
   width: 2.5em;
+`;
+
+export const PlusCircleIcon = styled(PlusCircle)`
+position: relative;
+  right: 3em;
+  float: left;
+  bottom: 2em;
+  font-size: 1.1em;
+  text-align: left;
+  width: 1.5em;
+`;
+
+export const EditIcon = styled(Edit)`
+position: relative;
+  right: 3em;
+  float: left;
+  bottom: 2em;
+  font-size: 1.1em;
+  text-align: left;
+  width: 1.5em;
+`;
+
+export const PlayCircleIcon = styled(PlayCircle)`
+position: relative;
+  right: 3em;
+  float: left;
+  bottom: 2em;
+  font-size: 1.1em;
+  text-align: left;
+  width: 1.5em;
 `;
 

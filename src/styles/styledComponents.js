@@ -2,45 +2,103 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 
-export const TitleB = styled.h1`
-  font-size: 1.5em;
+export const TitleDh1 = styled.h1`
+  font-size: 1.7em;
   text-align: center;
   color: #1F1F1F;
 `;
 
-export const TitleW = styled.h1`
-  font-size: 1.5em;
+export const TitleLh1 = styled.h1`
+  font-size: 1.7em;
   text-align: center;
   color: #fff;
 `;
 
-export const TitleCardW = styled.h1`
+export const TitleCardLh1 = styled.h1`
   position: relative;
+  font-size: 1.7em;
   text-align: center;
   color: #fff;
   bottom: 4.5em;
 `;
 
-export const TitleCardB = styled.h1`
+export const TitleCardDh1 = styled.h1`
   position: relative;
+  font-size: 1.7em;
   text-align: center;
   color: #1F1F1F;
   bottom: 4.5em;
 `;
 
-export const Title3 = styled.h3`
-  font-size: 1.1em;
+export const BoldTitleCardLh1 = styled.h1`
+  opacity: 1;
+  position: relative;
+  font-weight: 900;
+  font-size: 1.7em;
+  text-align: center;
+  color: #fff;
+  bottom: 4.5em;
+`;
+
+export const BoldTitleCardDh1 = styled.h1`
+  opacity: 1;
+  position: relative;
+  font-weight: 900;
+  font-size: 1.7em;
+  text-align: center;
+  color: #1F1F1F;
+  bottom: 4.5em;
+`;
+
+export const TitleDh2 = styled.h2`
+  position: relative;
+  bottom: 2em;
+  font-size: 1.5em;
   text-align: center;
   color: #1F1F1F;
 `;
 
-export const Wrapper = styled.section`
+export const TitleDh3 = styled.h3`
+  position: relative;
+  width: 6.5em;
+  float: right;
+  bottom: 2em;
+  font-size: 1em;
+  text-align: left;
+  color: #1F1F1F;
+`;
+
+export const EventCardWrapper = styled.section`
   padding: 4em;
   color: #000;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 8px 8px 50px #000;
+`;
+
+export const SecondaryWrapperLeft = styled.section`
+  position: relative;
+  float: left;
+  padding: 4em;
+  height: 10em;
+  width: 11.5em;
+  background: #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 8px 8px 50px #000;
+`;
+
+export const SecondaryWrapperRight = styled.section`
+  position: relative;
+  float: right;
+  padding: 4em;
+  height: 10em;
+  width: 11.5em;
+  background: #ccc;
+  border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 8px 8px 50px #000;
 `;
@@ -128,12 +186,27 @@ export const MenuBarLi = styled.li`
     float: left;
   }
 `;
+export const UserProfileBarUl = styled.ul`
+  position: relative;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  @media (max-width: 768px) {
+    height: 3.5em;
+    width: 100%;
+  }
+`;
 
 export const GeneralBackground = styled.div`
   background: #fff;
-  top: 17rem;
+  top: 20rem;
   position: absolute;
   width: 100%;
+  height: 20em;
   padding: 1em 0;
   text-align: center;
   border-radius: 20px;
@@ -150,7 +223,8 @@ export const HomeBackground = styled.div`
     position: absolute;
 `;
 
-export const HomeAllEvents = styled.div`
+export const HomeAllEvents = styled.div`  
+  background-color: #F57873;
   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589977262/face-in/tremblant-beach-party-l_j1ck99.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -159,8 +233,7 @@ export const HomeAllEvents = styled.div`
   height: 136px;
 `;
 
-export const HomeWhatsHot = styled.div`
-  border: 1px solid #000;
+export const HomeWhatsHot = styled.div`  
   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976874/face-in/go-party-like-a-vip-in-barcelona-party-955x508_fhikm8.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -178,3 +251,37 @@ export const HomeUserLikes = styled.div`
   height: 136px;
 `;
 
+export const HeaderBackground = styled.div`
+  background: #61637B;
+  width: 100%;
+  height: 376px;
+  ackground-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  top: 0;
+  position: absolute;
+`;
+
+export const PhotoContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+`;
+
+export const PhotoProfile = styled.div`  
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  background: #fff;
+  width: 10em;
+  border-radius: 50%;
+`;
+
+export const UserProfileLabelContent = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: start;
+`;
