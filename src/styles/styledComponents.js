@@ -25,7 +25,7 @@ export const Input = styled.input`
   height: 30px;
   font-size: 16px;
   opacity: 1;
-  color: #ccc;
+  color: #61637B;
 `;
 
 export const Submit = styled.input.attrs({
@@ -64,5 +64,19 @@ export const Span = styled.span`
   text-decoration: none !important;
   opacity: 0.8;
   color:#61637B
+`;
+
+export const MenuBar = styled.ul`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
 `;
 
