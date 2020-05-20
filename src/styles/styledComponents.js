@@ -6,6 +6,12 @@ export const Title = styled.h1`
   color: #1F1F1F;
 `;
 
+export const Title3 = styled.h3`
+  font-size: 1.1em;
+  text-align: center;
+  color: #1F1F1F;
+`;
+
 export const Wrapper = styled.section`
   padding: 4em;
   color: #000;
@@ -50,11 +56,11 @@ export const Submit = styled.input.attrs({
   }
 `
 
-export const ButtonP_letf = styled.a`
+export const ButtonPLeft = styled.a`
   float: left;
 `;
 
-export const ButtonP_right = styled.a`
+export const ButtonPRight = styled.a`
   float: right;
 `;
 
@@ -66,17 +72,31 @@ export const Span = styled.span`
   color:#61637B
 `;
 
-export const MenuBar = styled.ul`
+export const MenuBarUl = styled.ul`
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   height: 100%;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
+  background: #fff;
   z-index: 10;
   overflow: hidden;
   box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+  @media (max-width: 768px) {
+    height: 3.5em;
+    width: 100%;
+  }
+`;
+
+export const MenuBarLi = styled.li`
+  display: list-item;
+  text-align: -webkit-match-parent;
+  margin: 0.5em 1.5em 0;
+  @media (max-width: 768px) {
+    display: inline-block;
+    float: left;
+  }
 `;
 
