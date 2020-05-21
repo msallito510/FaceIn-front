@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-
+import {
+  StyledLink,
+  CardContainer,
+  EventCard,
+  ContentEventCard,
+  TitleEventCardLh1,
+  InfoEventCardLh3
+} from "../styles/styledComponents";
 
 
 export default class UserCard extends Component {
@@ -11,13 +17,16 @@ export default class UserCard extends Component {
       <div>
         {likesGiven.map((event) => {
           return (
-            <div key={event._id}>
-              <Link to={`/events/${event.likeForEvent._id}`}>
-                <h2>{event.likeForEvent.title}</h2>
-                <p>{event.likeForEvent.description}</p>
-              </Link>
-
-            </div>
+            <CardContainer key={event._id}>
+              <StyledLink to={`/events/${event.likeForEvent._id}`}>
+                <EventCard>
+                  <ContentEventCard>
+                    <TitleEventCardLh1>{event.likeForEvent.title}</TitleEventCardLh1>
+                    <InfoEventCardLh3>{event.likeForEvent.dateStart}</InfoEventCardLh3>
+                  </ContentEventCard>
+                </EventCard>
+              </StyledLink>
+            </CardContainer>
           );
         })}
       </div>

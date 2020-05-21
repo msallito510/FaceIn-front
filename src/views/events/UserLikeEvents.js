@@ -4,7 +4,11 @@ import { withTheme } from "../../context/themeContext";
 
 import userService from "../../services/userService";
 import UserCard from "../../components/UserCard";
-
+import {
+  TitleLh1,
+  HeaderBackground,
+  GeneralBackground,
+} from "../../styles/styledComponents";
 
 class UserLikeEvents extends Component {
   state = {
@@ -37,10 +41,13 @@ class UserLikeEvents extends Component {
 
     return (
       <div>
-        <h1>Events I like</h1>
-
-        {loading && <div>loading...</div>}
-        {!loading && <UserCard user={user} />}
+        <HeaderBackground>
+          <TitleLh1>Events I like</TitleLh1>
+        </HeaderBackground>
+        <GeneralBackground>
+          {loading && <div>loading...</div>}
+          {!loading && <UserCard user={user} />}
+        </GeneralBackground>
       </div>
     );
   }

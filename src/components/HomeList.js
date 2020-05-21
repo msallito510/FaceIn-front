@@ -43,7 +43,7 @@ class HomeList extends Component {
             </StyledLink> : <div></div>}
           </CardContainer>
           <CardContainer>
-            {user ? <StyledLink to="/places">
+            {user ? <StyledLink to="/likes">
               <HomeUserLikes />
               <BoldTitleCardDh1>User Likes</BoldTitleCardDh1>
             </StyledLink> : <div></div>}

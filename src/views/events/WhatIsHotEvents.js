@@ -4,6 +4,17 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
+import {
+  TitleLh1,
+  HeaderBackground,
+  GeneralBackground,
+  StyledLink,
+  CardContainer,
+  EventCard,
+  ContentEventCard,
+  TitleEventCardLh1,
+  InfoEventCardLh3
+} from "../../styles/styledComponents";
 
 class WhatIsHotEvents extends Component {
   state = {
@@ -33,15 +44,26 @@ class WhatIsHotEvents extends Component {
 
     return (
       <div>
-        <h1>Most popular events</h1>
-        {loading && <div>loading...</div>}
-        {!loading && events.map((event) => {
-          return (
-            <div key={event._id}>
-              <Link to={`/events/${event._id}`}>{event.title}</Link>
-            </div>
-          );
-        })}
+        <HeaderBackground>
+          <TitleLh1>Most popular events</TitleLh1>
+        </HeaderBackground>
+        <GeneralBackground>
+          {loading && <div>loading...</div>}
+          {!loading && events.map((event) => {
+            return (
+              <CardContainer key={event._id}>
+                <StyledLink to={`/events/${event._id}`}>
+                  <EventCard>
+                    <ContentEventCard>
+                      <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
+                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                    </ContentEventCard>
+                  </EventCard>
+                </StyledLink>
+              </CardContainer>
+            );
+          })}
+        </GeneralBackground>
       </div>
     );
   }
