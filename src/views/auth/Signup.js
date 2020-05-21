@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { TitleDh1, EventCardWrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -48,21 +48,21 @@ class Signup extends Component {
       <EventCardWrapper>
         <TitleDh1>Sign up</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
-          <Input
+          <InputDark
             type="text"
             name="username"
             value={username}
             onChange={this.handleChange}
             placeholder="username"
           />
-          <Input
+          <InputDark
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
             placeholder="password"
           />
-          <Input
+          <InputDark
             type="email"
             name="email"
             value={email}

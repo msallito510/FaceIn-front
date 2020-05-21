@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { TitleDh1, EventCardWrapper, Input, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // for notifications:
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -55,7 +55,7 @@ class Login extends Component {
       <EventCardWrapper>
         <TitleDh1>Login</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
-          <Input
+          <InputDark
             type="text"
             name="username"
             id="username"
@@ -63,7 +63,7 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="username"
           />
-          <Input
+          <InputDark
             type="password"
             name="password"
             id="password"

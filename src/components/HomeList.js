@@ -6,13 +6,13 @@ import {
   TitleLh1,
   BoldTitleCardLh1,
   BoldTitleCardDh1,
-  HomeBackground,
+  HomeImageBackground,
   GeneralBackground,
   HomeAllEvents,
   HomeWhatsHot,
   HomeUserLikes,
   StyledLink,
-  HomeCard
+  CardContainer
 } from "../styles/styledComponents";
 
 
@@ -20,7 +20,7 @@ class HomeList extends Component {
   render() {
     const { user, handleLogout, theme, changeTheme } = this.props;
     return (
-      <HomeBackground>
+      <HomeImageBackground>
         <TitleLh1>Barcelona</TitleLh1>
         {/* <button
           onClick={changeTheme}
@@ -30,27 +30,27 @@ class HomeList extends Component {
           }}
         >changeTheme</button> */}
         <GeneralBackground>
-          <HomeCard>
+          <CardContainer>
             {user ? <StyledLink to="/events">
               <HomeAllEvents />
               <BoldTitleCardLh1>All Events</BoldTitleCardLh1>
             </StyledLink> : <div></div>}
-          </HomeCard>
-          <HomeCard>
+          </CardContainer>
+          <CardContainer>
             {user ? <StyledLink to="/whatishot">
               <HomeWhatsHot />
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
             </StyledLink> : <div></div>}
-          </HomeCard>
-          <HomeCard>
+          </CardContainer>
+          <CardContainer>
             {user ? <StyledLink to="/places">
               <HomeUserLikes />
               <BoldTitleCardDh1>User Likes</BoldTitleCardDh1>
             </StyledLink> : <div></div>}
-          </HomeCard>
+          </CardContainer>
 
         </GeneralBackground>
-      </HomeBackground >
+      </HomeImageBackground>
     );
   }
 }

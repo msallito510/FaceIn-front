@@ -4,6 +4,17 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import SearchBar from "../../components/SearchBar";
+import {
+  TitleLh1,
+  HeaderBackground,
+  SearchBackground,
+  CardContainer,
+  EventCard,
+  ContentEventCard,
+  TitleEventCardLh1,
+  InfoEventCardLh3,
+  StyledLink
+} from "../../styles/styledComponents";
 
 class SearchEvent extends Component {
   state = {
@@ -44,19 +55,28 @@ class SearchEvent extends Component {
 
     return (
       <div>
-        <h1>Search</h1>
-        {loading && <div>loading...</div>}
-        <SearchBar onChange={this.handleFilter} />
+        <HeaderBackground>
+          <TitleLh1>Search</TitleLh1>
+          {loading && <div>loading...</div>}
+          <SearchBar onChange={this.handleFilter} />
+        </HeaderBackground>
 
-        {!loading && filter.map((event) => {
-          return (
-            <div>
-              <p>
-                {event.title}
-              </p>
-            </div>
-          );
-        })}
+        <SearchBackground>
+          {!loading && filter.map((event) => {
+            return (
+              <CardContainer>
+                <StyledLink to={`/events/${event._id}`}>
+                  <EventCard>
+                    <ContentEventCard>
+                      <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
+                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                    </ContentEventCard>
+                  </EventCard>
+                </StyledLink>
+              </CardContainer>
+            );
+          })}
+        </SearchBackground>
       </div>
     );
   }

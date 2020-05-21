@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { InputLight, ContinerAlineCenter } from "../styles/styledComponents";
 
 export default class SearchBar extends Component {
   state = {
@@ -17,22 +18,19 @@ export default class SearchBar extends Component {
 
     return (
       <div>
-        <div >
-          <p className="control has-icons-left">
-            <input
-
-              id="search"
-              type="text"
-              name="search"
-              value={search}
-              onChange={this.handleInput}
-              placeholder="Search"
-            ></input>
-            <span >
-              <i aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
+        <ContinerAlineCenter>
+          <InputLight
+            id="search"
+            type="text"
+            name="search"
+            value={search}
+            onChange={this.handleInput}
+            placeholder="Search"
+          ></InputLight>
+          <span >
+            <i aria-hidden="true"></i>
+          </span>
+        </ContinerAlineCenter>
       </div>
     );
   }

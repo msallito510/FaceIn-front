@@ -3,7 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import placeService from "../../services/placeService";
-import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
 class AddPlace extends Component {
   state = {
@@ -73,7 +73,7 @@ class AddPlace extends Component {
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Place name</label>
-          <Input
+          <InputDark
             type="text"
             value={placeName}
             name="placeName"
@@ -82,7 +82,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Address</label>
-          <Input
+          <InputDark
             type="text"
             value={address}
             name="address"
@@ -91,7 +91,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">City</label>
-          <Input
+          <InputDark
             type="text"
             value={city}
             name="city"
@@ -100,7 +100,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Country</label>
-          <Input
+          <InputDark
             type="text"
             value={country}
             name="country"

@@ -4,6 +4,17 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
+import {
+  TitleLh1,
+  HeaderBackground,
+  GeneralBackground,
+  StyledLink,
+  CardContainer,
+  EventCard,
+  ContentEventCard,
+  TitleEventCardLh1,
+  InfoEventCardLh3
+} from "../../styles/styledComponents";
 
 class Events extends Component {
   state = {
@@ -27,21 +38,44 @@ class Events extends Component {
     }
   }
 
+  convertDate = (event) => {
+    if (event.event.dateStart) {
+      const sptdate = event.event.dateStart.split("-");
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const year = sptdate[0];
+      const month = sptdate[1];
+      const day = sptdate[2].replace("T00:00:00.000Z", "");
+      return day + " " + months[month - 1] + " " + year;
+    }
+  }
+
 
   render() {
     const { events, loading } = this.state;
 
     return (
       <div>
-        <h1>All Events</h1>
-        {loading && <div>loading...</div>}
-        {!loading && events.map((event) => {
-          return (
-            <div key={event._id}>
-              <Link to={`/events/${event._id}`}>{event.title}</Link>
-            </div>
-          );
-        })}
+        <HeaderBackground>
+          <TitleLh1>All Events</TitleLh1>
+        </HeaderBackground>
+        <GeneralBackground>
+          {loading && <div>loading...</div>}
+          {!loading && events.map((event) => {
+            {/* const d = this.convertDate({ event.dateStart }); */ }
+            return (
+              <CardContainer key={event._id}>
+                <StyledLink to={`/events/${event._id}`}>
+                  <EventCard>
+                    <ContentEventCard>
+                      <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
+                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                    </ContentEventCard>
+                  </EventCard>
+                </StyledLink>
+              </CardContainer>
+            );
+          })}
+        </GeneralBackground>
       </div>
     );
   }

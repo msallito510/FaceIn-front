@@ -50,6 +50,28 @@ export const BoldTitleCardDh1 = styled.h1`
   bottom: 4.5em;
 `;
 
+export const TitleEventCardLh1 = styled.h3`
+  position: relative;
+  top: 7em;
+  opacity: 1;
+  padding: 0.3em;
+  font-weight: 900;
+  font-size: 1em;
+  text-align: center;
+  color: #1F1F1F;
+  width: -webkit-fill-available;
+`;
+
+export const InfoEventCardLh3 = styled.h3`  
+position: relative;
+  top: 7.5em;
+  font-weight: 200;
+  font-size: 0.8em;
+  padding: 0.2em;
+  line-height: 13px;
+  width: -webkit-fill-available;
+`;
+
 export const TitleDh2 = styled.h2`
   position: relative;
   bottom: 2em;
@@ -108,7 +130,7 @@ export const SecondaryWrapperRight = styled.section`
   box-shadow: 8px 8px 50px #000;
 `;
 
-export const Input = styled.input`
+export const InputDark = styled.input`
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;
@@ -117,6 +139,23 @@ export const Input = styled.input`
   font-size: 16px;
   opacity: 1;
   color: #61637B;
+`;
+
+export const InputLight = styled.input`
+  border: none;
+  border-bottom: 1px solid #dff;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  font-size: 16px;
+  opacity: 1;
+  color: #fff;
+`;
+
+export const ContinerAlineCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Submit = styled.input.attrs({
@@ -144,7 +183,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none !important;
 `;
 
-export const HomeCard = styled.div`
+export const CardContainer = styled.div`
   height: 9em;
 `;
 
@@ -216,8 +255,18 @@ export const GeneralBackground = styled.div`
   text-align: center;
   border-radius: 20px;
   `;
+export const SearchBackground = styled.div`
+  background: #fff;
+  top: 10rem;
+  position: absolute;
+  width: 100%;
+  height: 20em;
+  padding: 1em 0;
+  text-align: center;
+  border-radius: 20px;
+  `;
 
-export const HomeBackground = styled.div`
+export const HomeImageBackground = styled.div`
   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg');
   width: 100%;
   height: 376px;
@@ -229,7 +278,6 @@ export const HomeBackground = styled.div`
 `;
 
 export const HomeAllEvents = styled.div`  
-  background-color: #F57873;
   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589977262/face-in/tremblant-beach-party-l_j1ck99.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -252,6 +300,30 @@ export const HomeUserLikes = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  border-radius: 20px;
+  height: 136px;
+`;
+
+export const ContentEventCard = styled.div`
+  ${'' /* background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976874/face-in/go-party-like-a-vip-in-barcelona-party-955x508_fhikm8.jpg'); */}
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #9599C5;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 15px 15px 0px 0px;
+  height: 6em;
+`;
+
+export const EventCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #E3E5F3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;  
   border-radius: 20px;
   height: 136px;
 `;

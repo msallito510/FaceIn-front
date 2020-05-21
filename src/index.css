@@ -4,7 +4,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
   /* change font-family here */
-  font-family: Roboto, serif, "Montserrat", sans-serif;
+  font-family: Roboto;
+  font-style: normal;
   /* background: #fff;
   overflow: hidden; */
   -webkit-font-smoothing: antialiased;

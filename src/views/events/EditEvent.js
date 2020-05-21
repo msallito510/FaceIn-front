@@ -4,7 +4,7 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
-import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
 class EditEvent extends Component {
   state = {
@@ -113,7 +113,7 @@ class EditEvent extends Component {
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Title</label>
-          <Input
+          <InputDark
             type="text"
             value={title}
             name="title"
@@ -122,7 +122,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Description</label>
-          <Input
+          <InputDark
             type="text"
             value={description}
             name="description"
@@ -131,7 +131,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Frequency</label>
-          <Input
+          <InputDark
             type="text"
             value={frequency}
             name="frequency"
@@ -140,7 +140,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date Start</label>
-          <Input
+          <InputDark
             type="date"
             value={dateStart}
             name="dateStart"
@@ -149,7 +149,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date End</label>
-          <Input
+          <InputDark
             type="date"
             value={dateEnd}
             name="dateEnd"
@@ -158,7 +158,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time Start</label>
-          <Input
+          <InputDark
             type="time"
             value={timeStart}
             name="timeStart"
@@ -167,7 +167,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <Input
+          <InputDark
             type="time"
             value={timeEnd}
             name="timeEnd"
@@ -176,7 +176,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <Input
+          <InputDark
             type="number"
             value={price}
             name="price"

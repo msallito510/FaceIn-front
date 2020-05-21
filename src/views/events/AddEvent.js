@@ -5,7 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 
-import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
 class AddEvent extends Component {
   state = {
@@ -46,19 +46,16 @@ class AddEvent extends Component {
       this.setState({
         [e.target.name]: e.target.value,
       });
-      console.log(e.target.value);
     } else if (e.target.type === "number") {
       this.setState(
         { [e.target.name]: parseFloat(e.target.value) });
-      console.log(e.target.value);
     } else if (e.target.type === "date" && e.target.value !== "") {
       this.setState(
         { [e.target.name]: new Date(e.target.value).toISOString() });
-      console.log(e.target.value);
+
     } else if (e.target.type === "time") {
       this.setState(
         { [e.target.name]: e.target.value });
-      console.log(e.target.value);
     }
   };
 
@@ -76,9 +73,6 @@ class AddEvent extends Component {
       price,
       tagId
     } = this.state;
-    console.log(title);
-    console.log(description);
-
 
     await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
 
@@ -103,8 +97,8 @@ class AddEvent extends Component {
         <TitleDh1>Add a Event</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
-          <label htmlFor="name">Title</label>
-          <Input
+          <label htmlFor="title">Title</label>
+          <InputDark
             type="text"
             value={title}
             name="title"
@@ -112,8 +106,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Description</label>
-          <Input
+          <label htmlFor="description">Description</label>
+          <InputDark
             type="text"
             value={description}
             name="description"
@@ -121,8 +115,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Frequency</label>
-          <Input
+          <label htmlFor="frequency">Frequency</label>
+          <InputDark
             type="text"
             value={frequency}
             name="frequency"
@@ -130,8 +124,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Date Start</label>
-          <Input
+          <label htmlFor="dateStart">Date Start</label>
+          <InputDark
             type="date"
             value={dateStart}
             name="dateStart"
@@ -139,8 +133,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Date End</label>
-          <Input
+          <label htmlFor="dateEnd">Date End</label>
+          <InputDark
             type="date"
             value={dateEnd}
             name="dateEnd"
@@ -148,8 +142,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Time Start</label>
-          <Input
+          <label htmlFor="timeStart">Time Start</label>
+          <InputDark
             type="time"
             value={timeStart}
             name="timeStart"
@@ -158,7 +152,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <Input
+          <InputDark
             type="time"
             value={timeEnd}
             name="timeEnd"
@@ -166,8 +160,8 @@ class AddEvent extends Component {
           />
         </div>
         <div>
-          <label htmlFor="name">Time End</label>
-          <Input
+          <label htmlFor="price">Price</label>
+          <InputDark
             type="number"
             value={price}
             name="price"
@@ -176,7 +170,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <form>
-            <label htmlFor="name"># Tag</label>
+            <label htmlFor="tagId"># Tag</label>
 
             <select type="text" name="tagId" value="tagId" onChange={this.handleInput}>
               {!loading && tags.map((tag) => {
