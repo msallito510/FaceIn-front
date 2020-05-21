@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from "react-router-dom";
 
 
@@ -62,9 +62,30 @@ export const TitleEventCardLh1 = styled.h3`
   width: -webkit-fill-available;
 `;
 
-export const InfoEventCardLh3 = styled.h3`  
+export const TimeEventCardLh3 = styled.h3`  
 position: relative;
   top: 7.5em;
+  font-weight: 200;
+  font-size: 0.8em;
+  padding: 0.2em;
+  line-height: 13px;
+  width: -webkit-fill-available;
+`;
+
+export const TimeEventCardDetailLh3 = styled.h3`  
+position: relative;
+  top: 0em;
+  font-weight: 200;
+  font-size: 0.8em;
+  padding: 0.2em;
+  line-height: 13px;
+  width: -webkit-fill-available;
+`;
+
+export const TagEventCardDetailsLh3 = styled.h3`  
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
   font-weight: 200;
   font-size: 0.8em;
   padding: 0.2em;
@@ -75,6 +96,14 @@ position: relative;
 export const TitleDh2 = styled.h2`
   position: relative;
   bottom: 2em;
+  font-size: 1.5em;
+  text-align: center;
+  color: #1F1F1F;
+`;
+
+export const TitleEventCardDetailDh2 = styled.h2`
+  position: relative;
+  top: 0.7em;
   font-size: 1.5em;
   text-align: center;
   color: #1F1F1F;
@@ -178,7 +207,13 @@ export const Submit = styled.input.attrs({
   &:active {
     background-color: #f1ac15;
   }
-`
+`;
+
+export const EventDetailSubmitContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+`;
+
 export const StyledLink = styled(Link)`
   text-decoration: none !important;
 `;
@@ -317,7 +352,29 @@ export const ContentEventCard = styled.div`
   height: 6em;
 `;
 
-export const EventCard = styled.div`
+export const EventDetailImageBackground = styled.div`
+  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg');
+  width: 100%;
+  height: 376px;
+  ackground-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  top: 0;
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 3;
+  animation: 50% { background-position: Calc(-35vw - 40px) 50%; } 70s 2;
+  ${'' /* animation: ${keyFrameEventDetailImg} 70s 2; */}
+`;
+
+const keyFrameEventDetailImg = keyframes`
+  
+  50% {
+    background-position: Calc(-35vw - 40px) 50%;
+  }
+`;
+
+export const EventCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #E3E5F3;
@@ -326,6 +383,54 @@ export const EventCard = styled.div`
   background-position: 50% 50%;  
   border-radius: 20px;
   height: 136px;
+`;
+
+export const EventCardDetailContainerSocial = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #E3E5F3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;  
+  border-radius: 20px;
+  height: 100px;
+  margin: 0.3em;
+`;
+
+export const EventCardDetailContainerInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #E3E5F3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;  
+  border-radius: 20px;
+  height: 145px;
+  margin: 0.3em;
+`;
+
+export const EventCardDetailContainerPlace = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #E3E5F3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;  
+  border-radius: 20px;
+  height: 25em;
+  margin: 0.3em;
+`;
+
+export const EventCardDetailMapPlace = styled.div`
+  background: #E3E5F3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;  
+  border-radius: 20px;
+  height: 20em;
+  width:22em;
+  margin: 0.3em;
+  z-index: 0;
 `;
 
 export const HeaderBackground = styled.div`

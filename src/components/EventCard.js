@@ -1,5 +1,23 @@
 import React, { Component } from 'react';
 import eventService from "../services/eventService";
+import PlaceCard from '../views/places/PlaceCard';
+import DateFormat from "../components/DateFormat";
+
+import {
+  TitleEventCardDetailDh2,
+  EventCardDetailContainerSocial,
+  EventCardDetailContainerInfo,
+  EventCardDetailContainerPlace,
+  GeneralBackground,
+  StyledLink,
+  CardContainer,
+  ContentEventCard,
+  TagEventCardDetailsLh3,
+  TimeEventCardDetailLh3,
+  EventCardDetailMapPlace,
+  Submit,
+  EventDetailSubmitContainer
+} from "../styles/styledComponents";
 
 export default class EventCard extends Component {
 
@@ -15,25 +33,62 @@ export default class EventCard extends Component {
   };
 
   render() {
-    const { event: { title, description, frequency, dateStart, timeStart, price, owner: { username }, participants, belongsToPlace, tag } } = this.props;
+    const { event: {
+      title,
+      description,
+      frequency,
+      dateStart,
+      timeStart,
+      price,
+      owner: { username },
+      participants,
+      belongsToPlace,
+      tag
+    } } = this.props;
+
     return (
-      <div>
-        <p><u>Title</u></p>
-        <p>{title}</p>
-        <dvi>
-          {description}
-        </dvi>
-        <div>
-          {username}
-        </div>
-        <div>
-          <input
+      <GeneralBackground>
+        <TimeEventCardDetailLh3>
+          <DateFormat dateStart={dateStart} timeStart={timeStart} />
+        </TimeEventCardDetailLh3>
+        <TitleEventCardDetailDh2>{title}</TitleEventCardDetailDh2>
+        <TagEventCardDetailsLh3>#{tag}</TagEventCardDetailsLh3>
+        <CardContainer>
+          <EventCardDetailContainerSocial>
+            <p>Social</p>
+            <div>
+              <div>
+                <p>Attend</p>
+                {/* linkTo attend page */}
+              </div>
+              <div>
+                <p>Owner</p>
+                {username}
+              </div>
+            </div>
+          </EventCardDetailContainerSocial>
+          <EventCardDetailContainerInfo>
+            <p>Info</p>
+            {description}
+          </EventCardDetailContainerInfo>
+          <EventCardDetailContainerPlace>
+            <p>The Place</p>
+            {/* {address} | {city} | {country} */}
+            <EventCardDetailMapPlace>
+              <div>
+                <PlaceCard place={belongsToPlace} />
+              </div>
+            </EventCardDetailMapPlace>
+          </EventCardDetailContainerPlace>
+        </CardContainer>
+        <EventDetailSubmitContainer>
+          <Submit
             type="button"
             value="Attend"
             name="submit"
             onClick={this.handleAttend}
           />
-        </div>
+        </EventDetailSubmitContainer>
         <div>
           <input
             type="button"
@@ -42,7 +97,7 @@ export default class EventCard extends Component {
             onClick={this.handleLike}
           />
         </div>
-      </div>
+      </GeneralBackground>
     )
   }
 }

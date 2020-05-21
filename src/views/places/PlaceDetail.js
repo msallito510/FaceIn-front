@@ -46,12 +46,13 @@ class PlaceDetail extends Component {
     // const { handleLogout } = this.props;
     return (
       <div>
-        <h1>PlaceDetail</h1>
+        <h1>Place Detail</h1>
         {loading && <div>loading...</div>}
         {!loading &&
           <div>
             <div><PlaceCard place={place} /></div>
             <div>
+              <h2>Comments</h2>
               {ratings.map((rating) =>
                 <div>
                   <h2>{rating.title}</h2>

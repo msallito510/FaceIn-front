@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+import DateFormat from "../../components/DateFormat";
 
 import eventService from "../../services/eventService";
 import {
@@ -9,10 +10,10 @@ import {
   GeneralBackground,
   StyledLink,
   CardContainer,
-  EventCard,
+  EventCardContainer,
   ContentEventCard,
   TitleEventCardLh1,
-  InfoEventCardLh3
+  TimeEventCardLh3
 } from "../../styles/styledComponents";
 
 class Events extends Component {
@@ -37,16 +38,16 @@ class Events extends Component {
     }
   }
 
-  convertDate = (event) => {
-    if (event.event.dateStart) {
-      const sptdate = event.event.dateStart.split("-");
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      const year = sptdate[0];
-      const month = sptdate[1];
-      const day = sptdate[2].replace("T00:00:00.000Z", "");
-      return day + " " + months[month - 1] + " " + year;
-    }
-  }
+  // convertDate = (event) => {
+  //   if (event.event.dateStart) {
+  //     const sptdate = event.event.dateStart.split("-");
+  //     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  //     const year = sptdate[0];
+  //     const month = sptdate[1];
+  //     const day = sptdate[2].replace("T00:00:00.000Z", "");
+  //     return day + " " + months[month - 1] + " " + year;
+  //   }
+  // }
 
 
   render() {
@@ -64,12 +65,14 @@ class Events extends Component {
             return (
               <CardContainer key={event._id}>
                 <StyledLink to={`/events/${event._id}`}>
-                  <EventCard>
+                  <EventCardContainer>
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
-                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                      <TimeEventCardLh3>
+                        <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />
+                      </TimeEventCardLh3>
                     </ContentEventCard>
-                  </EventCard>
+                  </EventCardContainer>
                 </StyledLink>
               </CardContainer>
             );

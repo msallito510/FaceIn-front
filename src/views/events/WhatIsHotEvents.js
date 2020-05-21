@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+import DateFormat from "../../components/DateFormat";
 
 import eventService from "../../services/eventService";
 import {
@@ -10,10 +11,10 @@ import {
   GeneralBackground,
   StyledLink,
   CardContainer,
-  EventCard,
+  EventCardContainer,
   ContentEventCard,
   TitleEventCardLh1,
-  InfoEventCardLh3
+  TimeEventCardLh3
 } from "../../styles/styledComponents";
 
 class WhatIsHotEvents extends Component {
@@ -53,12 +54,14 @@ class WhatIsHotEvents extends Component {
             return (
               <CardContainer key={event._id}>
                 <StyledLink to={`/events/${event._id}`}>
-                  <EventCard>
+                  <EventCardContainer>
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
-                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                      <TimeEventCardLh3>
+                        <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />
+                      </TimeEventCardLh3>
                     </ContentEventCard>
-                  </EventCard>
+                  </EventCardContainer>
                 </StyledLink>
               </CardContainer>
             );

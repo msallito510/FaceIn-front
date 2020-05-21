@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import EventCard from "../../components/EventCard";
 
+import {
+  TitleLh1,
+  keyFrameEvendDetailImg,
+
+} from "../../styles/styledComponents";
 
 class EventDetail extends Component {
   state = {
@@ -32,12 +36,12 @@ class EventDetail extends Component {
   render() {
     const { event, loading } = this.state;
     return (
-      <div>
-        <h1>Event detail</h1>
+      <keyFrameEvendDetailImg>
+        <TitleLh1>Event detail</TitleLh1>
         {loading && <div>loading...</div>}
         {!loading && <EventCard event={event} />}
-        <Link to={`/events`}> back </Link>
-      </div>
+
+      </keyFrameEvendDetailImg>
     );
   }
 }

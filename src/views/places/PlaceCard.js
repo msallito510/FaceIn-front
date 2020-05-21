@@ -5,7 +5,7 @@ import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 
 const PlaceCard = (props) => {
-  const { place: { placeName, address, coordinatesLatLong: { Latitude, Longitude } } } = props;
+  const { place: { placeName, address, country, coordinatesLatLong: { Latitude, Longitude } } } = props;
   const pin = new Icon({
     iconUrl: 'https://www.seekpng.com/png/full/11-119662_current-locations-location-icon-blue-vector.png',
     iconSize: [50, 50]
@@ -13,11 +13,6 @@ const PlaceCard = (props) => {
 
   return (
     <div style={{ height: "400px", width: "100%" }}>
-      <p>PlaceCard:</p>
-      <label htmlFor="">placeName</label>
-      <p>{placeName}</p>
-      <label htmlFor="">address</label>
-      <p>{address}</p>
       <Map
         style={{ height: "300px", width: "100%" }}
         center={[Latitude, Longitude]}
@@ -28,10 +23,14 @@ const PlaceCard = (props) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[Latitude, Longitude]} icon={pin} >
-          <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
+          <Popup>
+            <p>Name: {placeName}</p>
+            <p>Address: {address}</p>
+            <p>Country: {country}</p>
+          </Popup>
         </Marker>
       </Map>
-    </div >
+    </div>
   );
 };
 

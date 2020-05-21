@@ -4,15 +4,17 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import SearchBar from "../../components/SearchBar";
+import DateFormat from "../../components/DateFormat";
+
 import {
   TitleLh1,
   HeaderBackground,
   SearchBackground,
   CardContainer,
-  EventCard,
+  EventCardContainer,
   ContentEventCard,
   TitleEventCardLh1,
-  InfoEventCardLh3,
+  TimeEventCardLh3,
   StyledLink
 } from "../../styles/styledComponents";
 
@@ -24,7 +26,6 @@ class SearchEvent extends Component {
   }
 
   async componentDidMount() {
-
     try {
       const events = await eventService.getAllEvents()
       this.setState({
@@ -66,12 +67,14 @@ class SearchEvent extends Component {
             return (
               <CardContainer>
                 <StyledLink to={`/events/${event._id}`}>
-                  <EventCard>
+                  <EventCardContainer>
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
-                      <InfoEventCardLh3>{event.dateStart} | {event.timeStart}</InfoEventCardLh3>
+                      <TimeEventCardLh3>
+                      <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />                     
+                      </TimeEventCardLh3>
                     </ContentEventCard>
-                  </EventCard>
+                  </EventCardContainer>
                 </StyledLink>
               </CardContainer>
             );
