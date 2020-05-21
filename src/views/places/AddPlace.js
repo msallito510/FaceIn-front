@@ -3,6 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import placeService from "../../services/placeService";
+import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class AddPlace extends Component {
   state = {
@@ -67,12 +68,12 @@ class AddPlace extends Component {
       loading
     } = this.state;
     return (
-      <div>
-        <h1>Add a Place</h1>
+      <FormWrapper>
+        <TitleDh1>Add a Place</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Place name</label>
-          <input
+          <Input
             type="text"
             value={placeName}
             name="placeName"
@@ -81,7 +82,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Address</label>
-          <input
+          <Input
             type="text"
             value={address}
             name="address"
@@ -90,7 +91,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">City</label>
-          <input
+          <Input
             type="text"
             value={city}
             name="city"
@@ -99,7 +100,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Country</label>
-          <input
+          <Input
             type="text"
             value={country}
             name="country"
@@ -108,14 +109,14 @@ class AddPlace extends Component {
         </div>
 
         <div>
-          <input
+          <Submit
             type="button"
             value="Add Place"
             name="submit"
             onClick={this.handleSubmit}
           />
         </div>
-      </div>
+      </FormWrapper>
     )
   }
 }

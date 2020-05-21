@@ -91,7 +91,7 @@ export const SecondaryWrapperLeft = styled.section`
   box-shadow: 8px 8px 50px #000;
 `;
 
-export const AddEventWrapper = styled.section`
+export const FormWrapper = styled.section`
   padding: 1em;
   color: #000;  
 `;

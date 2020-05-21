@@ -4,7 +4,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-import { TitleDh1, TitleDh2, AddEventWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, TitleDh2, FormWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class UserEventList extends Component {
   state = {

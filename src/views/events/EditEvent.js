@@ -4,7 +4,7 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
-import { TitleDh1, AddEventWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class EditEvent extends Component {
   state = {
@@ -108,7 +108,7 @@ class EditEvent extends Component {
     } = this.state;
 
     return (
-      <AddEventWrapper>
+      <FormWrapper>
         <TitleDh1>Edit a Event</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
@@ -204,7 +204,7 @@ class EditEvent extends Component {
             onClick={this.handleSubmit}
           />
         </div>
-      </AddEventWrapper>
+      </FormWrapper>
     )
   }
 }

@@ -3,6 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import placeService from "../../services/placeService";
+import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class EditPlace extends Component {
   state = {
@@ -72,12 +73,12 @@ class EditPlace extends Component {
     } = this.state;
 
     return (
-      <div>
-        <h1>Edit a Place</h1>
+      <FormWrapper>
+        <TitleDh1>Edit a Place</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Place name</label>
-          <input
+          <Input
             type="text"
             value={placeName}
             name="placeName"
@@ -86,7 +87,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Address</label>
-          <input
+          <Input
             type="text"
             value={address}
             name="address"
@@ -95,7 +96,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">City</label>
-          <input
+          <Input
             type="text"
             value={city}
             name="city"
@@ -104,7 +105,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Country</label>
-          <input
+          <Input
             type="text"
             value={country}
             name="country"
@@ -113,14 +114,14 @@ class EditPlace extends Component {
         </div>
 
         <div>
-          <input
+          <Submit
             type="button"
             value="Edit Place"
             name="submit"
             onClick={this.handleSubmit}
           />
         </div>
-      </div>
+      </FormWrapper>
     )
   }
 }

@@ -5,7 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 
-import { TitleDh1, AddEventWrapper, Input, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class AddEvent extends Component {
   state = {
@@ -99,7 +99,7 @@ class AddEvent extends Component {
       loading
     } = this.state;
     return (
-      <AddEventWrapper>
+      <FormWrapper>
         <TitleDh1>Add a Event</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
@@ -195,7 +195,7 @@ class AddEvent extends Component {
             onClick={this.handleSubmit}
           />
         </div>
-      </AddEventWrapper>
+      </FormWrapper>
     )
   }
 }
