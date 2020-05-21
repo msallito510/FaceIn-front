@@ -9,6 +9,7 @@ import { ToggleRight } from '@styled-icons/boxicons-solid/ToggleRight';
 import { PlusCircle } from '@styled-icons/feather/PlusCircle';
 import { Edit } from '@styled-icons/feather/Edit';
 import { PlayCircle } from '@styled-icons/feather/PlayCircle';
+import { LogOut } from '@styled-icons/feather/LogOut';
 
 
 export const SearchIcon = styled(Search)`
@@ -42,6 +43,10 @@ export const ThemeLightIcon = styled(ToggleLeft)`
 
 export const ThemeDarkIcon = styled(ToggleRight)`
   width: 2.5em;
+`;
+
+export const LogOutIcon = styled(LogOut)`
+  width: 2em;
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`

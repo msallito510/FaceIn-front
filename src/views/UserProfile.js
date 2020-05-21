@@ -14,17 +14,25 @@ import {
   StyledLink,
   UserProfileBarUl,
   MenuBarLi,
-  UserProfileLabelContent
+  UserProfileLabelContent,
+  HeaderUserProfile
 } from "../styles/styledComponents";
-import { PlusCircleIcon, EditIcon, PlayCircleIcon } from "../styles/icon-style";
-const UserProfile = ({ user }) => {
-  // const { handleLogout } = this.props;
+import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon } from "../styles/icon-style";
+const UserProfile = ({ user, handleLogout }) => {
+
 
   return (
     <HeaderBackground>
-      <div>
-        <TitleLh1>{user.username}'s profile</TitleLh1>
-      </div>
+      <HeaderUserProfile>
+        <div>
+          <TitleLh1>{user.username}'s profile</TitleLh1>
+        </div>
+        <div>
+          <button onClick={handleLogout}>
+            <LogOutIcon />
+          </button>
+        </div>
+      </HeaderUserProfile>
       <PhotoContainer>
         <PhotoProfile>
           photo
@@ -82,7 +90,7 @@ const UserProfile = ({ user }) => {
           </UserProfileBarUl>
         </SecondaryWrapperRight>
       </GeneralBackground>
-      {/* <button onClick={handleLogout}>Logout</button> */}
+
       {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
     </HeaderBackground>
   );

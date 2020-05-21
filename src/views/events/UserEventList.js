@@ -4,6 +4,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
+import { TitleDh1, TitleDh2, AddEventWrapper, Input, Submit } from "../../styles/styledComponents";
 
 class UserEventList extends Component {
   state = {
@@ -38,7 +39,7 @@ class UserEventList extends Component {
 
     return (
       <div>
-        <h1>user event</h1>
+        <TitleDh1>user event</TitleDh1>
         {loading && <div>loading...</div>}
         {!loading && events.map((event) => {
           return (

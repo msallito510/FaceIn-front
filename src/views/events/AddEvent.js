@@ -5,6 +5,8 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 
+import { TitleDh1, AddEventWrapper, Input, Submit } from "../../styles/styledComponents";
+
 class AddEvent extends Component {
   state = {
     title: "",
@@ -97,12 +99,12 @@ class AddEvent extends Component {
       loading
     } = this.state;
     return (
-      <div>
-        <h1>Add a Event</h1>
+      <AddEventWrapper>
+        <TitleDh1>Add a Event</TitleDh1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Title</label>
-          <input
+          <Input
             type="text"
             value={title}
             name="title"
@@ -111,7 +113,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Description</label>
-          <input
+          <Input
             type="text"
             value={description}
             name="description"
@@ -120,7 +122,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Frequency</label>
-          <input
+          <Input
             type="text"
             value={frequency}
             name="frequency"
@@ -129,7 +131,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date Start</label>
-          <input
+          <Input
             type="date"
             value={dateStart}
             name="dateStart"
@@ -138,7 +140,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date End</label>
-          <input
+          <Input
             type="date"
             value={dateEnd}
             name="dateEnd"
@@ -147,7 +149,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time Start</label>
-          <input
+          <Input
             type="time"
             value={timeStart}
             name="timeStart"
@@ -156,7 +158,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <input
+          <Input
             type="time"
             value={timeEnd}
             name="timeEnd"
@@ -165,7 +167,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <input
+          <Input
             type="number"
             value={price}
             name="price"
@@ -186,14 +188,14 @@ class AddEvent extends Component {
           </form>
         </div>
         <div>
-          <input
+          <Submit
             type="button"
             value="Add Event"
             name="submit"
             onClick={this.handleSubmit}
           />
         </div>
-      </div>
+      </AddEventWrapper>
     )
   }
 }

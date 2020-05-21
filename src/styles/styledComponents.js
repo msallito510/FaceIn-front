@@ -91,6 +91,11 @@ export const SecondaryWrapperLeft = styled.section`
   box-shadow: 8px 8px 50px #000;
 `;
 
+export const AddEventWrapper = styled.section`
+  padding: 1em;
+  color: #000;  
+`;
+
 export const SecondaryWrapperRight = styled.section`
   position: relative;
   float: right;
@@ -284,4 +289,12 @@ export const UserProfileLabelContent = styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: start;
+`;
+
+export const HeaderUserProfile = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-left: 5em;
 `;
