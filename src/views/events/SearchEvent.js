@@ -71,7 +71,7 @@ class SearchEvent extends Component {
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
                       <TimeEventCardLh3>
-                      <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />                     
+                        <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />
                       </TimeEventCardLh3>
                     </ContentEventCard>
                   </EventCardContainer>

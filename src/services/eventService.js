@@ -40,12 +40,6 @@ class EventService {
       .then(({ data }) => data);
   }
 
-  // addShift(timeStart, timeEnd, workingDayId, userId) {
-  //   return this.axios
-  //     .post(`/api/shifts/add`, { timeStart, timeEnd, workingDayId, userId })
-  //     .then(({ data }) => data);
-  // }
-
   getAllEvents() {
     return this.axios.get("/api/events")
       .then(({ data: events }) => events);

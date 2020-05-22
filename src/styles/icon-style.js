@@ -51,7 +51,7 @@ export const LogOutIcon = styled(LogOut)`
 `;
 
 export const EventCircleHeartBroken = styled(HeartBroken)`
-  width: 2em;
+  width: 1.5em;
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`

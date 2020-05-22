@@ -101,6 +101,15 @@ export const TitleDh2 = styled.h2`
   color: #1F1F1F;
 `;
 
+export const TitleEventCardDetailDh1 = styled.h1`
+  position: relative;
+  font-size: 1.2em;
+  text-align: center;
+  color: #1F1F1F;
+  right: 7em;
+  font-weight: bold;
+`;
+
 export const TitleEventCardDetailDh2 = styled.h2`
   position: relative;
   top: 0.7em;
@@ -108,6 +117,10 @@ export const TitleEventCardDetailDh2 = styled.h2`
   text-align: center;
   color: #1F1F1F;
 `;
+
+export const EventDetailSocialTitle = styled.h2`
+  color: #2D9CDB;
+  font-weight: bold;`;
 
 export const TitleDh3 = styled.h3`
   position: relative;
@@ -188,8 +201,7 @@ export const ContinerAlineCenter = styled.div`
 `;
 
 export const Submit = styled.input.attrs({
-  type: 'submit',
-  value: 'Submit'
+  type: 'submit'
 })`
   background: #F57873;
   color: #fff;
@@ -207,6 +219,12 @@ export const Submit = styled.input.attrs({
   &:active {
     background-color: #f1ac15;
   }
+`;
+
+export const EventDetailLikeContainer = styled.div`
+  position: absolute;
+  top: 0.9em;
+  left: 1em;
 `;
 
 export const EventDetailSubmitContainer = styled.div`
@@ -285,7 +303,7 @@ export const GeneralBackground = styled.div`
   top: 20rem;
   position: absolute;
   width: 100%;
-  height: 20em;
+  height: 45em;
   padding: 1em 0;
   text-align: center;
   border-radius: 20px;
@@ -295,7 +313,7 @@ export const SearchBackground = styled.div`
   top: 10rem;
   position: absolute;
   width: 100%;
-  height: 20em;
+  height: 50em;
   padding: 1em 0;
   text-align: center;
   border-radius: 20px;
@@ -474,4 +492,10 @@ export const HeaderUserProfile = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   padding-left: 5em;
+`;
+
+export const EventDetailSocialContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;

@@ -35,11 +35,12 @@ class EventDetail extends Component {
 
   render() {
     const { event, loading } = this.state;
+    const { user } = this.props;
     return (
       <keyFrameEvendDetailImg>
         <TitleLh1>Event detail</TitleLh1>
         {loading && <div>loading...</div>}
-        {!loading && <EventCard event={event} />}
+        {!loading && <EventCard event={event} user={user} />}
 
       </keyFrameEvendDetailImg>
     );
