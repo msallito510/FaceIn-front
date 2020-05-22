@@ -14,6 +14,16 @@ export const TitleLh1 = styled.h1`
   color: #fff;
 `;
 
+export const TitleEventsLh1 = styled.h1`
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 40%;
+  font-size: 1.7em;
+  text-align: center;
+  color: #fff;
+`;
+
 export const TitleCardLh1 = styled.h1`
   position: relative;
   font-size: 1.7em;

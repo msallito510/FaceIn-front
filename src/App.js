@@ -35,6 +35,8 @@ import AddPlace from './views/places/AddPlace';
 import EditPlace from './views/places/EditPlace';
 import Rating from './views/places/PlaceRating';
 
+import Attend from './views/attend/Attend';
+
 // error view
 import ErrorPage from "./views/ErrorPage";
 
@@ -66,6 +68,8 @@ class App extends Component {
             <PrivateRoute exact path="/add-place" component={AddPlace} />
             <PrivateRoute exact path="/place-edit/:id" component={EditPlace} />
             <PrivateRoute exact path="/rating/:id" component={Rating} />
+
+            <PrivateRoute exact path="/attend/:id" component={Attend} />
 
             <Route path="*" component={ErrorPage} />
           </Switch>

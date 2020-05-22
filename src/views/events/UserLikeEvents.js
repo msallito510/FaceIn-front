@@ -5,7 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import userService from "../../services/userService";
 import UserCard from "../../components/UserCard";
 import {
-  TitleLh1,
+  TitleEventsLh1,
   HeaderBackground,
   GeneralBackground,
 } from "../../styles/styledComponents";
@@ -42,7 +42,7 @@ class UserLikeEvents extends Component {
     return (
       <div>
         <HeaderBackground>
-          <TitleLh1>Events I like</TitleLh1>
+          <TitleEventsLh1>Events I like</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground>
           {loading && <div>loading...</div>}

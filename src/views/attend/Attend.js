@@ -4,20 +4,21 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-import { TitleDh1, TitleDh2, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
+import { TitleDh1 } from "../../styles/styledComponents";
 
 class Attend extends Component {
   state = {
-    events: [],
+    event: {},
     loading: true,
   }
 
   async componentDidMount() {
+    const { match: { params: { id } } } = this.props;
     try {
-      const events = await eventService.getAllEventsByOwner()
-
+      const event = await eventService.getEventById(id);
       this.setState({
-        events,
+        event,
         loading: false
       })
     } catch (error) {
@@ -28,36 +29,36 @@ class Attend extends Component {
     }
   }
 
-  handleDelete = async (eventId) => {
-
-    await eventService.deleteEvent(eventId)
-
-  };
-
   render() {
-    const { events, loading } = this.state;
+    const { event: { participants }, loading } = this.state;
 
     return (
       <div>
-        <TitleDh1>user event</TitleDh1>
+        <TitleDh1>Social attend</TitleDh1>
         {loading && <div>loading...</div>}
-        {!loading && events.map((event) => {
-          return (
-            <div div key={event._id}>
-              <div>
-                <h2>{event.title}</h2>
-                <h2>{event.description}</h2>
-              </div>
-              <div>
-                <Link to={`/event-edit/${event._id}`}>edit</Link>
-              </div>
-              <div>
-                <button onClick={() => this.handleDelete(event._id)} >delete</button>
-              </div>
-            </div>
-          );
-        })
-        }
+        <Table>
+          <Thead>
+            <tr>
+              <Th>user</Th>
+              <Th>face Scanned</Th>
+            </tr>
+          </Thead>
+          {!loading && participants.map((item) => {
+            return (
+              <tbody>
+                <tr>
+                  <Container div key={item.participant._id}>
+
+                    <TdRight>{item.participant.username}</TdRight>
+                    <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
+                  </Container>
+                </tr>
+              </tbody>
+
+            );
+          })
+          }
+        </Table>
       </div>
     );
   }

@@ -5,11 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import EventCard from "../../components/EventCard";
 
-import {
-  TitleLh1,
-  keyFrameEvendDetailImg,
-
-} from "../../styles/styledComponents";
+import { TitleLh1 } from "../../styles/styledComponents";
 
 class EventDetail extends Component {
   state = {

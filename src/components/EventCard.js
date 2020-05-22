@@ -108,6 +108,7 @@ export default class EventCard extends Component {
 
   render() {
     const { event: {
+      _id: eventId,
       title,
       description,
       frequency,
@@ -137,16 +138,16 @@ export default class EventCard extends Component {
             <TitleEventCardDetailDh1>Social</TitleEventCardDetailDh1>
             <EventDetailSocialContainer>
               <div>
-                <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
-                <EventDetailSocialContainer>
-                  {participants.slice(0, 2).map((item) =>
-                    <p style={{ padding: "0.5em" }}>
-                      {item.participant.username}
-                    </p>)}
-                  {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
-                  {/* linkTo attend page */}
-                </EventDetailSocialContainer>
-
+                <Link to={`/attend/${eventId}`}>
+                  <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
+                  <EventDetailSocialContainer>
+                    {participants.slice(0, 2).map((item) =>
+                      <p style={{ padding: "0.5em" }}>
+                        {item.participant.username}
+                      </p>)}
+                    {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
+                  </EventDetailSocialContainer>
+                </Link>
               </div>
               <div>
                 <EventDetailSocialTitle>Owner</EventDetailSocialTitle>
