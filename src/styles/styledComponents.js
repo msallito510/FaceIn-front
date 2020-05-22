@@ -221,6 +221,25 @@ export const Submit = styled.input.attrs({
   }
 `;
 
+export const Button = styled.button`
+  background: #F57873;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+  border-color: transparent;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  text-align: center;
+  &:active {
+    background-color: #f1ac15;
+  }
+`;
+
 export const EventDetailLikeContainer = styled.div`
   position: absolute;
   top: 0.9em;
@@ -230,6 +249,7 @@ export const EventDetailLikeContainer = styled.div`
 export const EventDetailSubmitContainer = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0.5em;
 `;
 
 export const StyledLink = styled(Link)`

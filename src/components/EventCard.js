@@ -80,6 +80,11 @@ export default class EventCard extends Component {
     }
   }
 
+  handleSocialLoop = () => {
+    const { event: { participants } } = this.props;
+
+  }
+
   handleSetState = async () => {
     const { event: { likes }, user: { _id: userId } } = this.props;
 
@@ -93,7 +98,6 @@ export default class EventCard extends Component {
       }
     }).filter(Boolean)[0];
 
-    console.log(nIsLiked)
     if (typeof nIsLiked === "boolean") {
       this.setState({
         isLiked: nIsLiked,
@@ -134,7 +138,15 @@ export default class EventCard extends Component {
             <EventDetailSocialContainer>
               <div>
                 <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
-                {/* linkTo attend page */}
+                <EventDetailSocialContainer>
+                  {participants.slice(0, 2).map((item) =>
+                    <p style={{ padding: "0.5em" }}>
+                      {item.participant.username}
+                    </p>)}
+                  {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
+                  {/* linkTo attend page */}
+                </EventDetailSocialContainer>
+
               </div>
               <div>
                 <EventDetailSocialTitle>Owner</EventDetailSocialTitle>
@@ -158,17 +170,17 @@ export default class EventCard extends Component {
           </EventCardDetailContainerPlace>
         </CardContainer>
         <EventDetailSubmitContainer>
-          <button onClick={this.handleAttend}>
+          <Button ref="btn" onClick={this.handleAttend}>
             Attend
-          </button>
+          </Button>
         </EventDetailSubmitContainer>
 
         <EventDetailLikeContainer>
-          <button ref="btn" onClick={this.handleLike}>
+          <button onClick={this.handleLike}>
             {this.renderIcon()}
           </button>
         </EventDetailLikeContainer>
-        }
+
       </GeneralBackground>
     )
   }
