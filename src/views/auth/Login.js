@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '../../context/authContext';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
+import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // for notifications:
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -21,9 +23,9 @@ class Login extends Component {
     const { username, password } = this.state;
     this.props.handleLogin({
       username,
-      password
+      password,
     });
-  }
+  };
 
   // handleFormSubmit = async e => {
   //   e.preventDefault();
@@ -50,19 +52,33 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
-        <h1>Login</h1>
+      <EventCardWrapper>
+        <TitleDh1>Login</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" id="username" value={username} onChange={this.handleChange} placeholder="username" />
-          <label>Password:</label>
-          <input type="password" name="password" id="password" value={password} onChange={this.handleChange} placeholder="password" />
-          <input type="submit" value="Login" />
+          <InputDark
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            onChange={this.handleChange}
+            placeholder="username"
+          />
+          <InputDark
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="password"
+          />
+          <Submit type="submit" value="Login" />
         </form>
-        <p>Keen to
-      <Link to={"/signup"}><span> sign up?</span></Link>
-        </p>
-      </div>
+        <ButtonPLeft>
+          <Link to={"/signup"}>
+            <Span>sign up</Span>
+          </Link>
+        </ButtonPLeft>
+      </EventCardWrapper>
     );
   }
 }

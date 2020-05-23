@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { NavLink } from "react-router-dom";
-// import styled from 'styled-components';
+import { MenuBarUl, MenuBarLi } from "../styles/styledComponents";
+import { SearchIcon, HeartIcon, UserIcon, HomeIcon } from "../styles/icon-style";
 
 class Navbar extends Component {
   render() {
@@ -10,17 +11,28 @@ class Navbar extends Component {
     return (
       <section>
         <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Homepage</NavLink>
-            </li>
-            <li>
-              {user ? <NavLink to="/protectedview">ProtectedView</NavLink> : <div></div>}
-            </li>
-            <li>
-              {user ? <NavLink to="/protectedviewtwo">ProtectedViewTwo</NavLink> : <div></div>}
-            </li>
-            <li>
+          <MenuBarUl>
+            <MenuBarLi>
+              <NavLink to="/">
+                <HomeIcon />
+              </NavLink>
+            </MenuBarLi>
+            <MenuBarLi>
+              {user ? <NavLink to="/search">
+                <SearchIcon />
+              </NavLink> : <div></div>}
+            </MenuBarLi>
+            <MenuBarLi>
+              {user ? <NavLink to="/likes">
+                <HeartIcon />
+              </NavLink> : <div></div>}
+            </MenuBarLi>
+            <MenuBarLi>
+              {user ? <NavLink to="/user-profile">
+                <UserIcon />
+              </NavLink> : <div></div>}
+            </MenuBarLi>
+            {/* <li>
               <button
                 onClick={changeTheme}
                 style={{
@@ -28,11 +40,11 @@ class Navbar extends Component {
                   color: theme.color,
                 }}
               >changeTheme</button>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               {user ? <NavLink onClick={handleLogout} to="/">Logout</NavLink> : <NavLink to="/login">Login</NavLink>}
-            </li>
-          </ul>
+            </li> */}
+          </MenuBarUl>
         </nav>
       </section>
     );

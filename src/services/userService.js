@@ -18,6 +18,12 @@ class UserService {
       .then(({ data: user }) => user);
   }
 
+  getUserByIdAndLikes(id) {
+    return this.axios
+      .get(`/api/users/${id}/likes`)
+      .then(({ data: user }) => user);
+  }
+
   updateUser(user) {
     return this.axios
       .put(`/api/users/${user._id}/update`, user)

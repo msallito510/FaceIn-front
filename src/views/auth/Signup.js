@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '../../context/authContext';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
+import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 class Signup extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
+    email: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
+    const { username, password, email } = this.state;
     this.props.handleSignup({
       username,
-      password
-    })
-  }
+      password,
+      email,
+    });
+  };
 
   // handleFormSubmit = async e => {
   //   e.preventDefault();
@@ -39,23 +43,40 @@ class Signup extends Component {
   // };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, email } = this.state;
     return (
-      <div>
-        <h1>Sign up</h1>
+      <EventCardWrapper>
+        <TitleDh1>Sign up</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
+          <InputDark
+            type="text"
+            name="username"
+            value={username}
+            onChange={this.handleChange}
+            placeholder="username"
+          />
+          <InputDark
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="password"
+          />
+          <InputDark
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+            placeholder="email"
+          />
+          <Submit type="submit" value="Signup" />
         </form>
-        <p>Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p>
-
-      </div>
-    )
+        <ButtonPLeft>
+          <Link to={"/login"}>
+            <Span>Login</Span></Link>
+        </ButtonPLeft>
+      </EventCardWrapper>
+    );
   }
 }
 
