@@ -13,7 +13,7 @@ import {
   EventCardDetailContainerInfo,
   EventCardDetailContainerPlace,
   GeneralBackground,
-  EventDetailSocialContainer,
+  Container_row,
   CardContainer,
   ContentEventCard,
   TagEventCardDetailsLh3,
@@ -136,24 +136,24 @@ export default class EventCard extends Component {
         <CardContainer>
           <EventCardDetailContainerSocial>
             <TitleEventCardDetailDh1>Social</TitleEventCardDetailDh1>
-            <EventDetailSocialContainer>
+            <Container_row>
               <div>
                 <Link to={`/attend/${eventId}`}>
                   <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
-                  <EventDetailSocialContainer>
+                  <Container_row>
                     {participants.slice(0, 2).map((item) =>
                       <p style={{ padding: "0.5em" }}>
                         {item.participant.username}
                       </p>)}
                     {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
-                  </EventDetailSocialContainer>
+                  </Container_row>
                 </Link>
               </div>
               <div>
                 <EventDetailSocialTitle>Owner</EventDetailSocialTitle>
                 {username}
               </div>
-            </EventDetailSocialContainer>
+            </Container_row>
           </EventCardDetailContainerSocial>
           <EventCardDetailContainerInfo>
             <TitleEventCardDetailDh1>Info</TitleEventCardDetailDh1>

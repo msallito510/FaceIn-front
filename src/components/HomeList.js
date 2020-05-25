@@ -11,7 +11,7 @@ import {
   HomeAllEvents,
   HomeWhatsHot,
   HomeUserLikes,
-  StyledLink,
+  StyledLink_D,
   CardContainer
 } from "../styles/styledComponents";
 
@@ -31,22 +31,22 @@ class HomeList extends Component {
         >changeTheme</button> */}
         <GeneralBackground>
           <CardContainer>
-            {user ? <StyledLink to="/events">
+            {user ? <StyledLink_D to="/events">
               <HomeAllEvents />
               <BoldTitleCardLh1>All Events</BoldTitleCardLh1>
-            </StyledLink> : <div></div>}
+            </StyledLink_D> : <div></div>}
           </CardContainer>
           <CardContainer>
-            {user ? <StyledLink to="/whatishot">
+            {user ? <StyledLink_D to="/whatishot">
               <HomeWhatsHot />
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
-            </StyledLink> : <div></div>}
+            </StyledLink_D> : <div></div>}
           </CardContainer>
           <CardContainer>
-            {user ? <StyledLink to="/likes">
+            {user ? <StyledLink_D to="/likes">
               <HomeUserLikes />
               <BoldTitleCardDh1>User Likes</BoldTitleCardDh1>
-            </StyledLink> : <div></div>}
+            </StyledLink_D> : <div></div>}
           </CardContainer>
 
         </GeneralBackground>

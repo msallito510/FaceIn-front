@@ -4,6 +4,8 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
+import { toast } from 'react-toastify';
+
 import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
 class EditEvent extends Component {
@@ -76,6 +78,7 @@ class EditEvent extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { history: { push } } = this.props;
 
     const {
       eventId,
@@ -90,7 +93,15 @@ class EditEvent extends Component {
       tagId
     } = this.state;
 
-    await eventService.updateEvent(eventId, title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
+    await eventService.updateEvent(eventId, title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the event was edited successfully');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The event was not edited! - ${error}`);
+      })
 
   };
 

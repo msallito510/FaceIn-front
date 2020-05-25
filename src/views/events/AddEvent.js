@@ -4,6 +4,7 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
+import { toast } from 'react-toastify';
 
 import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
@@ -61,6 +62,7 @@ class AddEvent extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { history: { push } } = this.props;
 
     const {
       title,
@@ -74,8 +76,15 @@ class AddEvent extends Component {
       tagId
     } = this.state;
 
-    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId);
+    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the event was added successfully');
 
+      })
+      .catch(error => {
+        toast.error(`ERROR. The event was not created! - ${error}`);
+      })
 
     // await eventService.addEvent(event)
   };

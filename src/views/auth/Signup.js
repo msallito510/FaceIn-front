@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 class Signup extends Component {
@@ -21,26 +21,24 @@ class Signup extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { username, password, email } = this.state;
-    this.props.handleSignup({
-      username,
-      password,
-      email,
-    });
-  };
 
-  // handleFormSubmit = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     const { username, password } = this.state;
-  //     this.props.handleSignup({
-  //       username,
-  //       password,
-  //     });
-  //     toast.success('Welcome');
-  //   } catch (error) {
-  //     console.error('Error');
-  //   }
-  // };
+    if (username === "" || password === "") {
+      toast.error("We need your name and password");
+
+    } else if (email === "" || !email.includes("@")) {
+      toast.error("It would be nice add a correct email");
+    } else {
+      try {
+        this.props.handleSignup({
+          username,
+          password,
+          email,
+        });
+      } catch (error) {
+        console.error('Error');
+      }
+    }
+  };
 
   render() {
     const { username, password, email } = this.state;

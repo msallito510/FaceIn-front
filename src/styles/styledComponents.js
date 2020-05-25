@@ -250,6 +250,46 @@ export const Button = styled.button`
   }
 `;
 
+export const Button_secundary = styled.button`
+  background: #fff;
+  color: #F57873;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 6em;
+  border-radius: 5px;
+  height: 35px;
+  border: 0.1em solid #F57873;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  text-align: center;
+  &:active {
+    background-color: #f1ac15;
+  }
+`;
+
+export const Link_div_primary = styled.div`
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #F57873;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 6em;
+  border-radius: 5px;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  text-align: center;
+  &:active {
+    background-color: #f1ac15;
+  }
+`;
+
 export const EventDetailLikeContainer = styled.div`
   position: absolute;
   top: 0.9em;
@@ -262,8 +302,14 @@ export const EventDetailSubmitContainer = styled.div`
   left: 0.5em;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink_D = styled(Link)`
   text-decoration: none !important;
+  color: #1F1F1F
+`;
+
+export const StyledLink_L = styled(Link)`
+  text-decoration: none !important;
+  color:#fff;
 `;
 
 export const CardContainer = styled.div`
@@ -354,10 +400,10 @@ export const HomeImageBackground = styled.div`
   width: 100%;
   height: 376px;
   ackground-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    top: 0;
-    position: absolute;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  top: 0;
+  position: absolute;
 `;
 
 export const HomeAllEvents = styled.div`  
@@ -524,8 +570,16 @@ export const HeaderUserProfile = styled.div`
   padding-left: 5em;
 `;
 
-export const EventDetailSocialContainer = styled.div`
+export const Container_row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+`;
+
+export const SimpleContainer_scroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+  bottom: 2em;
+  background: #ccc;
+  border-radius: 6px;
 `;
