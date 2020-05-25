@@ -111,7 +111,7 @@ export const TitleDh2 = styled.h2`
   color: #1F1F1F;
 `;
 
-export const TitleDh2_2 = styled.h2`
+export const TitleDh2Secundary = styled.h2`
   position: absolute;
   font-size: 1.5em;
   text-align: center;
@@ -257,7 +257,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Button_secundary = styled.button`
+export const ButtonSecundary = styled.button`
   background: #fff;
   color: #F57873;
   cursor: pointer;
@@ -276,7 +276,7 @@ export const Button_secundary = styled.button`
   }
 `;
 
-export const Link_div_primary = styled.div`
+export const LinkDivPrimary = styled.div`
   height: 2em;
   display: flex;
   flex-direction: column;
@@ -297,7 +297,7 @@ export const Link_div_primary = styled.div`
   }
 `;
 
-export const Link_div_tertiary = styled.div`
+export const LinkDivTertiary = styled.div`
   height: 2em;
   display: flex;
   flex-direction: column;
@@ -330,12 +330,12 @@ export const EventDetailSubmitContainer = styled.div`
   left: 0.5em;
 `;
 
-export const StyledLink_D = styled(Link)`
+export const StyledLinkDark = styled(Link)`
   text-decoration: none !important;
   color: #1F1F1F
 `;
 
-export const StyledLink_L = styled(Link)`
+export const StyledLinkLight = styled(Link)`
   text-decoration: none !important;
   color:#fff;
 `;
@@ -663,13 +663,13 @@ export const HeaderUserProfile = styled.div`
   padding-left: 5em;
 `;
 
-export const Container_row = styled.div`
+export const ContainerRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 `;
 
-export const SimpleContainer_scroll = styled.div`
+export const SimpleContainerScroll = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   bottom: 2em;
@@ -680,5 +680,5 @@ export const SimpleContainer_scroll = styled.div`
 export const CommentsContainer = styled.div`
   position:absolute;
   bottom:13em;
-  
+
 `;

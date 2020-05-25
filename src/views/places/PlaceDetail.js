@@ -8,15 +8,15 @@ import PlaceCard from '../places/PlaceCard';
 
 import {
   TitleDh1,
-  TitleDh2_2,
+  TitleDh2Secundary,
   CommentsBackground,
   FormWrapper,
   CommentContainer,
-  Container_row,
-  Button_secundary,
-  Link_div_primary,
-  Link_div_tertiary,
-  StyledLink_L,
+  ContainerRow,
+  ButtonSecundary,
+  LinkDivPrimary,
+  LinkDivTertiary,
+  StyledLinkLight,
   CommentsContainer
 
 } from "../../styles/styledComponents";
@@ -69,8 +69,8 @@ class PlaceDetail extends Component {
               <PlaceCard place={place} />
             </div>
             <CommentsBackground>
-              <Container_row>
-                <TitleDh2_2>Comments</TitleDh2_2>
+              <ContainerRow>
+                <TitleDh2Secundary>Comments</TitleDh2Secundary>
                 {ratings.map((rating) =>
                   <CommentContainer>
                     <h2>{rating.title}</h2>
@@ -78,27 +78,27 @@ class PlaceDetail extends Component {
                     <p>stars - {rating.stars}</p>
                   </CommentContainer>
                 )}
-              </Container_row>
+              </ContainerRow>
             </CommentsBackground>
           </FormWrapper>
         }
-       
-          <CommentsContainer>
-            {isOwner ?
-              <div>
-                <Link_div_primary>
-                  <StyledLink_L to={`/place-edit/${place._id}`}>edit</StyledLink_L>
-                </Link_div_primary>
-                <div>
-                  <Button_secundary onClick={() => this.handleDelete(place)} >delete</Button_secundary>
-                </div>
-              </div> :
-              <Link_div_tertiary>
-                <Link to={`/rating/${place._id}`}>Rating</Link>
-              </Link_div_tertiary>
 
-            }
-          </CommentsContainer>
+        <CommentsContainer>
+          {isOwner ?
+            <div>
+              <LinkDivPrimary>
+                <StyledLinkLight to={`/place-edit/${place._id}`}>edit</StyledLinkLight>
+              </LinkDivPrimary>
+              <div>
+                <ButtonSecundary onClick={() => this.handleDelete(place)} >delete</ButtonSecundary>
+              </div>
+            </div> :
+            <LinkDivTertiary>
+              <Link to={`/rating/${place._id}`}>Rating</Link>
+            </LinkDivTertiary>
+
+          }
+        </CommentsContainer>
 
       </div>
     );

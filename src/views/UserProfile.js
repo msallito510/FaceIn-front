@@ -14,7 +14,7 @@ import {
   SecondaryWrapperRight,
   PhotoProfile,
   PhotoContainer,
-  StyledLink_D,
+  StyledLinkDark,
   UserProfileBarUl,
   MenuBarLi,
   UserProfileLabelContent,
@@ -39,9 +39,9 @@ const UserProfile = ({ user, handleLogout }) => {
       </HeaderUserProfile>
       <PhotoContainer>
         <PhotoProfile>
-          <StyledLink_D to="/react-webcam">
+          <StyledLinkDark to="/react-webcam">
             <CameraIcon />
-          </StyledLink_D>
+          </StyledLinkDark>
         </PhotoProfile>
       </PhotoContainer>
       <ProfileBackground>
@@ -49,30 +49,30 @@ const UserProfile = ({ user, handleLogout }) => {
           <TitleDh2>Event</TitleDh2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLink_D to="/add-event" user={user._id}>
+              {user ? <StyledLinkDark to="/add-event" user={user._id}>
                 <UserProfileLabelContent>
                   <TitleDh3>Add</TitleDh3>
                   <PlusCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink_D> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLink_D to="/user-events" user={user}>
+              {user ? <StyledLinkDark to="/user-events" user={user}>
                 <UserProfileLabelContent>
                   <TitleDh3>Edit</TitleDh3>
                   <EditIcon />
                 </UserProfileLabelContent>
-              </StyledLink_D> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
 
-              {user ? <StyledLink_D to="/attend" user={user}>
+              {user ? <StyledLinkDark to="/attend" user={user}>
 
                 <UserProfileLabelContent>
                   <TitleDh3>Attend</TitleDh3>
                   <PlayCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink_D> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperLeft>
@@ -80,20 +80,20 @@ const UserProfile = ({ user, handleLogout }) => {
           <TitleDh2>Place</TitleDh2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLink_D to="/add-place">
+              {user ? <StyledLinkDark to="/add-place">
                 <UserProfileLabelContent>
                   <TitleDh3>Add</TitleDh3>
                   <PlusCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink_D> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLink_D to={`/places/${user.hasPlace}`}>
+              {user ? <StyledLinkDark to={`/places/${user.hasPlace}`}>
                 <UserProfileLabelContent>
                   <TitleDh3>Edit</TitleDh3>
                   <EditIcon />
                 </UserProfileLabelContent>
-              </StyledLink_D> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperRight>

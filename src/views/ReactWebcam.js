@@ -13,7 +13,7 @@ class ReactWebcam extends Component {
     userId: "",
     userPhoto: "",
   };
-  
+
   webcamRef = React.createRef();
   async componentDidMount() {
     const { user } = this.props;
@@ -56,7 +56,7 @@ class ReactWebcam extends Component {
       .catch(error => console.log(error))
   };
   render() {
-    const { loading, imgSrc, user, userPhoto } = this.state;
+    const { loading, imgSrc, userPhoto } = this.state;
     const videoConstraints = {
       // width: 1280,
       // height: 720,
@@ -74,7 +74,7 @@ class ReactWebcam extends Component {
         {!loading && (
           <div>
             {/* <UserCard user={user} /> */}
-            {userPhoto ? <img src={userPhoto} styles={styles} alt="image" /> : <div></div>}
+            {userPhoto ? <img src={userPhoto} styles={styles} alt="user photo" /> : <div></div>}
             <Webcam
               audio={false}
               ref={this.webcamRef}
@@ -85,7 +85,7 @@ class ReactWebcam extends Component {
             <button onClick={this.capture}>Capture photo</button>
             {imgSrc && (
               <>
-                <img src={imgSrc} alt="image" />
+                <img src={imgSrc} alt="image photo" />
                 <button onClick={this.handleSubmit}>Send photo</button>
               </>
             )}

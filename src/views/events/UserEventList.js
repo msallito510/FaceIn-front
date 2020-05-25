@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
 
 import eventService from "../../services/eventService";
-import { TitleDh1, FormWrapper, SimpleContainer_scroll, Link_div_primary, StyledLink_L, Button_secundary, Container_row } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, SimpleContainerScroll, LinkDivPrimary, StyledLinkLight, ButtonSecundary, ContainerRow } from "../../styles/styledComponents";
 
 class UserEventList extends Component {
   state = {
@@ -49,7 +48,7 @@ class UserEventList extends Component {
 
     return (
       <FormWrapper>
-        <SimpleContainer_scroll>
+        <SimpleContainerScroll>
           <TitleDh1>user event</TitleDh1>
           {loading && <div>loading...</div>}
           {!loading && events.map((event) => {
@@ -59,19 +58,19 @@ class UserEventList extends Component {
                   <h2>{event.title}</h2>
                   <h2>{event.description}</h2>
                 </div>
-                <Container_row>
-                  <Link_div_primary>
-                    <StyledLink_L to={`/event-edit/${event._id}`}>edit</StyledLink_L>
-                  </Link_div_primary>
+                <ContainerRow>
+                  <LinkDivPrimary>
+                    <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
+                  </LinkDivPrimary>
                   <div>
-                    <Button_secundary onClick={() => this.handleDelete(event._id)} >delete</Button_secundary>
+                    <ButtonSecundary onClick={() => this.handleDelete(event._id)} >delete</ButtonSecundary>
                   </div>
-                </Container_row>
+                </ContainerRow>
               </div>
             );
           })
           }
-        </SimpleContainer_scroll>
+        </SimpleContainerScroll>
       </FormWrapper>
     );
   }

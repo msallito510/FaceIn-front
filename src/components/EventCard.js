@@ -13,7 +13,7 @@ import {
   EventCardDetailContainerSocial,
   EventCardDetailContainerInfo,
   EventCardDetailContainerPlace,
-  Container_row,
+  ContainerRow,
   EventDetailBackground,
   CardContainer,
   TagEventCardDetailsLh3,
@@ -27,7 +27,7 @@ import {
 import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
 
 const INIT_STATE = {
-  isLiked: false,
+  isLiked: "",
   loading: true,
 };
 
@@ -84,6 +84,7 @@ export default class EventCard extends Component {
   }
 
   handleSetState = () => {
+    this.resetState();
     const { event: { likes }, user: { _id: userId } } = this.props;
 
     // const isLiked = likes.map((item) => item.likeGivenBy._id.toString() === userId.toString() ? true : false).filter(Boolean)[0];
@@ -144,24 +145,24 @@ export default class EventCard extends Component {
         <CardContainer>
           <EventCardDetailContainerSocial>
             <TitleEventCardDetailDh1>Social</TitleEventCardDetailDh1>
-            <Container_row>
+            <ContainerRow>
               <div>
                 <Link to={`/attend/${eventId}`}>
                   <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
-                  <Container_row>
+                  <ContainerRow>
                     {participants.slice(0, 2).map((item) =>
                       <p style={{ padding: "0.5em" }}>
                         {item.participant.username}
                       </p>)}
                     {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
-                  </Container_row>
+                  </ContainerRow>
                 </Link>
               </div>
               <div>
                 <EventDetailSocialTitle>Owner</EventDetailSocialTitle>
                 {username}
               </div>
-            </Container_row>
+            </ContainerRow>
           </EventCardDetailContainerSocial>
           <EventCardDetailContainerInfo>
             <TitleEventCardDetailDh1>Info</TitleEventCardDetailDh1>
@@ -169,13 +170,15 @@ export default class EventCard extends Component {
           </EventCardDetailContainerInfo>
           <EventCardDetailContainerPlace>
             <TitleEventCardDetailDh1>The Place</TitleEventCardDetailDh1>
-            <Link to={`/places/${belongsToPlace._id}`}>
+            {belongsToPlace._id !== null ? <Link to={`/places/${belongsToPlace._id}`}>
               <EventCardDetailMapPlace>
                 <div>
                   <PlaceCard place={belongsToPlace} />
                 </div>
               </EventCardDetailMapPlace>
-            </Link>
+            </Link> :
+              <div><p>No place available</p></div>
+            }
           </EventCardDetailContainerPlace>
         </CardContainer>
         <EventDetailSubmitContainer>
