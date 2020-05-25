@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
 import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
@@ -58,8 +59,14 @@ class EditPlace extends Component {
     } = this.state;
 
     placeService.updatePlace(placeId, placeName, address, city, country)
-      .then(() => { push(`/user-profile`); })
-      .catch(error => console.log(error));
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the place was edited successfully');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The place was not edited! - ${error}`);
+      })
 
   };
 

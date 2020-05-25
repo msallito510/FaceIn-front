@@ -7,7 +7,7 @@ import {
   BoldTitleCardLh1,
   BoldTitleCardDh1,
   HomeImageBackground,
-  GeneralBackground,
+  HomeBackground,
   HomeAllEvents,
   HomeWhatsHot,
   HomeUserLikes,
@@ -18,7 +18,7 @@ import {
 
 class HomeList extends Component {
   render() {
-    const { user, handleLogout, theme, changeTheme } = this.props;
+    const { user, theme, changeTheme } = this.props;
     return (
       <HomeImageBackground>
         <TitleLh1>Barcelona</TitleLh1>
@@ -29,7 +29,7 @@ class HomeList extends Component {
             color: theme.color,
           }}
         >changeTheme</button> */}
-        <GeneralBackground>
+        <HomeBackground>
           <CardContainer>
             {user ? <StyledLink_D to="/events">
               <HomeAllEvents />
@@ -49,7 +49,7 @@ class HomeList extends Component {
             </StyledLink_D> : <div></div>}
           </CardContainer>
 
-        </GeneralBackground>
+        </HomeBackground>
       </HomeImageBackground>
     );
   }

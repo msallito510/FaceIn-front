@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
 import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
@@ -54,8 +55,14 @@ class AddPlace extends Component {
     } = this.state;
 
     await placeService.addPlace(placeName, address, city, country)
-      .then(() => { push(`/user-profile`); })
-      .catch(error => console.log(error));
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the place was added successfully');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The place was not created! - ${error}`);
+      })
 
   };
 

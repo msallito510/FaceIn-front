@@ -40,16 +40,18 @@ import Attend from './views/attend/Attend';
 // error view
 import ErrorPage from "./views/ErrorPage";
 
+import ReactWebcam from "./views/ReactWebcam";
+
 class App extends Component {
   render() {
     return (
       <>
-       <ToastContainer
-        autoClose={2000}
-        position="top-center"
-        className="toast-container"
-        toastClassName="dark-toast"
-      />
+        <ToastContainer
+          autoClose={2000}
+          position="top-center"
+          className="toast-container"
+          toastClassName="dark-toast"
+        />
         <Router>
           <Body />
           <Navbar />
@@ -75,6 +77,8 @@ class App extends Component {
             <PrivateRoute exact path="/rating/:id" component={Rating} />
 
             <PrivateRoute exact path="/attend/:id" component={Attend} />
+
+            <PrivateRoute exact path="/react-webcam" component={ReactWebcam} />
 
             <Route path="*" component={ErrorPage} />
           </Switch>

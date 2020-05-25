@@ -46,7 +46,7 @@ class Navbar extends Component {
             </li> */}
           </MenuBarUl>
         </nav>
-      </section>
+      </section >
     );
   }
 }

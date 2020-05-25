@@ -1,12 +1,15 @@
 import React from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
+
+import ReactWebcam from "./ReactWebcam";
+
 import {
   TitleLh1,
   TitleDh2,
   TitleDh3,
   HeaderBackground,
-  GeneralBackground,
+  ProfileBackground,
   SecondaryWrapperLeft,
   SecondaryWrapperRight,
   PhotoProfile,
@@ -17,7 +20,8 @@ import {
   UserProfileLabelContent,
   HeaderUserProfile
 } from "../styles/styledComponents";
-import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon } from "../styles/icon-style";
+
+import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon, CameraIcon } from "../styles/icon-style";
 const UserProfile = ({ user, handleLogout }) => {
 
 
@@ -35,10 +39,12 @@ const UserProfile = ({ user, handleLogout }) => {
       </HeaderUserProfile>
       <PhotoContainer>
         <PhotoProfile>
-          photo
-      </PhotoProfile>
+          <StyledLink_D to="/react-webcam">
+            <CameraIcon />
+          </StyledLink_D>
+        </PhotoProfile>
       </PhotoContainer>
-      <GeneralBackground>
+      <ProfileBackground>
         <SecondaryWrapperLeft>
           <TitleDh2>Event</TitleDh2>
           <UserProfileBarUl>
@@ -59,7 +65,9 @@ const UserProfile = ({ user, handleLogout }) => {
               </StyledLink_D> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
+
               {user ? <StyledLink_D to="/attend" user={user}>
+
                 <UserProfileLabelContent>
                   <TitleDh3>Attend</TitleDh3>
                   <PlayCircleIcon />
@@ -89,7 +97,12 @@ const UserProfile = ({ user, handleLogout }) => {
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperRight>
-      </GeneralBackground>
+        <div>
+          <ReactWebcam />
+        </div>
+      </ProfileBackground>
+
+
 
       {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
     </HeaderBackground>

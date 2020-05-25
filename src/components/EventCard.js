@@ -4,6 +4,7 @@ import eventService from "../services/eventService";
 import PlaceCard from '../views/places/PlaceCard';
 import DateFormat from "../components/DateFormat";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 import {
   TitleEventCardDetailDh1,
@@ -12,10 +13,9 @@ import {
   EventCardDetailContainerSocial,
   EventCardDetailContainerInfo,
   EventCardDetailContainerPlace,
-  GeneralBackground,
   Container_row,
+  EventDetailBackground,
   CardContainer,
-  ContentEventCard,
   TagEventCardDetailsLh3,
   TimeEventCardDetailLh3,
   EventCardDetailMapPlace,
@@ -24,19 +24,21 @@ import {
   EventDetailSubmitContainer
 } from "../styles/styledComponents";
 
-import { EventCircleHeartBroken, HeartIcon } from "../styles/icon-style";
+import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
+
+const INIT_STATE = {
+  isLiked: false,
+  loading: true,
+};
 
 export default class EventCard extends Component {
 
   state = {
-    isLiked: false,
-    loading: true,
+    ...INIT_STATE,
   }
 
-  async componentDidMount() {
-
+  componentDidMount() {
     this.handleSetState();
-
   }
 
   shouldComponentUpdate(nextState) {
@@ -45,13 +47,18 @@ export default class EventCard extends Component {
 
   handleAttend = async () => {
     const { event: { _id } } = this.props;
-    try {
-      await eventService.attendEvent(_id)
-    } catch (error) {
-      console.log(error);
-    }
+
+    await eventService.attendEvent(_id)
+      .then(() => {
+        toast.success('Confirmed!');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. Cannot be confirmed - ${error}`);
+      })
 
     this.renderButtonState();
+    this.resetState();
   };
 
   handleLike = async () => {
@@ -64,8 +71,7 @@ export default class EventCard extends Component {
     }
 
 
-    // this.handleSetState();
-    // this.componentDidMount();
+    this.handleSetState();
 
   };
 
@@ -74,59 +80,61 @@ export default class EventCard extends Component {
   }
 
   renderIcon = () => {
-    switch (this.state.isLiked) {
-      case true: return <EventCircleHeartBroken />;
-      case false: return <HeartIcon />;
-    }
+    return !!this.state.isLiked ? <EventHeartFilled /> : <EventAddLike />;
   }
 
-  handleSocialLoop = () => {
-    const { event: { participants } } = this.props;
-
-  }
-
-  handleSetState = async () => {
+  handleSetState = () => {
     const { event: { likes }, user: { _id: userId } } = this.props;
 
     // const isLiked = likes.map((item) => item.likeGivenBy._id.toString() === userId.toString() ? true : false).filter(Boolean)[0];
 
-    let nIsLiked = false;
 
-    nIsLiked = likes.map((item) => {
-      if (item.likeGivenBy._id.toString() === userId.toString()) {
-        return true;
-      }
-    }).filter(Boolean)[0];
+    // nIsLiked = likes.map((item) => {
+    //   if (item.likeGivenBy._id.toString() === userId.toString()) {
+    //     return true;
+    //   }
+    // }).filter(Boolean)[0];
 
-    if (typeof nIsLiked === "boolean") {
-      this.setState({
-        isLiked: nIsLiked,
-        loading: false
-      })
-    }
+    let givenLikeByUser = "";
+
+    givenLikeByUser = likes.find(item => item.likeGivenBy._id === userId)
+
+
+    // if (typeof nIsLiked === "boolean") {
+
+    let isLiked = givenLikeByUser !== "" ? true : false;
+
+    this.setState({
+      isLiked: isLiked,
+      loading: false
+    })
+
+    this.resetState();
+    // }
   }
+
+  resetState = () => {
+    this.setState({ ...INIT_STATE });
+  };
 
   render() {
     const { event: {
       _id: eventId,
       title,
       description,
-      frequency,
+      // frequency,
       dateStart,
       timeStart,
-      price,
-      owner: { _id, username },
+      // price,
+      owner: { username },
       participants,
       belongsToPlace,
-      tag,
-      StyledLink
+      tag
     } } = this.props;
-
-    // const { isLiked, loading } = this.state;
 
     return (
 
-      <GeneralBackground>
+      <EventDetailBackground>
 
         <TimeEventCardDetailLh3>
           <DateFormat dateStart={dateStart} timeStart={timeStart} />
@@ -182,7 +190,7 @@ export default class EventCard extends Component {
           </button>
         </EventDetailLikeContainer>
 
-      </GeneralBackground>
+      </EventDetailBackground>
     )
   }
 }

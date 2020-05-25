@@ -6,6 +6,21 @@ import placeService from "../../services/placeService";
 import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
 
+import {
+  TitleDh1,
+  TitleDh2_2,
+  CommentsBackground,
+  FormWrapper,
+  CommentContainer,
+  Container_row,
+  Button_secundary,
+  Link_div_primary,
+  Link_div_tertiary,
+  StyledLink_L,
+  CommentsContainer
+
+} from "../../styles/styledComponents";
+
 class PlaceDetail extends Component {
   state = {
     place: {},
@@ -43,42 +58,48 @@ class PlaceDetail extends Component {
 
   render() {
     const { place, ratings, isOwner, loading } = this.state;
-    // const { handleLogout } = this.props;
+
     return (
       <div>
-        <h1>Place Detail</h1>
+        <TitleDh1>Place Detail</TitleDh1>
         {loading && <div>loading...</div>}
         {!loading &&
-          <div>
-            <div><PlaceCard place={place} /></div>
+          <FormWrapper>
             <div>
-              <h2>Comments</h2>
-              {ratings.map((rating) =>
+              <PlaceCard place={place} />
+            </div>
+            <CommentsBackground>
+              <Container_row>
+                <TitleDh2_2>Comments</TitleDh2_2>
+                {ratings.map((rating) =>
+                  <CommentContainer>
+                    <h2>{rating.title}</h2>
+                    <p>{rating.description}</p>
+                    <p>stars - {rating.stars}</p>
+                  </CommentContainer>
+                )}
+              </Container_row>
+            </CommentsBackground>
+          </FormWrapper>
+        }
+       
+          <CommentsContainer>
+            {isOwner ?
+              <div>
+                <Link_div_primary>
+                  <StyledLink_L to={`/place-edit/${place._id}`}>edit</StyledLink_L>
+                </Link_div_primary>
                 <div>
-                  <h2>{rating.title}</h2>
-                  <p>{rating.description}</p>
-                  <p>stars - {rating.stars}</p>
+                  <Button_secundary onClick={() => this.handleDelete(place)} >delete</Button_secundary>
                 </div>
-              )}
-            </div>
-          </div>
-        }
+              </div> :
+              <Link_div_tertiary>
+                <Link to={`/rating/${place._id}`}>Rating</Link>
+              </Link_div_tertiary>
 
-        {isOwner ?
-          <div>
-            <div>
-              <Link to={`/place-edit/${place._id}`}>edit</Link>
-            </div>
-            <div>
-              <button onClick={() => this.handleDelete(place)} >delete</button>
-            </div>
-          </div> : <div>
-            <Link to={`/rating/${place._id}`}>Rating</Link>
-          </div>
+            }
+          </CommentsContainer>
 
-        }
-        {/* <button onClick={handleLogout}>Logout</button> */}
-        {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
       </div>
     );
   }

@@ -14,7 +14,7 @@ import {
 export default class UserCard extends Component {
 
   render() {
-    const { user: { username, likesGiven } } = this.props;
+    const { user: { likesGiven } } = this.props;
     return (
       <div>
         {likesGiven.map((event) => {

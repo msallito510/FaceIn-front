@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Search } from '@styled-icons/feather/Search';
 import { Heart } from '@styled-icons/feather/Heart';
-import { HeartBroken } from '@styled-icons/icomoon/HeartBroken';
+import { HeartAdd } from '@styled-icons/remix-fill/HeartAdd';
+import { Heart as HeartFilled } from "@styled-icons/remix-fill/Heart";
 import { User } from '@styled-icons/feather/User';
 import { Location } from '@styled-icons/evil/Location';
 import { Home } from '@styled-icons/feather/Home';
@@ -11,6 +12,7 @@ import { PlusCircle } from '@styled-icons/feather/PlusCircle';
 import { Edit } from '@styled-icons/feather/Edit';
 import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 import { LogOut } from '@styled-icons/feather/LogOut';
+import { AddAPhoto } from "@styled-icons/material-outlined/AddAPhoto";
 
 
 export const SearchIcon = styled(Search)`
@@ -50,8 +52,16 @@ export const LogOutIcon = styled(LogOut)`
   width: 2em;
 `;
 
-export const EventCircleHeartBroken = styled(HeartBroken)`
+export const EventAddLike = styled(HeartAdd)`
   width: 1.5em;
+`;
+
+export const EventHeartFilled = styled(HeartFilled)`
+  width: 1.5em;
+`;
+
+export const CameraIcon = styled(AddAPhoto)`
+  width: 2em;
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`

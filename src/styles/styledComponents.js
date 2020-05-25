@@ -111,6 +111,13 @@ export const TitleDh2 = styled.h2`
   color: #1F1F1F;
 `;
 
+export const TitleDh2_2 = styled.h2`
+  position: absolute;
+  font-size: 1.5em;
+  text-align: center;
+  color: #1F1F1F;
+`;
+
 export const TitleEventCardDetailDh1 = styled.h1`
   position: relative;
   font-size: 1.2em;
@@ -290,6 +297,27 @@ export const Link_div_primary = styled.div`
   }
 `;
 
+export const Link_div_tertiary = styled.div`
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  color: #1F1F1F;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 6em;
+  border-radius: 5px;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  text-align: center;
+  &:active {
+    background-color: #f1ac15;
+  }
+`;
+
 export const EventDetailLikeContainer = styled.div`
   position: absolute;
   top: 0.9em;
@@ -298,7 +326,7 @@ export const EventDetailLikeContainer = styled.div`
 
 export const EventDetailSubmitContainer = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 5em;
   left: 0.5em;
 `;
 
@@ -376,21 +404,77 @@ export const UserProfileBarUl = styled.ul`
 
 export const GeneralBackground = styled.div`
   background: #fff;
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:1.5em;
   top: 20rem;
   position: absolute;
   width: 100%;
-  height: 45em;
-  padding: 1em 0;
+  padding: 1em 0 2em;
   text-align: center;
   border-radius: 20px;
   `;
+
+export const ProfileBackground = styled.div`
+  background: #fff;
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:-25.5em;
+  top: 20rem;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
+  text-align: center;
+  border-radius: 20px;
+  `;
+
+export const EventDetailBackground = styled.div`
+  background: #fff;
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:-35em;
+  top: 20rem;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
+  text-align: center;
+  border-radius: 20px;
+  `;
+
+export const HomeBackground = styled.div`
+  background: #fff;
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:-16.5em;
+  top: 20rem;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
+  text-align: center;
+  border-radius: 20px;
+  `;
+
 export const SearchBackground = styled.div`
   background: #fff;
+  overflow: hidden;
+  overflow-y: scroll;
+  bottom: 0em;
   top: 10rem;
   position: absolute;
   width: 100%;
-  height: 50em;
-  padding: 1em 0;
+  padding: 1em 0 4em;
+  text-align: center;
+  border-radius: 20px;
+  `;
+
+export const CommentsBackground = styled.div`
+  background: #fff;
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:1.5em;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
   text-align: center;
   border-radius: 20px;
   `;
@@ -546,6 +630,15 @@ export const PhotoContainer = styled.div`
 	align-items: center;
 `;
 
+export const CommentContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+  padding:2em;
+`;
+
 export const PhotoProfile = styled.div`  
   display: flex;  
   justify-content: center;
@@ -582,4 +675,10 @@ export const SimpleContainer_scroll = styled.div`
   bottom: 2em;
   background: #ccc;
   border-radius: 6px;
+`;
+
+export const CommentsContainer = styled.div`
+  position:absolute;
+  bottom:13em;
+  
 `;

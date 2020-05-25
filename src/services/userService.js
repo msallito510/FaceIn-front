@@ -30,6 +30,24 @@ class UserService {
       .then(({ data: user }) => user);
   }
 
+  addProfilePhoto(imgSrc, userId) {
+    return this.axios
+      .post(`/api/users/${userId}/add-photo`, { imgSrc })
+      .then(({ data }) => data);
+  }
+
+  getProfilePhoto(userId) {
+    return this.axios
+      .get(`/api/users/${userId}/get-photo`)
+      .then(({ data: string }) => string);
+  }
+
+  getPorfilePhoto128(userId) {
+    return this.axios
+      .get(`/api/users/${userId}/get-photoBlob`)
+      .then(({ data: string }) => string);
+  }
+
   // deleteUser(user) {
   //   return this.axios
   //     .delete(`/api/users/${user._id}/delete`, user)
