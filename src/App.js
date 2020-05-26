@@ -12,6 +12,7 @@ import AnonRoute from './components/AnonRoute';
 
 import Body from "./components/Body";
 import Navbar from "./components/Navbar";
+import NavbarTop from "./components/NavbarTop";
 
 import Login from './views/auth/Login';
 import Signup from './views/auth/Signup';
@@ -47,13 +48,14 @@ class App extends Component {
     return (
       <>
         <ToastContainer
-          autoClose={2000}
+          autoClose={1000}
           position="top-center"
           className="toast-container"
           toastClassName="dark-toast"
         />
         <Router>
           <Body />
+          <NavbarTop />
           <Navbar />
           <Switch>
             <AnonRoute exact path="/login" component={Login} />

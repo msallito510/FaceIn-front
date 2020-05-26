@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 
@@ -42,22 +42,26 @@ export const TitleCardDh1 = styled.h1`
 
 export const BoldTitleCardLh1 = styled.h1`
   opacity: 1;
-  position: relative;
-  font-weight: 900;
-  font-size: 1.7em;
+  position: relative; 
+  font-size: 2em;
   text-align: center;
   color: #fff;
-  bottom: 4.5em;
+  bottom: 3.5em;
+  font-weight: normal;
+  letter-spacing:3px;
+  text-shadow:1px 0 0 currentColor,2px 0 0 currentColor,3px 0 0 currentColor;
 `;
 
 export const BoldTitleCardDh1 = styled.h1`
   opacity: 1;
-  position: relative;
-  font-weight: 900;
-  font-size: 1.7em;
+  position: relative;  
+  font-size: 2em;
   text-align: center;
   color: #1F1F1F;
-  bottom: 4.5em;
+  bottom: 3.5em;
+  font-weight: normal;
+  letter-spacing:3px;
+  text-shadow:1px 0 0 currentColor,2px 0 0 currentColor,3px 0 0 currentColor;
 `;
 
 export const TitleEventCardLh1 = styled.h3`
@@ -192,7 +196,7 @@ export const SecondaryWrapperRight = styled.section`
 export const InputDark = styled.input`
   border: none;
   border-bottom: 1px solid #ddd;
-  background: transparent;
+  border-radius: 6px;
   outline: none;
   height: 30px;
   font-size: 16px;
@@ -203,7 +207,7 @@ export const InputDark = styled.input`
 export const InputLight = styled.input`
   border: none;
   border-bottom: 1px solid #dff;
-  background: transparent;
+  border-radius: 6px;
   outline: none;
   height: 30px;
   font-size: 16px;
@@ -360,6 +364,36 @@ export const Span = styled.span`
   color:#61637B
 `;
 
+export const MenuBarUlTop = styled.ul`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #E3E5F3;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+  @media (max-width: 768px) {
+  height: 2em;
+  width: 100%;
+  }
+`;
+
+export const MenuBarLiTop = styled.li`
+  display: list-item;
+  text-align: -webkit-match-parent;
+  margin: 0.5em 1.5em 0;
+  @media (max-width: 768px) {
+    display: inline-block;
+    float: left;
+    top:0.1em;
+  }
+`;
+
 export const MenuBarUl = styled.ul`
   position: fixed;
   bottom: 0;
@@ -432,8 +466,8 @@ export const EventDetailBackground = styled.div`
   background: #fff;
   overflow: hidden;
   overflow-y:scroll;
-  bottom:-35em;
-  top: 20rem;
+  bottom:-60em;
+  top: 27rem;
   position: absolute;
   width: 100%;
   padding: 1em 0 2em;
@@ -486,12 +520,12 @@ export const HomeImageBackground = styled.div`
   ackground-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  top: 0;
+  top: 1.2em;
   position: absolute;
 `;
 
 export const HomeAllEvents = styled.div`  
-  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589977262/face-in/tremblant-beach-party-l_j1ck99.jpg');
+  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1590453133/AllEvents.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -500,7 +534,7 @@ export const HomeAllEvents = styled.div`
 `;
 
 export const HomeWhatsHot = styled.div`  
-  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976874/face-in/go-party-like-a-vip-in-barcelona-party-955x508_fhikm8.jpg');
+  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1590453123/WhatIsHot.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -509,7 +543,7 @@ export const HomeWhatsHot = styled.div`
 `;
 
 export const HomeUserLikes = styled.div`  
-  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589977561/face-in/DJ-Beach-Bash-1000x500_xqiiiu.jpg');
+  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589977561/UserLikes.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -530,27 +564,27 @@ export const ContentEventCard = styled.div`
   height: 6em;
 `;
 
-export const EventDetailImageBackground = styled.div`
-  background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg');
-  width: 100%;
-  height: 376px;
-  ackground-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  top: 0;
-  position: absolute;
-  transform: translateY(-50%);
-  z-index: 3;
-  animation: 50% { background-position: Calc(-35vw - 40px) 50%; } 70s 2;
-  ${'' /* animation: ${keyFrameEventDetailImg} 70s 2; */}
-`;
+// export const EventDetailImageBackground = styled.div`
+//   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg');
+//   width: 100%;
+//   height: 376px;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: 50% 50%;
+//   top: 0;
+//   position: absolute;
+//   transform: translateY(-50%);
+//   z-index: 3;
+//   ${'' /* animation: 50% { background-position: Calc(-35vw - 40px) 50%; } 70s 2; */}
+//   animation: ${keyFrameEventDetailImg} 70s 2;
+// `;
 
-const keyFrameEventDetailImg = keyframes`
-  
-  50% {
-    background-position: Calc(-35vw - 40px) 50%;
-  }
-`;
+// const keyFrameEventDetailImg = keyframes`
+
+//   50% {
+//     background-position: Calc(-35vw - 40px) 50%;
+//   }
+// `;
 
 export const EventCardContainer = styled.div`
   display: flex;
@@ -618,9 +652,10 @@ export const HeaderBackground = styled.div`
   ackground-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  top: 0;
+  top: 1.2em;
   position: absolute;
 `;
+
 
 export const PhotoContainer = styled.div`
   text-align: center;
@@ -637,6 +672,12 @@ export const CommentContainer = styled.div`
   justify-content: center;
 	align-items: center;
   padding:2em;
+`;
+
+export const AttendContainer = styled.div`
+  text-align: center;
+  position: relative;
+  top: 2em;
 `;
 
 export const PhotoProfile = styled.div`  

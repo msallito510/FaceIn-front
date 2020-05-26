@@ -46,8 +46,7 @@ export default class ThemeProvider extends Component {
     theme: themes.light,
   };
 
-  changeTheme = () => {
-    // console.log("change");
+  changeTheme = () => {  
     this.setState({
       theme: this.state.theme.name === "dark" ? themes.light : themes.dark,
     });

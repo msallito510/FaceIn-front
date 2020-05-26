@@ -6,7 +6,7 @@ import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
 
 import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
-import { TitleDh1 } from "../../styles/styledComponents";
+import { AttendContainer, TitleDh1 } from "../../styles/styledComponents";
 
 class Attend extends Component {
   state = {
@@ -34,7 +34,7 @@ class Attend extends Component {
     const { event: { participants }, loading } = this.state;
 
     return (
-      <div>
+      <AttendContainer>
         <TitleDh1>Social attend</TitleDh1>
         {loading && <div>loading...</div>}
         <Table>
@@ -60,7 +60,7 @@ class Attend extends Component {
           })
           }
         </Table>
-      </div>
+      </AttendContainer>
     );
   }
 }

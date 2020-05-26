@@ -13,6 +13,7 @@ import { Edit } from '@styled-icons/feather/Edit';
 import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 import { LogOut } from '@styled-icons/feather/LogOut';
 import { AddAPhoto } from "@styled-icons/material-outlined/AddAPhoto";
+import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
 
 
 export const SearchIcon = styled(Search)`
@@ -49,7 +50,10 @@ export const ThemeDarkIcon = styled(ToggleRight)`
 `;
 
 export const LogOutIcon = styled(LogOut)`
+  position: absolute;
+  top: 0;
   width: 2em;
+  right: 1.5em;
 `;
 
 export const EventAddLike = styled(HeartAdd)`
@@ -61,6 +65,12 @@ export const EventHeartFilled = styled(HeartFilled)`
 `;
 
 export const CameraIcon = styled(AddAPhoto)`
+  width: 2em;
+`;
+
+export const BackArrow = styled(ChevronLeft)`
+  position: absolute;
+  top: 0;
   width: 2em;
 `;
 

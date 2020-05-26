@@ -60,19 +60,19 @@ class EditEvent extends Component {
       this.setState({
         [e.target.name]: e.target.value,
       });
-      console.log(e.target.value);
+  
     } else if (e.target.type === "number") {
       this.setState(
         { [e.target.name]: parseFloat(e.target.value) });
-      console.log(e.target.value);
+     
     } else if (e.target.type === "date" && e.target.value !== "") {
       this.setState(
         { [e.target.name]: new Date(e.target.value).toISOString() });
-      console.log(e.target.value);
+     
     } else if (e.target.type === "time") {
       this.setState(
         { [e.target.name]: e.target.value });
-      console.log(e.target.value);
+      
     }
   };
 

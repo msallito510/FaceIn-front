@@ -21,8 +21,8 @@ import {
   HeaderUserProfile
 } from "../styles/styledComponents";
 
-import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon, CameraIcon } from "../styles/icon-style";
-const UserProfile = ({ user, handleLogout }) => {
+import { PlusCircleIcon, EditIcon, PlayCircleIcon, CameraIcon } from "../styles/icon-style";
+const UserProfile = ({ user }) => {
 
 
   return (
@@ -30,11 +30,6 @@ const UserProfile = ({ user, handleLogout }) => {
       <HeaderUserProfile>
         <div>
           <TitleLh1>{user.username}'s profile</TitleLh1>
-        </div>
-        <div>
-          <button onClick={handleLogout}>
-            <LogOutIcon />
-          </button>
         </div>
       </HeaderUserProfile>
       <PhotoContainer>

@@ -7,7 +7,7 @@ import { SearchIcon, HeartIcon, UserIcon, HomeIcon } from "../styles/icon-style"
 
 class Navbar extends Component {
   render() {
-    const { user, handleLogout, theme, changeTheme } = this.props;
+    const { user } = this.props;
     return (
       <section>
         <nav>
@@ -32,18 +32,6 @@ class Navbar extends Component {
                 <UserIcon />
               </NavLink> : <div></div>}
             </MenuBarLi>
-            {/* <li>
-              <button
-                onClick={changeTheme}
-                style={{
-                  backgroundColor: theme.foreground,
-                  color: theme.color,
-                }}
-              >changeTheme</button>
-            </li> */}
-            {/* <li>
-              {user ? <NavLink onClick={handleLogout} to="/">Logout</NavLink> : <NavLink to="/login">Login</NavLink>}
-            </li> */}
           </MenuBarUl>
         </nav>
       </section >

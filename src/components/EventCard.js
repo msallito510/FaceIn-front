@@ -123,7 +123,6 @@ export default class EventCard extends Component {
       _id: eventId,
       title,
       description,
-      // frequency,
       dateStart,
       timeStart,
       // price,
