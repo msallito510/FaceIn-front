@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
+import { toast } from 'react-toastify';
+
 import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
 import { TitleDh1 } from "../../styles/styledComponents";
 
@@ -22,7 +23,7 @@ class Attend extends Component {
         loading: false
       })
     } catch (error) {
-      console.log(error);
+      toast.error(`ERROR. The event not found! - ${error}`);
       this.setState({
         loading: false,
       })

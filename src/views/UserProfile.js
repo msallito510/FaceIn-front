@@ -1,23 +1,27 @@
 import React from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
+
+import ReactWebcam from "./ReactWebcam";
+
 import {
   TitleLh1,
   TitleDh2,
   TitleDh3,
   HeaderBackground,
-  GeneralBackground,
+  ProfileBackground,
   SecondaryWrapperLeft,
   SecondaryWrapperRight,
   PhotoProfile,
   PhotoContainer,
-  StyledLink,
+  StyledLinkDark,
   UserProfileBarUl,
   MenuBarLi,
   UserProfileLabelContent,
   HeaderUserProfile
 } from "../styles/styledComponents";
-import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon } from "../styles/icon-style";
+
+import { PlusCircleIcon, EditIcon, PlayCircleIcon, LogOutIcon, CameraIcon } from "../styles/icon-style";
 const UserProfile = ({ user, handleLogout }) => {
 
 
@@ -35,36 +39,40 @@ const UserProfile = ({ user, handleLogout }) => {
       </HeaderUserProfile>
       <PhotoContainer>
         <PhotoProfile>
-          photo
-      </PhotoProfile>
+          <StyledLinkDark to="/react-webcam">
+            <CameraIcon />
+          </StyledLinkDark>
+        </PhotoProfile>
       </PhotoContainer>
-      <GeneralBackground>
+      <ProfileBackground>
         <SecondaryWrapperLeft>
           <TitleDh2>Event</TitleDh2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLink to="/add-event" user={user._id}>
+              {user ? <StyledLinkDark to="/add-event" user={user._id}>
                 <UserProfileLabelContent>
                   <TitleDh3>Add</TitleDh3>
                   <PlusCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLink to="/user-events" user={user}>
+              {user ? <StyledLinkDark to="/user-events" user={user}>
                 <UserProfileLabelContent>
                   <TitleDh3>Edit</TitleDh3>
                   <EditIcon />
                 </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLink to="/attend" user={user}>
+
+              {user ? <StyledLinkDark to="/attend" user={user}>
+
                 <UserProfileLabelContent>
                   <TitleDh3>Attend</TitleDh3>
                   <PlayCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperLeft>
@@ -72,24 +80,29 @@ const UserProfile = ({ user, handleLogout }) => {
           <TitleDh2>Place</TitleDh2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLink to="/add-place">
+              {user ? <StyledLinkDark to="/add-place">
                 <UserProfileLabelContent>
                   <TitleDh3>Add</TitleDh3>
                   <PlusCircleIcon />
                 </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLink to={`/places/${user.hasPlace}`}>
+              {user ? <StyledLinkDark to={`/places/${user.hasPlace}`}>
                 <UserProfileLabelContent>
                   <TitleDh3>Edit</TitleDh3>
                   <EditIcon />
                 </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
+              </StyledLinkDark> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperRight>
-      </GeneralBackground>
+        <div>
+          <ReactWebcam />
+        </div>
+      </ProfileBackground>
+
+
 
       {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
     </HeaderBackground>

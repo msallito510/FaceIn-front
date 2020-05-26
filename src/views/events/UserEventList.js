@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+import { toast } from 'react-toastify';
 
 import eventService from "../../services/eventService";
-import { TitleDh1, TitleDh2, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import { TitleDh1, FormWrapper, SimpleContainerScroll, LinkDivPrimary, StyledLinkLight, ButtonSecundary, ContainerRow } from "../../styles/styledComponents";
 
 class UserEventList extends Component {
   state = {
@@ -29,8 +29,17 @@ class UserEventList extends Component {
   }
 
   handleDelete = async (eventId) => {
+    const { history: { push } } = this.props;
 
     await eventService.deleteEvent(eventId)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the event was deleted.');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The event was not deleted! - ${error}`);
+      })
 
   };
 
@@ -38,27 +47,31 @@ class UserEventList extends Component {
     const { events, loading } = this.state;
 
     return (
-      <div>
-        <TitleDh1>user event</TitleDh1>
-        {loading && <div>loading...</div>}
-        {!loading && events.map((event) => {
-          return (
-            <div div key={event._id}>
-              <div>
-                <h2>{event.title}</h2>
-                <h2>{event.description}</h2>
+      <FormWrapper>
+        <SimpleContainerScroll>
+          <TitleDh1>user event</TitleDh1>
+          {loading && <div>loading...</div>}
+          {!loading && events.map((event) => {
+            return (
+              <div key={event._id}>
+                <div>
+                  <h2>{event.title}</h2>
+                  <h2>{event.description}</h2>
+                </div>
+                <ContainerRow>
+                  <LinkDivPrimary>
+                    <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
+                  </LinkDivPrimary>
+                  <div>
+                    <ButtonSecundary onClick={() => this.handleDelete(event._id)} >delete</ButtonSecundary>
+                  </div>
+                </ContainerRow>
               </div>
-              <div>
-                <Link to={`/event-edit/${event._id}`}>edit</Link>
-              </div>
-              <div>
-                <button onClick={() => this.handleDelete(event._id)} >delete</button>
-              </div>
-            </div>
-          );
-        })
-        }
-      </div>
+            );
+          })
+          }
+        </SimpleContainerScroll>
+      </FormWrapper>
     );
   }
 }

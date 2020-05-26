@@ -7,18 +7,18 @@ import {
   BoldTitleCardLh1,
   BoldTitleCardDh1,
   HomeImageBackground,
-  GeneralBackground,
+  HomeBackground,
   HomeAllEvents,
   HomeWhatsHot,
   HomeUserLikes,
-  StyledLink,
+  StyledLinkDark,
   CardContainer
 } from "../styles/styledComponents";
 
 
 class HomeList extends Component {
   render() {
-    const { user, handleLogout, theme, changeTheme } = this.props;
+    const { user, theme, changeTheme } = this.props;
     return (
       <HomeImageBackground>
         <TitleLh1>Barcelona</TitleLh1>
@@ -29,27 +29,27 @@ class HomeList extends Component {
             color: theme.color,
           }}
         >changeTheme</button> */}
-        <GeneralBackground>
+        <HomeBackground>
           <CardContainer>
-            {user ? <StyledLink to="/events">
+            {user ? <StyledLinkDark to="/events">
               <HomeAllEvents />
               <BoldTitleCardLh1>All Events</BoldTitleCardLh1>
-            </StyledLink> : <div></div>}
+            </StyledLinkDark> : <div></div>}
           </CardContainer>
           <CardContainer>
-            {user ? <StyledLink to="/whatishot">
+            {user ? <StyledLinkDark to="/whatishot">
               <HomeWhatsHot />
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
-            </StyledLink> : <div></div>}
+            </StyledLinkDark> : <div></div>}
           </CardContainer>
           <CardContainer>
-            {user ? <StyledLink to="/likes">
+            {user ? <StyledLinkDark to="/likes">
               <HomeUserLikes />
               <BoldTitleCardDh1>User Likes</BoldTitleCardDh1>
-            </StyledLink> : <div></div>}
+            </StyledLinkDark> : <div></div>}
           </CardContainer>
 
-        </GeneralBackground>
+        </HomeBackground>
       </HomeImageBackground>
     );
   }

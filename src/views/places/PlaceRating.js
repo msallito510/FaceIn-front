@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { withAuth } from '../../context/authContext';
 import { withTheme } from '../../context/themeContext';
 import placeService from "../../services/placeService";
+import { toast } from 'react-toastify';
+
+import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
 
 class PlaceRating extends Component {
   state = {
@@ -23,21 +26,31 @@ class PlaceRating extends Component {
 
   handleRating = async () => {
     const { title, description, rating } = this.state;
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } }, history: { push } } = this.props;
 
     const place = { id, title, description, rating };
 
-    await placeService.addRating(place);
+    await placeService.addRating(place)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the rating was edited successfully');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The rating was not edited! - ${error}`);
+      })
+
   };
 
   render() {
     const { title, description, rating } = this.state;
 
     return (
-      <div>
+      <FormWrapper>
+        <TitleDh1>Add a comment</TitleDh1>
         <div>
           <label htmlFor="name">Title</label>
-          <input
+          <InputDark
             type="text"
             value={title}
             name="title"
@@ -46,7 +59,7 @@ class PlaceRating extends Component {
         </div>
         <div>
           <label htmlFor="name">Description</label>
-          <input
+          <InputDark
             type="text"
             value={description}
             name="description"
@@ -69,14 +82,14 @@ class PlaceRating extends Component {
           </form>
         </div>
         <div>
-          <input
+          <Submit
             type="button"
-            value="Rating"
+            value="Rate"
             name="submit"
             onClick={this.handleRating}
           />
         </div>
-      </div>
+      </FormWrapper>
     )
   }
 }

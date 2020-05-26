@@ -8,7 +8,7 @@ import {
   TitleEventsLh1,
   HeaderBackground,
   GeneralBackground,
-  StyledLink,
+  StyledLinkDark,
   CardContainer,
   EventCardContainer,
   ContentEventCard,
@@ -52,7 +52,7 @@ class WhatIsHotEvents extends Component {
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>
-                <StyledLink to={`/events/${event._id}`}>
+                <StyledLinkDark to={`/events/${event._id}`}>
                   <EventCardContainer>
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
@@ -61,7 +61,7 @@ class WhatIsHotEvents extends Component {
                       </TimeEventCardLh3>
                     </ContentEventCard>
                   </EventCardContainer>
-                </StyledLink>
+                </StyledLinkDark>
               </CardContainer>
             );
           })}

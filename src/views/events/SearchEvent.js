@@ -15,7 +15,7 @@ import {
   ContentEventCard,
   TitleEventCardLh1,
   TimeEventCardLh3,
-  StyledLink
+  StyledLinkDark
 } from "../../styles/styledComponents";
 
 class SearchEvent extends Component {
@@ -66,7 +66,7 @@ class SearchEvent extends Component {
           {!loading && filter.map((event) => {
             return (
               <CardContainer>
-                <StyledLink to={`/events/${event._id}`}>
+                <StyledLinkDark to={`/events/${event._id}`}>
                   <EventCardContainer>
                     <ContentEventCard>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
@@ -75,7 +75,7 @@ class SearchEvent extends Component {
                       </TimeEventCardLh3>
                     </ContentEventCard>
                   </EventCardContainer>
-                </StyledLink>
+                </StyledLinkDark>
               </CardContainer>
             );
           })}

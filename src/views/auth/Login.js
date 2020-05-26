@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
-// for notifications:
-// import { toast } from 'react-toastify';
+
+import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
@@ -18,28 +18,27 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFormSubmit = (e) => {
+  handleFormSubmit = async (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
-    this.props.handleLogin({
-      username,
-      password,
-    });
-  };
 
-  // handleFormSubmit = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     const { username, password } = this.state;
-  //     this.props.handleLogin({
-  //       username,
-  //       password,
-  //     });
-  //     toast.success('Welcome!');
-  //   } catch (error) {
-  //     console.error('Error');
-  //   }
-  // };
+    const { username, password } = this.state;
+
+    if (username === "" || password === "") {
+      toast.error("I'd love it if add a name and password");
+
+    } else {
+      try {
+        this.props.handleLogin({
+          username,
+          password,
+        });
+        toast.success('🦄 Welcome!');
+      } catch (error) {
+        toast.error('There was an ERROR!');
+      }
+
+    }
+  };
 
   // call it?
   // cleanForm = () => {
@@ -55,6 +54,7 @@ class Login extends Component {
       <EventCardWrapper>
         <TitleDh1>Login</TitleDh1>
         <form onSubmit={this.handleFormSubmit}>
+
           <InputDark
             type="text"
             name="username"
@@ -72,6 +72,7 @@ class Login extends Component {
             placeholder="password"
           />
           <Submit type="submit" value="Login" />
+
         </form>
         <ButtonPLeft>
           <Link to={"/signup"}>

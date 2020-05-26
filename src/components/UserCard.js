@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DateFormat from "../components/DateFormat";
 
 import {
-  StyledLink,
+  StyledLinkDark,
   CardContainer,
   EventCardContainer,
   ContentEventCard,
@@ -14,13 +14,13 @@ import {
 export default class UserCard extends Component {
 
   render() {
-    const { user: { username, likesGiven } } = this.props;
+    const { user: { likesGiven } } = this.props;
     return (
       <div>
         {likesGiven.map((event) => {
           return (
             <CardContainer key={event._id}>
-              <StyledLink to={`/events/${event.likeForEvent._id}`}>
+              <StyledLinkDark to={`/events/${event.likeForEvent._id}`}>
                 <EventCardContainer>
                   <ContentEventCard>
                     <TitleEventCardLh1>{event.likeForEvent.title}</TitleEventCardLh1>
@@ -30,7 +30,7 @@ export default class UserCard extends Component {
                     </TimeEventCardLh3>
                   </ContentEventCard>
                 </EventCardContainer>
-              </StyledLink>
+              </StyledLinkDark>
             </CardContainer>
           );
         })}
