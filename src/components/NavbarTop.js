@@ -7,6 +7,9 @@ import { BackArrow, LogOutIcon } from "../styles/icon-style";
 import "../styles/commonCustom.css";
 
 class NavbarTop extends Component {
+  status: {
+    isChecked: "false"
+  }
 
   render() {
     const { location: { pathname }, history, user, handleLogout, theme, changeTheme } = this.props;
@@ -20,7 +23,13 @@ class NavbarTop extends Component {
               {user ? <button onClick={history.goBack}><BackArrow /></button> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
-              {user ? <input className="toggle-theme" type="checkbox" id="theme" name="theme" onclick={changeTheme}></input> : <div></div>}
+              {user ? <input className="toggle-theme" type="checkbox" id="theme" name="theme" onclick={changeTheme}
+                style={{
+                  backgroundColor: theme.foreground,
+                  color: theme.color,
+                }}
+
+              ></input> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
               {user ? <button onClick={handleLogout}><LogOutIcon /></button> : <div></div>}

@@ -12,7 +12,7 @@
 	margin: auto;
 	padding: 0.15em;
 	width: 3em;
-	height: 1.5em;
+	height: 1.7em;
 	transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -37,7 +37,7 @@
 		radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
 	background-repeat: no-repeat;
 	border: 0.25em solid transparent;
-	border-left: 0.4em solid #d8d8d8;
+	border-left: 1em solid #d8d8d8;
 	border-right: 0 solid transparent;
 	transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
 	transform: translateX(-22.5%);

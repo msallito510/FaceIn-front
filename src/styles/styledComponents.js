@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import { themes } from "../context/themeContext";
+
+const ss = themes;
+
+console.log("===>", ss);
 
 
 export const TitleDh1 = styled.h1`

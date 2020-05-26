@@ -27,6 +27,7 @@ export const withTheme = (Comp) => {
 };
 
 export const themes = {
+
   light: {
     name: "light",
     foreground: "#009688",
@@ -44,12 +45,14 @@ export const themes = {
 export default class ThemeProvider extends Component {
   state = {
     theme: themes.light,
+
   };
 
-  changeTheme = () => {  
+  changeTheme = () => {
     this.setState({
       theme: this.state.theme.name === "dark" ? themes.light : themes.dark,
     });
+
   };
 
   render() {

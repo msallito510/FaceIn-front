@@ -22,13 +22,13 @@ class HomeList extends Component {
     return (
       <HomeImageBackground>
         <TitleLh1>Barcelona</TitleLh1>
-        {/* <button
+        <button
           onClick={changeTheme}
           style={{
             backgroundColor: theme.foreground,
             color: theme.color,
           }}
-        >changeTheme</button> */}
+        >changeTheme</button>
         <HomeBackground>
           <CardContainer>
             {user ? <StyledLinkDark to="/events">
