@@ -39,6 +39,7 @@ class HomeList extends Component {
           <CardContainer>
             {user ? <StyledLinkDark to="/whatishot">
               <HomeWhatsHot />
+              {/* <BoldTitleCardLh1 color={this.state.color}>What´s hot</BoldTitleCardLh1> */}
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
             </StyledLinkDark> : <div></div>}
           </CardContainer>

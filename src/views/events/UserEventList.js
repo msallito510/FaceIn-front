@@ -2,9 +2,44 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
+import DateFormat from "../../components/DateFormat";
+import styled from 'styled-components';
 
 import eventService from "../../services/eventService";
-import { TitleDh1, FormWrapper, SimpleContainerScroll, LinkDivPrimary, StyledLinkLight, ButtonSecundary, ContainerRow } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  FormWrapper,
+  SimpleContainerScroll,
+  LinkDivPrimary,
+  StyledLinkLight,
+  ButtonSecundary,
+  CardContainer,
+  EventCardContainer,
+  ContentEventCard,
+  ContainerRow
+} from "../../styles/styledComponents";
+
+const TitleEditEvent = styled.h3`
+  position: relative;
+  top: 1em;
+  opacity: 1;
+  padding: 0.3em;
+  font-weight: 900;
+  font-size: 1em;
+  text-align: center;
+  color: #1F1F1F;
+  width: -webkit-fill-available;
+`;
+
+const TimeEditEvent = styled.h3`  
+position: relative;
+  top: 1em;
+  font-weight: 200;
+  font-size: 0.8em;
+  padding: 0.2em;
+  line-height: 13px;
+  width: -webkit-fill-available;
+`;
 
 class UserEventList extends Component {
   state = {
@@ -53,20 +88,26 @@ class UserEventList extends Component {
           {loading && <div>loading...</div>}
           {!loading && events.map((event) => {
             return (
-              <div key={event._id}>
-                <div>
-                  <h2>{event.title}</h2>
-                  <h2>{event.description}</h2>
-                </div>
-                <ContainerRow>
-                  <LinkDivPrimary>
-                    <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
-                  </LinkDivPrimary>
-                  <div>
-                    <ButtonSecundary onClick={() => this.handleDelete(event._id)} >delete</ButtonSecundary>
-                  </div>
-                </ContainerRow>
-              </div>
+              <CardContainer key={event._id}>
+                <EventCardContainer>
+                  <ContentEventCard>
+                    <TitleEditEvent>{event.title}</TitleEditEvent>
+                    <TimeEditEvent>
+                      <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />
+                    </TimeEditEvent>
+                  </ContentEventCard>
+
+                  <ContainerRow>
+                    <LinkDivPrimary>
+                      <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
+                    </LinkDivPrimary>
+                    <div>
+                      <ButtonSecundary onClick={() => this.handleDelete(event._id)} >delete</ButtonSecundary>
+                    </div>
+                  </ContainerRow>
+
+                </EventCardContainer>
+              </CardContainer>
             );
           })
           }

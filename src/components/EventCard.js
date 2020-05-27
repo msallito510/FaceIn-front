@@ -5,6 +5,7 @@ import PlaceCard from '../views/places/PlaceCard';
 import DateFormat from "../components/DateFormat";
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
 
 import {
   TitleEventCardDetailDh1,
@@ -30,6 +31,10 @@ const INIT_STATE = {
   isLiked: "",
   loading: true,
 };
+
+const MapReadOnly = styled.div`
+  pointer-events: none;
+  `;
 
 export default class EventCard extends Component {
 
@@ -171,9 +176,9 @@ export default class EventCard extends Component {
             <TitleEventCardDetailDh1>The Place</TitleEventCardDetailDh1>
             {belongsToPlace._id !== null ? <Link to={`/places/${belongsToPlace._id}`}>
               <EventCardDetailMapPlace>
-                <div>
+                <MapReadOnly>
                   <PlaceCard place={belongsToPlace} />
-                </div>
+                </MapReadOnly>
               </EventCardDetailMapPlace>
             </Link> :
               <div><p>No place available</p></div>
@@ -192,7 +197,7 @@ export default class EventCard extends Component {
           </button>
         </EventDetailLikeContainer>
 
-      </EventDetailBackground>
+      </EventDetailBackground >
     )
   }
 }

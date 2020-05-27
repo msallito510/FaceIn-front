@@ -5,7 +5,6 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import EventCard from "../../components/EventCard";
 
-import { TitleLh1 } from "../../styles/styledComponents";
 import "../../styles/customEventImage.css";
 
 class EventDetail extends Component {
@@ -34,8 +33,10 @@ class EventDetail extends Component {
     const { event, loading } = this.state;
     const { user } = this.props;
     return (
-      <div className="eventDetail-image">
-        <TitleLh1>Event detail</TitleLh1>
+      <div>
+        <div className="eventDetail-image">
+          <img id="eventImg" src={event.image} alt="event image" ></img>
+        </div>
         {loading && <div>loading...</div>}
         {!loading && <EventCard event={event} user={user} />}
 

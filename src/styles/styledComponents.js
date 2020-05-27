@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { themes } from "../context/themeContext";
 
-const ss = themes;
 
-console.log("===>", ss);
 
 
 export const TitleDh1 = styled.h1`
@@ -50,6 +47,7 @@ export const BoldTitleCardLh1 = styled.h1`
   position: relative; 
   font-size: 2em;
   text-align: center;
+  ${'' /* color: ${ (props) => props.color}; */}
   color: #fff;
   bottom: 3.5em;
   font-weight: normal;
@@ -471,8 +469,8 @@ export const EventDetailBackground = styled.div`
   background: #fff;
   overflow: hidden;
   overflow-y:scroll;
-  bottom:-60em;
-  top: 27rem;
+  bottom:-35em;
+  top: 20rem;
   position: absolute;
   width: 100%;
   padding: 1em 0 2em;
@@ -721,6 +719,7 @@ export const SimpleContainerScroll = styled.div`
   bottom: 2em;
   background: #ccc;
   border-radius: 6px;
+  height: 45em;
 `;
 
 export const CommentsContainer = styled.div`

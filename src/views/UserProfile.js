@@ -96,10 +96,6 @@ const UserProfile = ({ user }) => {
           <ReactWebcam />
         </div>
       </ProfileBackground>
-
-
-
-      {/* <Link to={`/protectedview`}>ProtectedView</Link> */}
     </HeaderBackground>
   );
 };
