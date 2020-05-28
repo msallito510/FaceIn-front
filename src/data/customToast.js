@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import "../styles/customToast";
+import "../styles/customToast.css";
 
 const customToast = {
   success(msg, options = {}) {
@@ -16,7 +16,7 @@ const customToast = {
       ...options,
       className: 'toast-error-container toast-error-container-after',
       progressClassName: css({
-        background: '#cdc',           
+        background: '#cdc',
       }),
     });
   },

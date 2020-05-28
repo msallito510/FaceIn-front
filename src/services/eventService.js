@@ -40,6 +40,12 @@ class EventService {
       .then(({ data }) => data);
   }
 
+  uploadPhoto(eventId, imageUrl) {
+    return this.axios
+      .put(`/api/events/${eventId}/upload-photo`, imageUrl)
+      .then(({ data }) => data);
+  }
+
   getAllEvents() {
     return this.axios.get("/api/events")
       .then(({ data: events }) => events);

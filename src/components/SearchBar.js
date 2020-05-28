@@ -26,7 +26,7 @@ export default class SearchBar extends Component {
             name="search"
             value={search}
             onChange={this.handleInput}
-            placeholder="Search"
+            placeholder="Search..."
           ></InputLight>
           <span >
             <i aria-hidden="true"></i>

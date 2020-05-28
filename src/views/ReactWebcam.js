@@ -74,7 +74,7 @@ class ReactWebcam extends Component {
         {!loading && (
           <div>
             {/* <UserCard user={user} /> */}
-            {userPhoto ? <img src={userPhoto} styles={styles} alt="user photo" /> : <div></div>}
+            {userPhoto ? <img src={userPhoto} styles={styles} alt="user pic" /> : <div></div>}
             <Webcam
               audio={false}
               ref={this.webcamRef}
@@ -85,7 +85,7 @@ class ReactWebcam extends Component {
             <button onClick={this.capture}>Capture photo</button>
             {imgSrc && (
               <>
-                <img src={imgSrc} alt="image photo" />
+                <img src={imgSrc} alt="source pic" />
                 <button onClick={this.handleSubmit}>Send photo</button>
               </>
             )}

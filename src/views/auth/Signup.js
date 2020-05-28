@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
-import { TitleDh1, EventCardWrapper, InputDark, Submit, ButtonPLeft, Span } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  EventCardWrapper,
+  InputDark,
+  ButtonPLeft,
+  Span
+} from "../../styles/styledComponents";
+
+import {
+  Submit
+} from "../../styles/commonStyle";
+
 import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 

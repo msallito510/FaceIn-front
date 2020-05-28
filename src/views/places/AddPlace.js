@@ -4,7 +4,15 @@ import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
-import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  FormWrapper,
+  InputDark
+} from "../../styles/styledComponents";
+
+import {
+  Submit
+} from "../../styles/commonStyle";
 
 class AddPlace extends Component {
   state = {

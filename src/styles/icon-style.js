@@ -13,6 +13,7 @@ import { Edit } from '@styled-icons/feather/Edit';
 import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 import { LogOut } from '@styled-icons/feather/LogOut';
 import { AddAPhoto } from "@styled-icons/material-outlined/AddAPhoto";
+import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
 
 
 export const SearchIcon = styled(Search)`
@@ -49,19 +50,32 @@ export const ThemeDarkIcon = styled(ToggleRight)`
 `;
 
 export const LogOutIcon = styled(LogOut)`
-  width: 2em;
+  position: absolute;
+  top: 0;
+  width: 1.7em;
+  right: 1.5em;
+  color: #61637B;
 `;
 
 export const EventAddLike = styled(HeartAdd)`
   width: 1.5em;
+  color:${ (props) => props.color};
 `;
 
 export const EventHeartFilled = styled(HeartFilled)`
   width: 1.5em;
+  color:${ (props) => props.color};
 `;
 
 export const CameraIcon = styled(AddAPhoto)`
   width: 2em;
+`;
+
+export const BackArrow = styled(ChevronLeft)`
+  position: absolute;
+  top: 0;
+  width: 2em;
+  color: #61637B;
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`
@@ -72,6 +86,7 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 
 export const EditIcon = styled(Edit)`
@@ -82,6 +97,7 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 
 export const PlayCircleIcon = styled(PlayCircle)`
@@ -92,5 +108,6 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 

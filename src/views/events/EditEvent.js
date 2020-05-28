@@ -5,8 +5,17 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
+// import { Image } from 'cloudinary-react';
 
-import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  FormWrapper,
+  InputDark
+} from "../../styles/styledComponents";
+
+import {
+  Submit
+} from "../../styles/commonStyle";
 
 class EditEvent extends Component {
   state = {
@@ -19,6 +28,8 @@ class EditEvent extends Component {
     timeStart: 0,
     timeEnd: 0,
     price: 0.0,
+    imageUrl: "",
+    imageName: "",
     tagId: "",
     tags: [],
     loading: true
@@ -43,8 +54,9 @@ class EditEvent extends Component {
         timeStart: event.timeStart,
         timeEnd: event.timeEnd,
         price: event.price,
+        // imageUrl: event.image,
         tags,
-        tagId,
+        tagId: tagId._id,
         loading: false
       })
     } catch (error) {
@@ -55,28 +67,42 @@ class EditEvent extends Component {
     }
   }
 
-  handleInput = (e) => {
+  handleInput = async (e) => {
     if (e.target.type === "text") {
       this.setState({
         [e.target.name]: e.target.value,
       });
-      console.log(e.target.value);
+
     } else if (e.target.type === "number") {
       this.setState(
         { [e.target.name]: parseFloat(e.target.value) });
-      console.log(e.target.value);
+
     } else if (e.target.type === "date" && e.target.value !== "") {
       this.setState(
         { [e.target.name]: new Date(e.target.value).toISOString() });
-      console.log(e.target.value);
+
     } else if (e.target.type === "time") {
       this.setState(
         { [e.target.name]: e.target.value });
-      console.log(e.target.value);
-    }
+    } else if (e.target.type === "file") {
+
+      const imgForm = new FormData();
+      imgForm.append("imageUrl", e.target.files[0]);
+      await eventService.uploadPhoto(this.state.eventId, imgForm)
+        .then(() => {
+          toast.success('the image was added successfully');
+        })
+        .catch(error => {
+          toast.error(`ERROR. The image was not added! - ${error}`);
+        });
+
+
+
+    };
   };
 
   handleSubmit = async (e) => {
+
     e.preventDefault();
     const { history: { push } } = this.props;
 
@@ -90,19 +116,28 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
+      // imageUrl,
       tagId
     } = this.state;
 
-    await eventService.updateEvent(eventId, title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId)
-      .then(() => {
-        push(`/user-profile`);
-        toast.success('the event was edited successfully');
+    await eventService.updateEvent(
+      eventId,
+      title,
+      description,
+      frequency,
+      dateStart,
+      dateEnd,
+      timeStart,
+      timeEnd,
+      price,
+      tagId,
+    ).then(() => {
+      push(`/user-profile`);
+      toast.success('the event was edited successfully');
 
-      })
-      .catch(error => {
-        toast.error(`ERROR. The event was not edited! - ${error}`);
-      })
-
+    }).catch(error => {
+      toast.error(`ERROR. The event was not edited! - ${error}`);
+    })
   };
 
   render() {
@@ -114,6 +149,7 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
+      imageName,
       tags,
       loading
     } = this.state;
@@ -194,6 +230,25 @@ class EditEvent extends Component {
             onChange={this.handleInput}
           />
         </div>
+        <div>
+          <label htmlFor="name">Upload an event image</label>
+          <input
+            id="myFileUpload"
+            type="file"
+            value={imageName}
+            name="imageName"
+            onChange={this.handleInput}
+            accept=".jpg, .png"
+          />
+        </div>
+
+
+        {/* <input
+              id=“file-input1”
+              type=“file”
+              onChange={e => handleChangeFile(e, setImage1)}
+            /> */}
+
         <div>
           <form>
             <label htmlFor="name"># Tag</label>

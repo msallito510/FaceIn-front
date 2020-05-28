@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
+import styled from 'styled-components';
 
 import {
   TitleLh1,
   BoldTitleCardLh1,
   BoldTitleCardDh1,
   HomeImageBackground,
-  HomeBackground,
   HomeAllEvents,
   HomeWhatsHot,
   HomeUserLikes,
@@ -16,20 +16,35 @@ import {
 } from "../styles/styledComponents";
 
 
+const HomeBackgroundDark = styled.div`
+  background: ${ (props) => props.color};
+  overflow: hidden;
+  overflow-y:scroll;
+  bottom:-16.5em;
+  top: 20rem;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
+  text-align: center;
+  border-radius: 20px;
+  `;
+
 class HomeList extends Component {
+
+
   render() {
-    const { user, theme, changeTheme } = this.props;
+    const { theme, user, changeTheme } = this.props;
     return (
       <HomeImageBackground>
         <TitleLh1>Barcelona</TitleLh1>
-        {/* <button
+        <button
           onClick={changeTheme}
           style={{
             backgroundColor: theme.foreground,
             color: theme.color,
           }}
-        >changeTheme</button> */}
-        <HomeBackground>
+        >changeTheme</button>
+        <HomeBackgroundDark color={theme}>
           <CardContainer>
             {user ? <StyledLinkDark to="/events">
               <HomeAllEvents />
@@ -39,6 +54,7 @@ class HomeList extends Component {
           <CardContainer>
             {user ? <StyledLinkDark to="/whatishot">
               <HomeWhatsHot />
+              {/* <BoldTitleCardLh1 color={this.state.color}>What´s hot</BoldTitleCardLh1> */}
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
             </StyledLinkDark> : <div></div>}
           </CardContainer>
@@ -49,7 +65,7 @@ class HomeList extends Component {
             </StyledLinkDark> : <div></div>}
           </CardContainer>
 
-        </HomeBackground>
+        </HomeBackgroundDark>
       </HomeImageBackground>
     );
   }
