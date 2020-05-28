@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { NavLink } from "react-router-dom";
-import { MenuBarUl, MenuBarLi } from "../styles/styledComponents";
+import { MenuBarUl, MenuBarLi } from "../styles/menuStyle";
 import { SearchIcon, HeartIcon, UserIcon, HomeIcon } from "../styles/icon-style";
 
 class Navbar extends Component {
   render() {
-    const { user } = this.props;
+    const { user, theme } = this.props;
     return (
       <section>
         <nav>
-          <MenuBarUl>
+          <MenuBarUl color={theme}>
             <MenuBarLi>
               <NavLink to="/">
                 <HomeIcon />

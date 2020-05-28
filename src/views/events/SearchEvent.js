@@ -53,7 +53,6 @@ class SearchEvent extends Component {
 
   render() {
     const { filter, loading } = this.state;
-
     return (
       <div>
         <HeaderBackground>

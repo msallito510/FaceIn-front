@@ -7,7 +7,6 @@ import eventService from "../../services/eventService";
 import {
   TitleEventsLh1,
   HeaderBackground,
-  GeneralBackground,
   StyledLinkDark,
   CardContainer,
   EventCardContainer,
@@ -15,6 +14,8 @@ import {
   TitleEventCardLh1,
   TimeEventCardLh3
 } from "../../styles/styledComponents";
+
+import { GeneralBackground } from "../../styles/commonStyle";
 
 class Events extends Component {
   state = {
@@ -40,13 +41,14 @@ class Events extends Component {
 
   render() {
     const { events, loading } = this.state;
+    const { theme } = this.props;
 
     return (
       <div>
         <HeaderBackground>
           <TitleEventsLh1>All Events</TitleEventsLh1>
         </HeaderBackground>
-        <GeneralBackground>
+        <GeneralBackground background={theme}>
           {loading && <div>loading...</div>}
           {!loading && events.map((event) => {
             return (

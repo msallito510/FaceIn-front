@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
-import { MenuBarUlTop, MenuBarLiTop } from "../styles/styledComponents";
+import { MenuBarUlTop, MenuBarLiTop } from "../styles/menuStyle";
 import { BackArrow, LogOutIcon } from "../styles/icon-style";
 import "../styles/commonCustom.css";
 
@@ -18,9 +18,9 @@ class NavbarTop extends Component {
       <section>
 
         {pathname !== "/" && <nav>
-          <MenuBarUlTop>
+          <MenuBarUlTop color={theme}>
             <MenuBarLiTop>
-              {user ? <button onClick={history.goBack}><BackArrow /></button> : <div></div>}
+              {user ? <button onClick={history.goBack}><BackArrow color={theme} /></button> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
               {user ? <input className="toggle-theme" type="checkbox" id="theme" name="theme" onclick={changeTheme}
@@ -32,7 +32,7 @@ class NavbarTop extends Component {
               ></input> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
-              {user ? <button onClick={handleLogout}><LogOutIcon /></button> : <div></div>}
+              {user ? <button onClick={handleLogout}><LogOutIcon color={theme} /></button> : <div></div>}
             </MenuBarLiTop>
           </MenuBarUlTop>
         </nav>}

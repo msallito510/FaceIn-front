@@ -7,7 +7,15 @@ import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 // import { Image } from 'cloudinary-react';
 
-import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  FormWrapper,
+  InputDark
+} from "../../styles/styledComponents";
+
+import {
+  Submit
+} from "../../styles/commonStyle";
 
 class EditEvent extends Component {
   state = {

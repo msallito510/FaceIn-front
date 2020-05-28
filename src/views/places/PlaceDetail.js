@@ -5,21 +5,59 @@ import { withTheme } from "../../context/themeContext";
 import placeService from "../../services/placeService";
 import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
+import styled from 'styled-components';
 
 import {
-  TitleDh1,
+  // TitleDh1,
   TitleDh2Secundary,
-  CommentsBackground,
+  // CommentsBackground,
   FormWrapper,
-  CommentContainer,
+  // CommentContainer,
   ContainerRow,
-  ButtonSecundary,
+
   LinkDivPrimary,
   LinkDivTertiary,
   StyledLinkLight,
-  CommentsContainer
+  // CommentsContainer,
+  // GeneralContainer
 
 } from "../../styles/styledComponents";
+
+import { GeneralContainer, Button } from "../../styles/commonStyle";
+
+const TitleH1 = styled.h1`
+  font-size: 1.7em;
+  text-align: center;
+  color: ${props => props.color};
+`;
+
+const CommentsBackground = styled.div`
+  background: #F9F9F9;
+  overflow: hidden;
+  overflow-y: scroll;
+  bottom: -7em;
+  top: 27em;
+  position: absolute;
+  width: 100%;
+  padding: 1em 0 2em;
+  text-align: center;
+  border-radius: 2em 2em 0em 0em;
+  left: 0em;
+  `;
+
+const CommentsContainer = styled.div`
+  position:absolute;
+  bottom:3em;
+`;
+
+const CommentContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+  padding:2em;
+`;
 
 class PlaceDetail extends Component {
   state = {
@@ -58,10 +96,11 @@ class PlaceDetail extends Component {
 
   render() {
     const { place, ratings, isOwner, loading } = this.state;
+    const { theme } = this.props;
 
     return (
-      <div>
-        <TitleDh1>Place Detail</TitleDh1>
+      <GeneralContainer>
+        <TitleH1 color={theme.color}>Place Detail</TitleH1>
         {loading && <div>loading...</div>}
         {!loading &&
           <FormWrapper>
@@ -90,7 +129,9 @@ class PlaceDetail extends Component {
                 <StyledLinkLight to={`/place-edit/${place._id}`}>edit</StyledLinkLight>
               </LinkDivPrimary>
               <div>
-                <ButtonSecundary onClick={() => this.handleDelete(place)} >delete</ButtonSecundary>
+                <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(place)} >
+                  delete
+                </Button>
               </div>
             </div> :
             <LinkDivTertiary>
@@ -100,7 +141,7 @@ class PlaceDetail extends Component {
           }
         </CommentsContainer>
 
-      </div>
+      </GeneralContainer>
     );
   }
 }

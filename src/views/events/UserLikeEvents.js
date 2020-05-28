@@ -7,8 +7,9 @@ import UserCard from "../../components/UserCard";
 import {
   TitleEventsLh1,
   HeaderBackground,
-  GeneralBackground,
 } from "../../styles/styledComponents";
+
+import { GeneralBackground } from "../../styles/commonStyle";
 
 class UserLikeEvents extends Component {
   state = {
@@ -38,13 +39,14 @@ class UserLikeEvents extends Component {
 
   render() {
     const { user, loading } = this.state;
+    const { theme } = this.props;
 
     return (
       <div>
         <HeaderBackground>
           <TitleEventsLh1>Events I like</TitleEventsLh1>
         </HeaderBackground>
-        <GeneralBackground>
+        <GeneralBackground background={theme}>
           {loading && <div>loading...</div>}
           {!loading && <UserCard user={user} />}
         </GeneralBackground>

@@ -12,12 +12,13 @@ import {
   SimpleContainerScroll,
   LinkDivPrimary,
   StyledLinkLight,
-  ButtonSecundary,
   CardContainer,
   EventCardContainer,
   ContentEventCard,
   ContainerRow
 } from "../../styles/styledComponents";
+
+import { Button } from "../../styles/commonStyle";
 
 const TitleEditEvent = styled.h3`
   position: relative;
@@ -80,7 +81,7 @@ class UserEventList extends Component {
 
   render() {
     const { events, loading } = this.state;
-
+    const { theme } = this.props;
     return (
       <FormWrapper>
         <SimpleContainerScroll>
@@ -102,7 +103,9 @@ class UserEventList extends Component {
                       <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
                     </LinkDivPrimary>
                     <div>
-                      <ButtonSecundary onClick={() => this.handleDelete(event._id)} >delete</ButtonSecundary>
+                      <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(event._id)} >
+                        delete
+                      </Button>
                     </div>
                   </ContainerRow>
 

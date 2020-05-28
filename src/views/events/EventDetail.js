@@ -35,7 +35,7 @@ class EventDetail extends Component {
     return (
       <div>
         <div className="eventDetail-image">
-          <img id="eventImg" src={event.image} alt="event image" ></img>
+          <img id="eventImg" src={event.image} alt="event" ></img>
         </div>
         {loading && <div>loading...</div>}
         {!loading && <EventCard event={event} user={user} />}

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-
-
-
 export const TitleDh1 = styled.h1`
   font-size: 1.7em;
   text-align: center;
@@ -89,70 +86,10 @@ position: relative;
   width: -webkit-fill-available;
 `;
 
-export const TimeEventCardDetailLh3 = styled.h3`  
-position: relative;
-  top: 0em;
-  font-weight: 200;
-  font-size: 0.8em;
-  padding: 0.2em;
-  line-height: 13px;
-  width: -webkit-fill-available;
-`;
-
-export const TagEventCardDetailsLh3 = styled.h3`  
-  display: flex;
-  flex-direction: row;
-  margin: 1em;
-  font-weight: 200;
-  font-size: 0.8em;
-  padding: 0.2em;
-  line-height: 13px;
-  width: -webkit-fill-available;
-`;
-
-export const TitleDh2 = styled.h2`
-  position: relative;
-  bottom: 2em;
-  font-size: 1.5em;
-  text-align: center;
-  color: #1F1F1F;
-`;
-
 export const TitleDh2Secundary = styled.h2`
   position: absolute;
   font-size: 1.5em;
   text-align: center;
-  color: #1F1F1F;
-`;
-
-export const TitleEventCardDetailDh1 = styled.h1`
-  position: relative;
-  font-size: 1.2em;
-  text-align: center;
-  color: #1F1F1F;
-  right: 7em;
-  font-weight: bold;
-`;
-
-export const TitleEventCardDetailDh2 = styled.h2`
-  position: relative;
-  top: 0.7em;
-  font-size: 1.5em;
-  text-align: center;
-  color: #1F1F1F;
-`;
-
-export const EventDetailSocialTitle = styled.h2`
-  color: #2D9CDB;
-  font-weight: bold;`;
-
-export const TitleDh3 = styled.h3`
-  position: relative;
-  width: 6.5em;
-  float: right;
-  bottom: 2em;
-  font-size: 1em;
-  text-align: left;
   color: #1F1F1F;
 `;
 
@@ -167,33 +104,9 @@ export const EventCardWrapper = styled.section`
   box-shadow: 8px 8px 50px #000;
 `;
 
-export const SecondaryWrapperLeft = styled.section`
-  position: relative;
-  float: left;
-  padding: 4em;
-  height: 10em;
-  width: 11.5em;
-  background: #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  box-shadow: 8px 8px 50px #000;
-`;
-
 export const FormWrapper = styled.section`
   padding: 1em;
   color: #000;  
-`;
-
-export const SecondaryWrapperRight = styled.section`
-  position: relative;
-  float: right;
-  padding: 4em;
-  height: 10em;
-  width: 11.5em;
-  background: #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  box-shadow: 8px 8px 50px #000;
 `;
 
 export const InputDark = styled.input`
@@ -224,64 +137,26 @@ export const ContinerAlineCenter = styled.div`
   align-items: center;
 `;
 
-export const Submit = styled.input.attrs({
-  type: 'submit'
-})`
-  background: #F57873;
-  color: #fff;
-  cursor: pointer;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  width: 100%;
-  border-radius: 5px;
-  height: 35px;
-  border-color: transparent;
-  box-shadow: 0px;
-  outline: none;
-  transition: 0.15s;
-  text-align: center;
-  &:active {
-    background-color: #f1ac15;
-  }
-`;
 
-export const Button = styled.button`
-  background: #F57873;
-  color: #fff;
-  cursor: pointer;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  width: 100%;
-  border-radius: 5px;
-  height: 35px;
-  border-color: transparent;
-  box-shadow: 0px;
-  outline: none;
-  transition: 0.15s;
-  text-align: center;
-  &:active {
-    background-color: #f1ac15;
-  }
-`;
 
-export const ButtonSecundary = styled.button`
-  background: #fff;
-  color: #F57873;
-  cursor: pointer;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  width: 6em;
-  border-radius: 5px;
-  height: 35px;
-  border: 0.1em solid #F57873;
-  box-shadow: 0px;
-  outline: none;
-  transition: 0.15s;
-  text-align: center;
-  &:active {
-    background-color: #f1ac15;
-  }
-`;
+// export const ButtonSecundary = styled.button`
+//   background: #fff;
+//   color: #F57873;
+//   cursor: pointer;
+//   margin-bottom: 0;
+//   text-transform: uppercase;
+//   width: 6em;
+//   border-radius: 5px;
+//   height: 35px;
+//   border: 0.1em solid #F57873;
+//   box-shadow: 0px;
+//   outline: none;
+//   transition: 0.15s;
+//   text-align: center;
+//   &:active {
+//     background-color: #f1ac15;
+//   }
+// `;
 
 export const LinkDivPrimary = styled.div`
   height: 2em;
@@ -325,18 +200,6 @@ export const LinkDivTertiary = styled.div`
   }
 `;
 
-export const EventDetailLikeContainer = styled.div`
-  position: absolute;
-  top: 0.9em;
-  left: 1em;
-`;
-
-export const EventDetailSubmitContainer = styled.div`
-  position: absolute;
-  bottom: 5em;
-  left: 0.5em;
-`;
-
 export const StyledLinkDark = styled(Link)`
   text-decoration: none !important;
   color: #1F1F1F
@@ -367,130 +230,6 @@ export const Span = styled.span`
   color:#61637B
 `;
 
-export const MenuBarUlTop = styled.ul`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background: #E3E5F3;
-  z-index: 10;
-  overflow: hidden;
-  border-radius: 0 0 16px 16px;
-  box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
-  @media (max-width: 768px) {
-  height: 2em;
-  width: 100%;
-  }
-`;
-
-export const MenuBarLiTop = styled.li`
-  display: list-item;
-  text-align: -webkit-match-parent;
-  margin: 0.5em 1.5em 0;
-  @media (max-width: 768px) {
-    display: inline-block;
-    float: left;
-    top:0.1em;
-  }
-`;
-
-export const MenuBarUl = styled.ul`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background: #E3E5F3;
-  z-index: 10;
-  overflow: hidden;
-  box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
-  @media (max-width: 768px) {
-    height: 3.5em;
-    width: 100%;
-  }
-`;
-
-export const MenuBarLi = styled.li`
-  display: list-item;
-  text-align: -webkit-match-parent;
-  margin: 0.5em 1.5em 0;
-  @media (max-width: 768px) {
-    display: inline-block;
-    float: left;
-  }
-`;
-export const UserProfileBarUl = styled.ul`
-  position: relative;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  z-index: 10;
-  @media (max-width: 768px) {
-    height: 3.5em;
-    width: 100%;
-  }
-`;
-
-export const GeneralBackground = styled.div`
-  background: #fff;
-  overflow: hidden;
-  overflow-y:scroll;
-  bottom:1.5em;
-  top: 20rem;
-  position: absolute;
-  width: 100%;
-  padding: 1em 0 2em;
-  text-align: center;
-  border-radius: 20px;
-  `;
-
-export const ProfileBackground = styled.div`
-  background: #fff;
-  overflow: hidden;
-  overflow-y:scroll;
-  bottom:-25.5em;
-  top: 20rem;
-  position: absolute;
-  width: 100%;
-  padding: 1em 0 2em;
-  text-align: center;
-  border-radius: 20px;
-  `;
-
-export const EventDetailBackground = styled.div`
-  background: #fff;
-  overflow: hidden;
-  overflow-y:scroll;
-  bottom:-35em;
-  top: 20rem;
-  position: absolute;
-  width: 100%;
-  padding: 1em 0 2em;
-  text-align: center;
-  border-radius: 20px;
-  `;
-
-export const HomeBackground = styled.div`
-  background: #fff;
-  overflow: hidden;
-  overflow-y:scroll;
-  bottom:-16.5em;
-  top: 20rem;
-  position: absolute;
-  width: 100%;
-  padding: 1em 0 2em;
-  text-align: center;
-  border-radius: 20px;
-  `;
-
 export const SearchBackground = styled.div`
   background: #fff;
   overflow: hidden;
@@ -500,18 +239,6 @@ export const SearchBackground = styled.div`
   position: absolute;
   width: 100%;
   padding: 1em 0 4em;
-  text-align: center;
-  border-radius: 20px;
-  `;
-
-export const CommentsBackground = styled.div`
-  background: #fff;
-  overflow: hidden;
-  overflow-y:scroll;
-  bottom:1.5em;
-  position: absolute;
-  width: 100%;
-  padding: 1em 0 2em;
   text-align: center;
   border-radius: 20px;
   `;
@@ -567,28 +294,6 @@ export const ContentEventCard = styled.div`
   height: 6em;
 `;
 
-// export const EventDetailImageBackground = styled.div`
-//   background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg');
-//   width: 100%;
-//   height: 376px;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: 50% 50%;
-//   top: 0;
-//   position: absolute;
-//   transform: translateY(-50%);
-//   z-index: 3;
-//   ${'' /* animation: 50% { background-position: Calc(-35vw - 40px) 50%; } 70s 2; */}
-//   animation: ${keyFrameEventDetailImg} 70s 2;
-// `;
-
-// const keyFrameEventDetailImg = keyframes`
-
-//   50% {
-//     background-position: Calc(-35vw - 40px) 50%;
-//   }
-// `;
-
 export const EventCardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -598,54 +303,6 @@ export const EventCardContainer = styled.div`
   background-position: 50% 50%;  
   border-radius: 20px;
   height: 136px;
-`;
-
-export const EventCardDetailContainerSocial = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #E3E5F3;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;  
-  border-radius: 20px;
-  height: 100px;
-  margin: 0.3em;
-`;
-
-export const EventCardDetailContainerInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #E3E5F3;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;  
-  border-radius: 20px;
-  height: 145px;
-  margin: 0.3em;
-`;
-
-export const EventCardDetailContainerPlace = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #E3E5F3;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;  
-  border-radius: 20px;
-  height: 25em;
-  margin: 0.3em;
-`;
-
-export const EventCardDetailMapPlace = styled.div`
-  background: #E3E5F3;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;  
-  border-radius: 20px;
-  height: 20em;
-  width:22em;
-  margin: 0.3em;
-  z-index: 0;
 `;
 
 export const HeaderBackground = styled.div`
@@ -666,21 +323,6 @@ export const PhotoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 	align-items: center;
-`;
-
-export const CommentContainer = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-	align-items: center;
-  padding:2em;
-`;
-
-export const AttendContainer = styled.div`
-  text-align: center;
-  position: relative;
-  top: 2em;
 `;
 
 export const PhotoProfile = styled.div`  
@@ -720,10 +362,4 @@ export const SimpleContainerScroll = styled.div`
   background: #ccc;
   border-radius: 6px;
   height: 45em;
-`;
-
-export const CommentsContainer = styled.div`
-  position:absolute;
-  bottom:13em;
-
 `;

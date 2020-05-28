@@ -52,16 +52,19 @@ export const ThemeDarkIcon = styled(ToggleRight)`
 export const LogOutIcon = styled(LogOut)`
   position: absolute;
   top: 0;
-  width: 2em;
+  width: 1.7em;
   right: 1.5em;
+  color: #61637B;
 `;
 
 export const EventAddLike = styled(HeartAdd)`
   width: 1.5em;
+  color:${ (props) => props.color};
 `;
 
 export const EventHeartFilled = styled(HeartFilled)`
   width: 1.5em;
+  color:${ (props) => props.color};
 `;
 
 export const CameraIcon = styled(AddAPhoto)`
@@ -72,6 +75,7 @@ export const BackArrow = styled(ChevronLeft)`
   position: absolute;
   top: 0;
   width: 2em;
+  color: #61637B;
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`
@@ -82,6 +86,7 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 
 export const EditIcon = styled(Edit)`
@@ -92,6 +97,7 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 
 export const PlayCircleIcon = styled(PlayCircle)`
@@ -102,5 +108,6 @@ position: relative;
   font-size: 1.1em;
   text-align: left;
   width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 

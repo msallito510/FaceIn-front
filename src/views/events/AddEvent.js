@@ -6,7 +6,15 @@ import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 
-import { TitleDh1, FormWrapper, InputDark, Submit } from "../../styles/styledComponents";
+import {
+  TitleDh1,
+  FormWrapper,
+  InputDark
+} from "../../styles/styledComponents";
+
+import {
+  Submit
+} from "../../styles/commonStyle";
 
 class AddEvent extends Component {
   state = {

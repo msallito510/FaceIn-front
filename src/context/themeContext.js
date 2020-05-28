@@ -30,15 +30,23 @@ export const themes = {
 
   light: {
     name: "light",
-    foreground: "#009688",
-    background: "#009688",
-    color: "#192A3E",
+    foreground: "#F9F9F9;",
+    background: "#F9F9F9;",
+    backgroundTwo: "#E3E5F3",
+    color: "#1F1F1F",
+    primaryButton: "#F57873",
+    secundaryButton: "#17d1e0",
+    tertiaryButton: "#69C340",
   },
   dark: {
     name: "dark",
-    foreground: "#ffffff",
+    foreground: "#192a3e",
     background: "#192a3e",
-    color: "#009688",
+    backgroundTwo: "#292B4D",
+    color: "#F9F9F9",
+    primaryButton: "#009fae",
+    secundaryButton: "#be4848",
+    tertiaryButton: "#69C340",
   },
 };
 

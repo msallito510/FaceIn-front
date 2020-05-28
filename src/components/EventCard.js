@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { withAuth } from "../context/authContext";
+import { withTheme } from "../context/themeContext";
+
 import eventService from "../services/eventService";
 
 import PlaceCard from '../views/places/PlaceCard';
@@ -8,22 +11,28 @@ import { toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import {
-  TitleEventCardDetailDh1,
-  TitleEventCardDetailDh2,
-  EventDetailSocialTitle,
-  EventCardDetailContainerSocial,
-  EventCardDetailContainerInfo,
-  EventCardDetailContainerPlace,
-  ContainerRow,
+  Button
+} from "../styles/commonStyle";
+
+import {
   EventDetailBackground,
-  CardContainer,
-  TagEventCardDetailsLh3,
-  TimeEventCardDetailLh3,
-  EventCardDetailMapPlace,
-  Button,
-  EventDetailLikeContainer,
-  EventDetailSubmitContainer
-} from "../styles/styledComponents";
+  TitleEventDetailH1,
+  TitleEventDetailH2,
+  TitleEventDetailH3,
+  SocialTitle,
+  Paragraph,
+  MapPlaceContainer,
+  TimeInfoContainer,
+  SubmitContainer,
+  LikeButtonContainer,
+  SocialContainer,
+  InfoContainer,
+  InfoMapPlaceContainer
+
+
+} from "../styles/eventDetailStyle";
+
+import { CardContainer, ContainerRow } from "../styles/styledComponents"
 
 import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
 
@@ -36,7 +45,7 @@ const MapReadOnly = styled.div`
   pointer-events: none;
   `;
 
-export default class EventCard extends Component {
+class EventCard extends Component {
 
   state = {
     ...INIT_STATE,
@@ -74,19 +83,16 @@ export default class EventCard extends Component {
     } catch (error) {
       console.log(error);
     }
-
-
     this.handleSetState();
-
   };
 
   renderButtonState = () => {
     this.refs.btn.setAttribute("disabled", "disabled");
   }
 
-  renderIcon = () => {
-    return !!this.state.isLiked ? <EventHeartFilled /> : <EventAddLike />;
-  }
+  // renderIcon = () => {
+  //   return !!this.state.isLiked ? <EventHeartFilled /> : <EventAddLike />;
+  // }
 
   handleSetState = () => {
     this.resetState();
@@ -130,74 +136,80 @@ export default class EventCard extends Component {
       description,
       dateStart,
       timeStart,
-      // price,
+      price,
       owner: { username },
       participants,
       belongsToPlace,
-      tag
-    } } = this.props;
+    },
+      theme } = this.props;
 
+    const isLiked = this.state;
     return (
 
-      <EventDetailBackground>
+      <EventDetailBackground background={theme}>
 
-        <TimeEventCardDetailLh3>
+        <TimeInfoContainer>
           <DateFormat dateStart={dateStart} timeStart={timeStart} />
-        </TimeEventCardDetailLh3>
-        <TitleEventCardDetailDh2>{title}</TitleEventCardDetailDh2>
-        <TagEventCardDetailsLh3>#{tag}</TagEventCardDetailsLh3>
+        </TimeInfoContainer>
+        <TitleEventDetailH1>{title}</TitleEventDetailH1>
+        <TitleEventDetailH3>€ {price}</TitleEventDetailH3>
         <CardContainer>
-          <EventCardDetailContainerSocial>
-            <TitleEventCardDetailDh1>Social</TitleEventCardDetailDh1>
+          <SocialContainer>
+            <TitleEventDetailH2>Social</TitleEventDetailH2>
             <ContainerRow>
               <div>
                 <Link to={`/attend/${eventId}`}>
-                  <EventDetailSocialTitle>Attend</EventDetailSocialTitle>
+                  <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
                     {participants.slice(0, 2).map((item) =>
-                      <p style={{ padding: "0.5em" }}>
+                      <Paragraph>
                         {item.participant.username}
-                      </p>)}
+                      </Paragraph>)}
                     {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
                   </ContainerRow>
                 </Link>
               </div>
               <div>
-                <EventDetailSocialTitle>Owner</EventDetailSocialTitle>
-                {username}
+                <SocialTitle>Owner</SocialTitle>
+                <Paragraph>{username}</Paragraph>
               </div>
             </ContainerRow>
-          </EventCardDetailContainerSocial>
-          <EventCardDetailContainerInfo>
-            <TitleEventCardDetailDh1>Info</TitleEventCardDetailDh1>
-            {description}
-          </EventCardDetailContainerInfo>
-          <EventCardDetailContainerPlace>
-            <TitleEventCardDetailDh1>The Place</TitleEventCardDetailDh1>
+          </SocialContainer>
+          <InfoContainer>
+            <TitleEventDetailH2>Info</TitleEventDetailH2>
+            <Paragraph>
+              {description}
+            </Paragraph>
+          </InfoContainer>
+          <InfoMapPlaceContainer>
+            <TitleEventDetailH2>The Place</TitleEventDetailH2>
             {belongsToPlace._id !== null ? <Link to={`/places/${belongsToPlace._id}`}>
-              <EventCardDetailMapPlace>
+              <MapPlaceContainer>
                 <MapReadOnly>
                   <PlaceCard place={belongsToPlace} />
                 </MapReadOnly>
-              </EventCardDetailMapPlace>
+              </MapPlaceContainer>
             </Link> :
               <div><p>No place available</p></div>
             }
-          </EventCardDetailContainerPlace>
+          </InfoMapPlaceContainer>
         </CardContainer>
-        <EventDetailSubmitContainer>
-          <Button ref="btn" onClick={this.handleAttend}>
+        <SubmitContainer>
+          <Button color={theme.color} background={theme.primaryButton} ref="btn" onClick={this.handleAttend}>
             Attend
           </Button>
-        </EventDetailSubmitContainer>
+        </SubmitContainer>
 
-        <EventDetailLikeContainer>
+        <LikeButtonContainer>
           <button onClick={this.handleLike}>
-            {this.renderIcon()}
+            {/* {this.renderIcon()} */}
+            {!!isLiked ? <EventHeartFilled color={theme} /> : <EventAddLike color={theme} />}
           </button>
-        </EventDetailLikeContainer>
+        </LikeButtonContainer>
 
-      </EventDetailBackground >
+      </EventDetailBackground>
     )
   }
 }
+
+export default withAuth(withTheme(EventCard));
