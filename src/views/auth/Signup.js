@@ -53,6 +53,8 @@ class Signup extends Component {
 
   render() {
     const { username, password, email } = this.state;
+    const { theme } = this.props;
+
     return (
       <EventCardWrapper>
         <TitleDh1>Sign up</TitleDh1>
@@ -78,7 +80,7 @@ class Signup extends Component {
             onChange={this.handleChange}
             placeholder="email"
           />
-          <Submit type="submit" value="Signup" />
+          <Submit color={theme.color} background={theme.primaryButton} type="submit" value="Signup" />
         </form>
         <ButtonPLeft>
           <Link to={"/login"}>

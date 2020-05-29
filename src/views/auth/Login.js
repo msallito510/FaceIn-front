@@ -51,6 +51,8 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    const { theme } = this.props;
+
     return (
       <EventCardWrapper>
         <TitleDh1>Login</TitleDh1>
@@ -72,7 +74,7 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="password"
           />
-          <Submit type="submit" value="Login" />
+          <Submit color={theme.color} background={theme.primaryButton} type="submit" value="Login" />
 
         </form>
         <ButtonPLeft>

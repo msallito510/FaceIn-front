@@ -137,27 +137,6 @@ export const ContinerAlineCenter = styled.div`
   align-items: center;
 `;
 
-
-
-// export const ButtonSecundary = styled.button`
-//   background: #fff;
-//   color: #F57873;
-//   cursor: pointer;
-//   margin-bottom: 0;
-//   text-transform: uppercase;
-//   width: 6em;
-//   border-radius: 5px;
-//   height: 35px;
-//   border: 0.1em solid #F57873;
-//   box-shadow: 0px;
-//   outline: none;
-//   transition: 0.15s;
-//   text-align: center;
-//   &:active {
-//     background-color: #f1ac15;
-//   }
-// `;
-
 export const LinkDivPrimary = styled.div`
   height: 2em;
   display: flex;

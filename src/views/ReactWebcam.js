@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import userService from '../services/userService';
+import { Link } from "react-router-dom";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { Base64 } from 'js-base64';
+import UserCard from './UserCard';
+import styled from 'styled-components';
+import { toast } from 'react-toastify';
+
+import { GeneralContainer, Button, TitleH1 } from "../styles/commonStyle";
+
+const HeaderWebCam = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 3em;
+  
+`;
+
+const UserPhotoContainer = styled.div`
+  background: #F9F9F9;
+  border-radius: 1em;
+  overflow: hidden;
+  overflow-y:scroll;
+  top:0em;
+  bottom:2em;
+  width:20em;
+  margin: 0 0 3em;
+`;
+
+const UserPhotoTitleH2 = styled.h2`
+  font-size: 1.2em;
+  text-align: center;
+  padding: 1em;
+  color: #1F1F1F;
+`;
 
 class ReactWebcam extends Component {
   state = {
@@ -48,50 +82,67 @@ class ReactWebcam extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    // const { history: { push } } = this.props;
+    const { history: { push } } = this.props;
     const { imgSrc, userId } = this.state;
+
     userService
       .addProfilePhoto(imgSrc, userId)
-      // .then(() => { push(`/`); })
+      .then(() => { toast.success('📸 your photo has been stored'); })
+      .then(() => {
+        push(`/user-profile`)
+      })
       .catch(error => console.log(error))
   };
+
   render() {
-    const { loading, imgSrc, userPhoto } = this.state;
+    const { loading, imgSrc } = this.state;
+    const { user, theme } = this.props;
+
     const videoConstraints = {
-      // width: 1280,
-      // height: 720,
       width: 200,
       height: 200,
       facingMode: "user"
     };
-    const styles = {
-      width: 200,
-      height: 200,
-    };
+
     return (
-      <div>
+      <HeaderWebCam>
+        <TitleH1>Profile photo</TitleH1>
         {loading && <div>Loading...</div>}
         {!loading && (
-          <div>
-            {/* <UserCard user={user} /> */}
-            {userPhoto ? <img src={userPhoto} styles={styles} alt="user pic" /> : <div></div>}
-            <Webcam
-              audio={false}
-              ref={this.webcamRef}
-              screenshotFormat="image/jpeg"
-              screenshotQuality={1}
-              videoConstraints={videoConstraints}
-            />
-            <button onClick={this.capture}>Capture photo</button>
-            {imgSrc && (
-              <>
-                <img src={imgSrc} alt="source pic" />
-                <button onClick={this.handleSubmit}>Send photo</button>
-              </>
-            )}
-          </div>
+          <GeneralContainer>
+            <UserPhotoContainer>
+              <UserPhotoTitleH2>Current user photo profile</UserPhotoTitleH2>
+              <UserCard user={user} />
+
+              <UserPhotoTitleH2>Take a new picture</UserPhotoTitleH2>
+              <Webcam
+                audio={false}
+                ref={this.webcamRef}
+                screenshotFormat="image/jpeg"
+                screenshotQuality={1}
+                videoConstraints={videoConstraints}
+              />
+              <Button color={theme.color} background={theme.primaryButton} onClick={this.capture}>
+                Capture photo
+            </Button>
+              {imgSrc && (
+                <div>
+                  <UserPhotoTitleH2>New picture</UserPhotoTitleH2>
+                  <img src={imgSrc} alt="source pic" />
+                  <Button color={theme.color} background={theme.secundaryButton} onClick={this.handleSubmit}>
+                    Send photo
+                </Button>
+                  <Button color={theme.color}>
+                    <Link to={"/user-profile"}>
+                      <p>Cancel</p>
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </UserPhotoContainer>
+          </GeneralContainer>
         )}
-      </div>
+      </HeaderWebCam>
     );
   }
 }
