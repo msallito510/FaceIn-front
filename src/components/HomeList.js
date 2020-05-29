@@ -33,17 +33,10 @@ class HomeList extends Component {
 
 
   render() {
-    const { theme, user, changeTheme } = this.props;
+    const { theme, user } = this.props;
     return (
       <HomeImageBackground>
-        <TitleLh1>Barcelona</TitleLh1>
-        <button
-          onClick={changeTheme}
-          style={{
-            backgroundColor: theme.foreground,
-            color: theme.color,
-          }}
-        >changeTheme</button>
+        <TitleLh1>Barcelona</TitleLh1>       
         <HomeBackgroundDark color={theme}>
           <CardContainer>
             {user ? <StyledLinkDark to="/events">
@@ -54,7 +47,6 @@ class HomeList extends Component {
           <CardContainer>
             {user ? <StyledLinkDark to="/whatishot">
               <HomeWhatsHot />
-              {/* <BoldTitleCardLh1 color={this.state.color}>What´s hot</BoldTitleCardLh1> */}
               <BoldTitleCardLh1>What´s hot</BoldTitleCardLh1>
             </StyledLinkDark> : <div></div>}
           </CardContainer>

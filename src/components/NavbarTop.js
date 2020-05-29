@@ -2,15 +2,21 @@ import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
+
 import { MenuBarUlTop, MenuBarLiTop } from "../styles/menuStyle";
 import { BackArrow, LogOutIcon } from "../styles/icon-style";
-import "../styles/commonCustom.css";
+import styled from 'styled-components';
+
+const ThemeButton = styled.img`
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: 0;
+  right: 5em;
+`;
 
 class NavbarTop extends Component {
-  status: {
-    isChecked: "false"
-  }
-
+ 
   render() {
     const { location: { pathname }, history, user, handleLogout, theme, changeTheme } = this.props;
 
@@ -23,13 +29,10 @@ class NavbarTop extends Component {
               {user ? <button onClick={history.goBack}><BackArrow color={theme} /></button> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
-              {user ? <input className="toggle-theme" type="checkbox" id="theme" name="theme" onclick={changeTheme}
-                style={{
-                  backgroundColor: theme.foreground,
-                  color: theme.color,
-                }}
-
-              ></input> : <div></div>}
+            <button onClick={changeTheme}>
+              {theme.name === "light" ? <ThemeButton src="/icons/moon.svg" alt="light"/> : 
+              <ThemeButton src="/icons/sun.svg" alt="dark"/>}
+            </button>
             </MenuBarLiTop>
             <MenuBarLiTop>
               {user ? <button onClick={handleLogout}><LogOutIcon color={theme} /></button> : <div></div>}
