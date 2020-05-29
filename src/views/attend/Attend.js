@@ -4,9 +4,8 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
-
+import { Link } from "react-router-dom";
 import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
-
 import { TitleH1, GeneralContainer } from "../../styles/commonStyle";
 
 class Attend extends Component {
@@ -36,7 +35,7 @@ class Attend extends Component {
 
     return (
       <GeneralContainer>
-        <TitleH1>Social attend</TitleH1>
+        <TitleH1>Participants</TitleH1>
         {loading && <div>loading...</div>}
         <Table>
           <Thead>
@@ -49,10 +48,14 @@ class Attend extends Component {
             return (
               <tbody>
                 <tr>
-                  <Container div key={item.participant._id}>
+                  <Container key={item.participant._id}>
 
-                    <TdRight>{item.participant.username}</TdRight>
+                    <Link to={`/scan-face/${item._id}`}>
+                      <TdRight>{item.participant.username}
+                      </TdRight>
+                    </Link>
                     <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
+
                   </Container>
                 </tr>
               </tbody>

@@ -4,8 +4,8 @@ import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
-import { TitleDh1, FormWrapper, InputDark } from "../../styles/styledComponents";
-import { Submit } from "../../styles/commonStyle";
+import { FormWrapper, InputDark } from "../../styles/styledComponents";
+import { TitleH1, Submit } from "../../styles/commonStyle";
 
 class EditPlace extends Component {
   state = {
@@ -84,7 +84,7 @@ class EditPlace extends Component {
 
     return (
       <FormWrapper>
-        <TitleDh1>Edit a Place</TitleDh1>
+        <TitleH1 color={theme.color}>Edit a Place</TitleH1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Place name</label>

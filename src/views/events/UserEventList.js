@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
+
 import { toast } from 'react-toastify';
 import DateFormat from "../../components/DateFormat";
 import styled from 'styled-components';
 
 import eventService from "../../services/eventService";
 import {
-  TitleDh1,
   FormWrapper,
   SimpleContainerScroll,
-  LinkDivPrimary,
-  StyledLinkLight,
+  LinkContainer,
+  StyledLink,
   CardContainer,
   EventCardContainer,
   ContentEventCard,
   ContainerRow
 } from "../../styles/styledComponents";
 
-import { Button } from "../../styles/commonStyle";
+import { TitleH1, Button } from "../../styles/commonStyle";
 
 const TitleEditEvent = styled.h3`
   position: relative;
@@ -50,7 +50,7 @@ class UserEventList extends Component {
 
   async componentDidMount() {
     try {
-      const events = await eventService.getAllEventsByOwner()
+      const events = await eventService.getAllEventsByOwner();
 
       this.setState({
         events,
@@ -82,10 +82,11 @@ class UserEventList extends Component {
   render() {
     const { events, loading } = this.state;
     const { theme } = this.props;
+
     return (
       <FormWrapper>
         <SimpleContainerScroll>
-          <TitleDh1>user event</TitleDh1>
+          <TitleH1 color={theme.color}>User event list</TitleH1>
           {loading && <div>loading...</div>}
           {!loading && events.map((event) => {
             return (
@@ -99,9 +100,12 @@ class UserEventList extends Component {
                   </ContentEventCard>
 
                   <ContainerRow>
-                    <LinkDivPrimary>
-                      <StyledLinkLight to={`/event-edit/${event._id}`}>edit</StyledLinkLight>
-                    </LinkDivPrimary>
+                    <LinkContainer color={theme.color} background={theme.tertiaryButton}>
+                      <StyledLink to={`/attend/${event._id}`}>Members</StyledLink>
+                    </LinkContainer>
+                    <LinkContainer color={theme.color} background={theme.primaryButton}>
+                      <StyledLink to={`/event-edit/${event._id}`}>edit</StyledLink>
+                    </LinkContainer>
                     <div>
                       <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(event._id)} >
                         delete

@@ -37,11 +37,13 @@ import EditPlace from './views/places/EditPlace';
 import Rating from './views/places/PlaceRating';
 
 import Attend from './views/attend/Attend';
+import ScanFace from './views/attend/ScanFace';
+
+import ReactWebcam from "./views/ReactWebcam";
 
 // error view
 import ErrorPage from "./views/ErrorPage";
 
-import ReactWebcam from "./views/ReactWebcam";
 
 class App extends Component {
   render() {
@@ -79,6 +81,7 @@ class App extends Component {
             <PrivateRoute exact path="/rating/:id" component={Rating} />
 
             <PrivateRoute exact path="/attend/:id" component={Attend} />
+            <PrivateRoute exact path="/scan-face/:id" component={ScanFace} />
 
             <PrivateRoute exact path="/react-webcam" component={ReactWebcam} />
 

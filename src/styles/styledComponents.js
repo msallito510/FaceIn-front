@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-export const TitleDh1 = styled.h1`
-  font-size: 1.7em;
-  text-align: center;
-  color: #1F1F1F;
-`;
-
 export const TitleLh1 = styled.h1`
   font-size: 1.7em;
   text-align: center;
@@ -137,13 +131,13 @@ export const ContinerAlineCenter = styled.div`
   align-items: center;
 `;
 
-export const LinkDivPrimary = styled.div`
+export const LinkContainer = styled.div`
   height: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #F57873;
-  color: #fff;
+  background:  ${ (props) => props.background};
+  color: ${ (props) => props.color};
   cursor: pointer;
   margin-bottom: 0;
   text-transform: uppercase;
@@ -158,35 +152,9 @@ export const LinkDivPrimary = styled.div`
   }
 `;
 
-export const LinkDivTertiary = styled.div`
-  height: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #fff;
-  color: #1F1F1F;
-  cursor: pointer;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  width: 6em;
-  border-radius: 5px;
-  box-shadow: 0px;
-  outline: none;
-  transition: 0.15s;
-  text-align: center;
-  &:active {
-    background-color: #f1ac15;
-  }
-`;
-
-export const StyledLinkDark = styled(Link)`
+export const StyledLink = styled(Link)`
   text-decoration: none !important;
   color: #1F1F1F
-`;
-
-export const StyledLinkLight = styled(Link)`
-  text-decoration: none !important;
-  color:#fff;
 `;
 
 export const CardContainer = styled.div`

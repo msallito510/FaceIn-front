@@ -7,13 +7,13 @@ import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 
 import {
-  TitleDh1,
   FormWrapper,
   InputDark
 } from "../../styles/styledComponents";
 
 import {
-  Submit
+  Submit,
+  TitleH1
 } from "../../styles/commonStyle";
 
 class AddEvent extends Component {
@@ -109,9 +109,12 @@ class AddEvent extends Component {
       tags,
       loading
     } = this.state;
+
+    const { theme } = this.props;
+
     return (
       <FormWrapper>
-        <TitleDh1>Add a Event</TitleDh1>
+        <TitleH1 color={theme.color}>Add a Event</TitleH1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="title">Title</label>

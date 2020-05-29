@@ -15,9 +15,8 @@ import {
   // CommentContainer,
   ContainerRow,
 
-  LinkDivPrimary,
-  LinkDivTertiary,
-  StyledLinkLight,
+  LinkContainer,
+  StyledLink,
   // CommentsContainer,
   // GeneralContainer
 
@@ -125,18 +124,18 @@ class PlaceDetail extends Component {
         <CommentsContainer>
           {isOwner ?
             <div>
-              <LinkDivPrimary>
-                <StyledLinkLight to={`/place-edit/${place._id}`}>edit</StyledLinkLight>
-              </LinkDivPrimary>
+              <LinkContainer color={theme.color} background={theme.background}>
+                <StyledLink to={`/place-edit/${place._id}`}>edit</StyledLink>
+              </LinkContainer>
               <div>
                 <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(place)} >
                   delete
                 </Button>
               </div>
             </div> :
-            <LinkDivTertiary>
+            <LinkContainer color={theme.color} background={theme.background}>
               <Link to={`/rating/${place._id}`}>Rating</Link>
-            </LinkDivTertiary>
+            </LinkContainer>
 
           }
         </CommentsContainer>

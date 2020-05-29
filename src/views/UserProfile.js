@@ -14,7 +14,7 @@ import {
   // SecondaryWrapperRight,
   // PhotoProfile,
   // PhotoContainer,
-  StyledLinkDark,
+  StyledLink,
   UserProfileLabelContent
 } from "../styles/styledComponents";
 import { TitleH1, TitleH2, TitleH3 } from "../styles/commonStyle";
@@ -124,9 +124,9 @@ const UserProfile = ({ user, theme }) => {
           <UserCard user={user} />
         </PhotoProfile>
         <div>
-          <StyledLinkDark to="/react-webcam">
+          <StyledLink to="/react-webcam">
             <CameraIcon />
-          </StyledLinkDark>
+          </StyledLink>
         </div>
       </PhotoContainer>
       <ProfileBackground background={theme.background}>
@@ -134,30 +134,30 @@ const UserProfile = ({ user, theme }) => {
           <TitleH2 color={theme.color}>Event</TitleH2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLinkDark to="/add-event" user={user._id}>
+              {user ? <StyledLink to="/add-event" user={user._id}>
                 <UserProfileLabelContent>
                   <TitleH3 color={theme.color}>Add</TitleH3>
                   <PlusCircleIcon color={theme.color} />
                 </UserProfileLabelContent>
-              </StyledLinkDark> : <div></div>}
+              </StyledLink> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLinkDark to="/user-events" user={user}>
+              {user ? <StyledLink to="/user-events" user={user}>
                 <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Edit</TitleH3>
+                  <TitleH3 color={theme.color}>List</TitleH3>
                   <EditIcon color={theme.color} />
                 </UserProfileLabelContent>
-              </StyledLinkDark> : <div></div>}
+              </StyledLink> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
 
-              {user ? <StyledLinkDark to="/attend" user={user}>
+              {user ? <StyledLink to="/attend" user={user}>
 
                 <UserProfileLabelContent>
                   <TitleH3 color={theme.color}>Attend</TitleH3>
                   <PlayCircleIcon color={theme.color} />
                 </UserProfileLabelContent>
-              </StyledLinkDark> : <div></div>}
+              </StyledLink> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperLeft>
@@ -165,20 +165,20 @@ const UserProfile = ({ user, theme }) => {
           <TitleH2 color={theme.color}>Place</TitleH2>
           <UserProfileBarUl>
             <MenuBarLi>
-              {user ? <StyledLinkDark to="/add-place">
+              {user ? <StyledLink to="/add-place">
                 <UserProfileLabelContent>
                   <TitleH3 color={theme.color}>Add</TitleH3>
                   <PlusCircleIcon color={theme.color} />
                 </UserProfileLabelContent>
-              </StyledLinkDark> : <div></div>}
+              </StyledLink> : <div></div>}
             </MenuBarLi>
             <MenuBarLi>
-              {user ? <StyledLinkDark to={`/places/${user.hasPlace}`}>
+              {user ? <StyledLink to={`/places/${user.hasPlace}`}>
                 <UserProfileLabelContent>
                   <TitleH3 color={theme.color}>Edit</TitleH3>
                   <EditIcon color={theme.color} />
                 </UserProfileLabelContent>
-              </StyledLinkDark> : <div></div>}
+              </StyledLink> : <div></div>}
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperRight>

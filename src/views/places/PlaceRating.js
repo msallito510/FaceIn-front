@@ -5,12 +5,12 @@ import placeService from "../../services/placeService";
 import { toast } from 'react-toastify';
 
 import {
-  TitleDh1,
   FormWrapper,
   InputDark
 } from "../../styles/styledComponents";
 
 import {
+  TitleH1,
   Submit
 } from "../../styles/commonStyle";
 
@@ -52,10 +52,11 @@ class PlaceRating extends Component {
 
   render() {
     const { title, description, rating } = this.state;
+    const { theme } = this.props;
 
     return (
       <FormWrapper>
-        <TitleDh1>Add a comment</TitleDh1>
+        <TitleH1 color={theme.color}>Add a comment</TitleH1>
         <div>
           <label htmlFor="name">Title</label>
           <InputDark

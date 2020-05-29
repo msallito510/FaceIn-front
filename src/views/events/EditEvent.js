@@ -8,12 +8,12 @@ import { toast } from 'react-toastify';
 // import { Image } from 'cloudinary-react';
 
 import {
-  TitleDh1,
   FormWrapper,
   InputDark
 } from "../../styles/styledComponents";
 
 import {
+  TitleH1,
   Submit
 } from "../../styles/commonStyle";
 
@@ -154,9 +154,11 @@ class EditEvent extends Component {
       loading
     } = this.state;
 
+    const { theme } = this.props;
+
     return (
       <FormWrapper>
-        <TitleDh1>Edit a Event</TitleDh1>
+        <TitleH1 color={theme.color}>Edit a Event</TitleH1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Title</label>

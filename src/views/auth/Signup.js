@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import {
-  TitleDh1,
   EventCardWrapper,
   InputDark,
   ButtonPLeft,
@@ -11,7 +10,8 @@ import {
 } from "../../styles/styledComponents";
 
 import {
-  Submit
+  Submit,
+  TitleH1
 } from "../../styles/commonStyle";
 
 import { toast } from 'react-toastify';
@@ -57,7 +57,7 @@ class Signup extends Component {
 
     return (
       <EventCardWrapper>
-        <TitleDh1>Sign up</TitleDh1>
+        <TitleH1 color={theme.color}>Sign up</TitleH1>
         <form onSubmit={this.handleFormSubmit}>
           <InputDark
             type="text"
