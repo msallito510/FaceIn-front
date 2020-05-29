@@ -6,7 +6,7 @@ import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
 
 import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
-import { TitleDh1 } from "../../styles/styledComponents";
+
 import { TitleH1, GeneralContainer } from "../../styles/commonStyle";
 
 class Attend extends Component {
@@ -36,7 +36,7 @@ class Attend extends Component {
 
     return (
       <GeneralContainer>
-        <TitleDh1>Social attend</TitleDh1>
+        <TitleH1>Social attend</TitleH1>
         {loading && <div>loading...</div>}
         <Table>
           <Thead>

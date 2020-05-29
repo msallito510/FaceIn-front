@@ -52,7 +52,7 @@ export default class AuthProvider extends Component {
           isLoading: false,
           user,
         });
-        console.log('whoami', user);
+        // console.log('whoami', user);
       })
       .catch((error) => {
         this.setState({

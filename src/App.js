@@ -46,7 +46,7 @@ import ReactWebcam from "./views/ReactWebcam";
 class App extends Component {
   render() {
     return (
-      <>
+      <div>
         <ToastContainer
           autoClose={2000}
           position="top-right"
@@ -85,7 +85,7 @@ class App extends Component {
             <Route path="*" component={ErrorPage} />
           </Switch>
         </Router>
-      </>
+      </div>
     );
   }
 }

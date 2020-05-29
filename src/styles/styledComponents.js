@@ -316,37 +316,10 @@ export const HeaderBackground = styled.div`
   position: absolute;
 `;
 
-
-export const PhotoContainer = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-	align-items: center;
-`;
-
-export const PhotoProfile = styled.div`  
-  display: flex;  
-  justify-content: center;
-  align-items: center;
-  height: 10em;
-  background: #fff;
-  width: 10em;
-  border-radius: 50%;
-`;
-
 export const UserProfileLabelContent = styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: start;
-`;
-
-export const HeaderUserProfile = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding-left: 5em;
 `;
 
 export const ContainerRow = styled.div`

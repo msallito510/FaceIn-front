@@ -2,24 +2,33 @@ import React from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import styled from 'styled-components';
-import ReactWebcam from "./ReactWebcam";
+import UserCard from './UserCard';
 
 import {
   // TitleLh1,
   // TitleDh2,
   // TitleDh3,
-  HeaderBackground,
+  // HeaderBackground,
   // ProfileBackground,
   // SecondaryWrapperLeft,
   // SecondaryWrapperRight,
-  PhotoProfile,
-  PhotoContainer,
+  // PhotoProfile,
+  // PhotoContainer,
   StyledLinkDark,
-  UserProfileLabelContent,
-  HeaderUserProfile
+  UserProfileLabelContent
 } from "../styles/styledComponents";
 import { TitleH1, TitleH2, TitleH3 } from "../styles/commonStyle";
 import { PlusCircleIcon, EditIcon, PlayCircleIcon, CameraIcon } from "../styles/icon-style";
+
+const UserHeaderBackground = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  background: #61637B;
+  width: 100%;
+  height: 25em;
+  ackground-size: cover;
+`;
 
 const UserProfileBarUl = styled.ul`
 osition: relative;
@@ -49,8 +58,8 @@ const ProfileBackground = styled.div`
   background: ${ (props) => props.background};
   overflow: hidden;
   overflow-y:scroll;
-  bottom:-25.5em;
-  top: 20rem;
+  bottom:0;
+  top: 23rem;
   position: absolute;
   width: 100%;
   padding: 1em 0 2em;
@@ -82,22 +91,43 @@ const SecondaryWrapperRight = styled.section`
   box-shadow: 8px 8px 50px #000;
 `;
 
+const PhotoContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+`;
+
+const PhotoProfile = styled.div`  
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 10em;
+  padding:2em;
+  .user-img{
+    border-radius: 50%;
+  }
+`;
+
 const UserProfile = ({ user, theme }) => {
 
 
   return (
-    <HeaderBackground>
-      <HeaderUserProfile>
-        <div>
-          <TitleH1>{user.username}'s profile</TitleH1>
-        </div>
-      </HeaderUserProfile>
+    <UserHeaderBackground>
+      <div>
+        <TitleH1>{user.username}'s profile</TitleH1>
+      </div>
       <PhotoContainer>
         <PhotoProfile>
+          <UserCard user={user} />
+        </PhotoProfile>
+        <div>
           <StyledLinkDark to="/react-webcam">
             <CameraIcon />
           </StyledLinkDark>
-        </PhotoProfile>
+        </div>
       </PhotoContainer>
       <ProfileBackground background={theme.background}>
         <SecondaryWrapperLeft backgroundTwo={theme.backgroundTwo}>
@@ -152,11 +182,8 @@ const UserProfile = ({ user, theme }) => {
             </MenuBarLi>
           </UserProfileBarUl>
         </SecondaryWrapperRight>
-        <div>
-          <ReactWebcam />
-        </div>
       </ProfileBackground>
-    </HeaderBackground>
+    </UserHeaderBackground>
   );
 };
 
