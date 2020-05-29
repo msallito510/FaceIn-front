@@ -56,11 +56,16 @@ export default class ThemeProvider extends Component {
 
   };
 
+  componentDidMount() {
+    this.setState({
+      theme: this.state.theme.name === "dark" ? themes.light : themes.dark,
+    });
+  }
+
   changeTheme = () => {
     this.setState({
       theme: this.state.theme.name === "dark" ? themes.light : themes.dark,
     });
-
   };
 
   render() {

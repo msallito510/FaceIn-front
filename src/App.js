@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.min.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 import { withAuth } from './context/authContext';
 import { withTheme } from './context/themeContext';
@@ -48,8 +48,8 @@ class App extends Component {
     return (
       <>
         <ToastContainer
-          autoClose={1000}
-          position="top-center"
+          autoClose={2000}
+          position="top-right"
           className="toast-container"
           toastClassName="dark-toast"
         />

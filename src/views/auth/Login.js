@@ -15,7 +15,6 @@ import {
 } from "../../styles/commonStyle";
 
 import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   state = {
@@ -34,7 +33,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     if (username === "" || password === "") {
-      toast.error("I'd love it if add a name and password");
+      toast.error("Add a name and password");
 
     } else {
       try {
@@ -49,14 +48,6 @@ class Login extends Component {
 
     }
   };
-
-  // call it?
-  // cleanForm = () => {
-  //   this.setState({
-  //     username: "",
-  //     password: "",
-  //   });
-  // };
 
   render() {
     const { username, password } = this.state;
