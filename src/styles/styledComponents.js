@@ -229,11 +229,10 @@ export const HomeUserLikes = styled.div`
 `;
 
 export const ContentEventCard = styled.div`
-  ${'' /* background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976874/face-in/go-party-like-a-vip-in-barcelona-party-955x508_fhikm8.jpg'); */}
+  background-image: url(${ (props) => props.image});
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  background: #9599C5;
+  align-items: flex-start; 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
