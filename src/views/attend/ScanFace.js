@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Webcam from 'react-webcam';
-import userService from '../services/userService';
+import participantService from '../../services/participantService';
 import { Link } from "react-router-dom";
-import { withAuth } from "../context/authContext";
-import { withTheme } from "../context/themeContext";
+import { withAuth } from "../../context/authContext";
+import { withTheme } from "../../context/themeContext";
 import { Base64 } from 'js-base64';
-import UserCard from './UserCard';
+// import UserCard from '../UserCard';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 
-import { GeneralContainer, Button, TitleH1 } from "../styles/commonStyle";
+import { GeneralContainer, Button, TitleH1 } from "../../styles/commonStyle";
 
 const HeaderWebCam = styled.div`
   display: flex;
@@ -39,82 +39,89 @@ const UserPhotoTitleH2 = styled.h2`
   color: #1F1F1F;
 `;
 
-class ReactWebcam extends Component {
+class ScanFace extends Component {
   state = {
     loading: true,
     imgSrc: null,
-    user: {},
-    userId: "",
-    userPhoto: "",
+    participant: {},
+    participantPhoto: "",
   };
 
   webcamRef = React.createRef();
   async componentDidMount() {
-    const { user } = this.props;
-    const userId = user._id;
-    try {
-      const user = await userService.getUserById(userId)
-      if (user.imageCam) {
-        const userPhotoBase64 = await userService.getProfilePhoto(userId)
+    const { match: { params: { id } } } = this.props;
 
-        const userPhoto = await Base64.decode(userPhotoBase64);
-        this.setState({
-          userPhoto,
-        })
-      }
+    try {
+      const participant = await participantService.getParticipantById(id);
+
       this.setState({
-        user,
-        userId,
+        participant,
+        // participantId,
         loading: false,
       })
     } catch (error) {
       console.log(error);
       this.setState({
         loading: false,
-      })
+      });
     }
   }
+
   capture = () => {
     const imgSrc = this.webcamRef.current.getScreenshot();
     this.setState({
       imgSrc,
-    })
+    });
   }
-  handleSubmit = (e) => {
+
+  handleSubmit = async (e) => {
     e.preventDefault();
     const { history: { push } } = this.props;
-    const { imgSrc, userId } = this.state;
+    const { imgSrc, participant } = this.state;
 
-    userService
-      .addProfilePhoto(imgSrc, userId)
-      .then(() => { toast.success('📸 your photo has been stored'); })
-      .then(() => {
-        push(`/user-profile`)
-      })
-      .catch(error => console.log(error))
+    try {
+      const isFaceMatched = await participantService.faceMatch(imgSrc, participant._id);
+
+      if (isFaceMatched) {
+        toast.success('🎉 yay! you have been recognized by Face-in 🥳');
+      } else {
+        toast.error('you have not recognized by Face-in. Try again');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    if (participant.imageCamParticipant) {
+      const participantPhotoBase64 = await participantService.getParticipantPhoto(participant._id);
+
+      const participantPhoto = await Base64.decode(participantPhotoBase64);
+
+      this.setState({
+        participantPhoto,
+      });
+    }
   };
 
   render() {
-    const { loading, imgSrc } = this.state;
-    const { user, theme } = this.props;
+    const { participant, loading, imgSrc } = this.state;
+    const { theme } = this.props;
 
     const videoConstraints = {
       width: 200,
       height: 200,
-      facingMode: "user"
+      facingMode: "participant"
     };
 
     return (
       <HeaderWebCam>
-        <TitleH1>Profile photo</TitleH1>
+        <TitleH1>Scan participant face</TitleH1>
         {loading && <div>Loading...</div>}
         {!loading && (
           <GeneralContainer>
             <UserPhotoContainer>
-              <UserPhotoTitleH2>Current user photo profile</UserPhotoTitleH2>
-              <UserCard user={user} />
 
-              <UserPhotoTitleH2>Take a new picture</UserPhotoTitleH2>
+
+              <UserPhotoTitleH2>Take a picture</UserPhotoTitleH2>
               <Webcam
                 audio={false}
                 ref={this.webcamRef}
@@ -127,11 +134,11 @@ class ReactWebcam extends Component {
             </Button>
               {imgSrc && (
                 <div>
-                  <UserPhotoTitleH2>New picture</UserPhotoTitleH2>
+                  <UserPhotoTitleH2>Scan</UserPhotoTitleH2>
                   <img src={imgSrc} alt="source pic" />
                   <Button color={theme.color} background={theme.secundaryButton} onClick={this.handleSubmit}>
-                    Send photo
-                </Button>
+                    Send to scan
+                  </Button>
                   <Button color={theme.color}>
                     <Link to={"/user-profile"}>
                       <p>Cancel</p>
@@ -139,6 +146,9 @@ class ReactWebcam extends Component {
                   </Button>
                 </div>
               )}
+
+              {/* <UserPhotoTitleH2>Current user photo profile</UserPhotoTitleH2> */}
+              {/* <UserCard user={user} /> */}
             </UserPhotoContainer>
           </GeneralContainer>
         )}
@@ -146,4 +156,4 @@ class ReactWebcam extends Component {
     );
   }
 }
-export default withAuth(withTheme(ReactWebcam));
+export default withAuth(withTheme(ScanFace));

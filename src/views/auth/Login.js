@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import {
-  TitleDh1,
   EventCardWrapper,
   InputDark,
   ButtonPLeft,
@@ -11,11 +10,11 @@ import {
 } from "../../styles/styledComponents";
 
 import {
-  Submit
+  Submit,
+  TitleH1
 } from "../../styles/commonStyle";
 
 import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   state = {
@@ -34,7 +33,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     if (username === "" || password === "") {
-      toast.error("I'd love it if add a name and password");
+      toast.error("Add a name and password");
 
     } else {
       try {
@@ -50,19 +49,13 @@ class Login extends Component {
     }
   };
 
-  // call it?
-  // cleanForm = () => {
-  //   this.setState({
-  //     username: "",
-  //     password: "",
-  //   });
-  // };
-
   render() {
     const { username, password } = this.state;
+    const { theme } = this.props;
+
     return (
       <EventCardWrapper>
-        <TitleDh1>Login</TitleDh1>
+        <TitleH1 color={theme.color}>Login</TitleH1>
         <form onSubmit={this.handleFormSubmit}>
 
           <InputDark
@@ -81,7 +74,7 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="password"
           />
-          <Submit type="submit" value="Login" />
+          <Submit color={theme.color} background={theme.primaryButton} type="submit" value="Login" />
 
         </form>
         <ButtonPLeft>

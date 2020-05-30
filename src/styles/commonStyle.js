@@ -22,7 +22,7 @@ export const GeneralBackground = styled.div`
 export const TitleH1 = styled.h1`
   font-size: 1.7em;
   text-align: center;
-  color: #F9F9F9;
+  color: ${props => props.color};
 `;
 
 export const TitleH2 = styled.h2`

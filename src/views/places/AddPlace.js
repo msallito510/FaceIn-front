@@ -5,12 +5,12 @@ import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
 import {
-  TitleDh1,
   FormWrapper,
   InputDark
 } from "../../styles/styledComponents";
 
 import {
+  TitleH1,
   Submit
 } from "../../styles/commonStyle";
 
@@ -82,9 +82,12 @@ class AddPlace extends Component {
       country,
       loading
     } = this.state;
+
+    const { theme } = this.props;
+
     return (
       <FormWrapper>
-        <TitleDh1>Add a Place</TitleDh1>
+        <TitleH1 color={theme.color}>Add a Place</TitleH1>
         {loading && <div>loading...</div>}
         <div>
           <label htmlFor="name">Place name</label>

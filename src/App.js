@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.min.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 import { withAuth } from './context/authContext';
 import { withTheme } from './context/themeContext';
@@ -37,19 +37,21 @@ import EditPlace from './views/places/EditPlace';
 import Rating from './views/places/PlaceRating';
 
 import Attend from './views/attend/Attend';
+import ScanFace from './views/attend/ScanFace';
+
+import ReactWebcam from "./views/ReactWebcam";
 
 // error view
 import ErrorPage from "./views/ErrorPage";
 
-import ReactWebcam from "./views/ReactWebcam";
 
 class App extends Component {
   render() {
     return (
-      <>
+      <div>
         <ToastContainer
-          autoClose={1000}
-          position="top-center"
+          autoClose={2000}
+          position="top-right"
           className="toast-container"
           toastClassName="dark-toast"
         />
@@ -79,13 +81,14 @@ class App extends Component {
             <PrivateRoute exact path="/rating/:id" component={Rating} />
 
             <PrivateRoute exact path="/attend/:id" component={Attend} />
+            <PrivateRoute exact path="/scan-face/:id" component={ScanFace} />
 
             <PrivateRoute exact path="/react-webcam" component={ReactWebcam} />
 
             <Route path="*" component={ErrorPage} />
           </Switch>
         </Router>
-      </>
+      </div>
     );
   }
 }
