@@ -14,7 +14,8 @@ import {
 
 import {
   Submit,
-  TitleH1
+  TitleH1,
+  LoadingContainer
 } from "../../styles/commonStyle";
 
 class AddEvent extends Component {
@@ -116,7 +117,7 @@ class AddEvent extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a Event</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="title">Title</label>
           <InputDark

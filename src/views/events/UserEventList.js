@@ -19,7 +19,11 @@ import {
   ContainerRow
 } from "../../styles/styledComponents";
 
-import { TitleH1, Button } from "../../styles/commonStyle";
+import {
+  TitleH1,
+  Button,
+  LoadingContainer
+} from "../../styles/commonStyle";
 
 const TitleEditEvent = styled.h3`
   position: relative;
@@ -88,7 +92,7 @@ class UserEventList extends Component {
       <FormWrapper>
         <SimpleContainerScroll>
           <TitleH1 color={theme.color}>User event list</TitleH1>
-          {loading && <DualRing />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>

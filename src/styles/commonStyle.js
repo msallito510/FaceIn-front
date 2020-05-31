@@ -82,3 +82,12 @@ export const Button = styled.button`
     background-color: #f1ac15;
   }
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+`;

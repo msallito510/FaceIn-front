@@ -12,7 +12,8 @@ import {
 
 import {
   TitleH1,
-  Submit
+  Submit,
+  LoadingContainer
 } from "../../styles/commonStyle";
 
 class AddPlace extends Component {
@@ -89,7 +90,7 @@ class AddPlace extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a Place</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="name">Place name</label>
           <InputDark

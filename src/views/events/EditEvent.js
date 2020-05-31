@@ -15,7 +15,8 @@ import {
 
 import {
   TitleH1,
-  Submit
+  Submit,
+  LoadingContainer
 } from "../../styles/commonStyle";
 
 class EditEvent extends Component {
@@ -160,7 +161,7 @@ class EditEvent extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Event</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="name">Title</label>
           <InputDark

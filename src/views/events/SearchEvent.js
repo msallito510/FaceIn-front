@@ -19,6 +19,8 @@ import {
   StyledLink
 } from "../../styles/styledComponents";
 
+import { LoadingContainer } from "../../styles/commonStyle";
+
 class SearchEvent extends Component {
   state = {
     events: [],
@@ -58,7 +60,7 @@ class SearchEvent extends Component {
       <div>
         <HeaderBackground>
           <TitleLh1>Search</TitleLh1>
-          {loading && <DualRing />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           <SearchBar onChange={this.handleFilter} />
         </HeaderBackground>
 

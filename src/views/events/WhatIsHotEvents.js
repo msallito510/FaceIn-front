@@ -16,7 +16,7 @@ import {
   TimeEventCardLh3
 } from "../../styles/styledComponents";
 
-import { GeneralBackground } from "../../styles/commonStyle";
+import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class WhatIsHotEvents extends Component {
   state = {
@@ -51,7 +51,7 @@ class WhatIsHotEvents extends Component {
           <TitleEventsLh1>Most popular events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <DualRing />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>
