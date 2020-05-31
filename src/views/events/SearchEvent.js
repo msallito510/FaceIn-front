@@ -5,6 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import SearchBar from "../../components/SearchBar";
 import DateFormat from "../../components/DateFormat";
+import { DualRing } from 'react-awesome-spinners';
 
 import {
   TitleLh1,
@@ -57,7 +58,7 @@ class SearchEvent extends Component {
       <div>
         <HeaderBackground>
           <TitleLh1>Search</TitleLh1>
-          {loading && <div>loading...</div>}
+          {loading && <DualRing />}
           <SearchBar onChange={this.handleFilter} />
         </HeaderBackground>
 

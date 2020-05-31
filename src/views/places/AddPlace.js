@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 
 import placeService from "../../services/placeService";
 import {
@@ -88,7 +89,7 @@ class AddPlace extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a Place</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         <div>
           <label htmlFor="name">Place name</label>
           <InputDark

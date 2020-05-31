@@ -4,6 +4,7 @@ import userService from '../services/userService';
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { Base64 } from 'js-base64';
+import { DualRing } from 'react-awesome-spinners';
 
 class UserCard extends Component {
   state = {
@@ -48,7 +49,7 @@ class UserCard extends Component {
     };
     return (
       <div>
-        {loading && <div>Loading...</div>}
+        {loading && <DualRing />}
         {!loading && (
           <div>
             {userPhoto ? <img className="user-img" src={userPhoto} styles={styles} alt="user pic" /> : <div></div>}

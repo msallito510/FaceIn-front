@@ -8,6 +8,7 @@ import { Base64 } from 'js-base64';
 import UserCard from '../components/UserCard';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 
 import { GeneralContainer, Button, TitleH1 } from "../styles/commonStyle";
 
@@ -106,7 +107,7 @@ class ReactWebcam extends Component {
     return (
       <HeaderWebCam>
         <TitleH1>Profile photo</TitleH1>
-        {loading && <div>Loading...</div>}
+        {loading && <DualRing />}
         {!loading && (
           <GeneralContainer>
             <UserPhotoContainer>

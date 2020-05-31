@@ -6,6 +6,7 @@ import placeService from "../../services/placeService";
 import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
 import styled from 'styled-components';
+import { DualRing } from 'react-awesome-spinners';
 
 import {
   // TitleDh1,
@@ -100,7 +101,7 @@ class PlaceDetail extends Component {
     return (
       <GeneralContainer>
         <TitleH1 color={theme.color}>Place Detail</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         {!loading &&
           <FormWrapper>
             <div>

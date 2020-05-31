@@ -8,6 +8,7 @@ import { Base64 } from 'js-base64';
 // import UserCard from '../UserCard';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 
 import { GeneralContainer, Button, TitleH1 } from "../../styles/commonStyle";
 
@@ -76,7 +77,7 @@ class ScanFace extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { history: { push } } = this.props;
+    const { history } = this.props;
     const { imgSrc, participant } = this.state;
 
     try {
@@ -84,6 +85,7 @@ class ScanFace extends Component {
 
       if (isFaceMatched) {
         toast.success('🎉 yay! you have been recognized by Face-in 🥳');
+        history.goBack();
       } else {
         toast.error('you have not recognized by Face-in. Try again');
       }
@@ -103,7 +105,7 @@ class ScanFace extends Component {
   };
 
   render() {
-    const { participant, loading, imgSrc } = this.state;
+    const { loading, imgSrc } = this.state;
     const { theme } = this.props;
 
     const videoConstraints = {
@@ -115,7 +117,7 @@ class ScanFace extends Component {
     return (
       <HeaderWebCam>
         <TitleH1>Scan participant face</TitleH1>
-        {loading && <div>Loading...</div>}
+        {loading && <DualRing />}
         {!loading && (
           <GeneralContainer>
             <UserPhotoContainer>

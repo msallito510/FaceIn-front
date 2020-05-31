@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import placeService from "../../services/placeService";
 import { FormWrapper, InputDark } from "../../styles/styledComponents";
 import { TitleH1, Submit } from "../../styles/commonStyle";
+import { DualRing } from 'react-awesome-spinners';
 
 class EditPlace extends Component {
   state = {
@@ -85,7 +86,7 @@ class EditPlace extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Place</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         <div>
           <label htmlFor="name">Place name</label>
           <InputDark

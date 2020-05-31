@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
 import { TitleH1, GeneralContainer } from "../../styles/commonStyle";
+import { DualRing } from 'react-awesome-spinners';
 
 class Attend extends Component {
   state = {
@@ -36,7 +37,7 @@ class Attend extends Component {
     return (
       <GeneralContainer>
         <TitleH1>Participants</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         <Table>
           <Thead>
             <tr>

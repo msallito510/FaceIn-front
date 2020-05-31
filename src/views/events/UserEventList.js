@@ -5,6 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
 import DateFormat from "../../components/DateFormat";
 import styled from 'styled-components';
+import { DualRing } from 'react-awesome-spinners';
 
 import eventService from "../../services/eventService";
 import {
@@ -87,7 +88,7 @@ class UserEventList extends Component {
       <FormWrapper>
         <SimpleContainerScroll>
           <TitleH1 color={theme.color}>User event list</TitleH1>
-          {loading && <div>loading...</div>}
+          {loading && <DualRing />}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>

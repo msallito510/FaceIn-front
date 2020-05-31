@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import DateFormat from "../../components/DateFormat";
+import { DualRing } from 'react-awesome-spinners';
 
 import eventService from "../../services/eventService";
 import {
@@ -50,7 +51,7 @@ class WhatIsHotEvents extends Component {
           <TitleEventsLh1>Most popular events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <div>loading...</div>}
+          {loading && <DualRing />}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>

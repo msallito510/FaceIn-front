@@ -152,7 +152,7 @@ class EventCard extends Component {
           <DateFormat dateStart={dateStart} timeStart={timeStart} />
         </TimeInfoContainer>
         <TitleEventDetailH1>{title}</TitleEventDetailH1>
-        <TitleEventDetailH3>€ {price}</TitleEventDetailH3>
+        <TitleEventDetailH3>Price: {price}€</TitleEventDetailH3>
         <CardContainer>
           <SocialContainer>
             <TitleEventDetailH2>Social</TitleEventDetailH2>

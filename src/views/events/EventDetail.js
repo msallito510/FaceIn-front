@@ -5,6 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import EventCard from "../../components/EventCard";
 import styled, { keyframes } from 'styled-components';
+import { DualRing } from 'react-awesome-spinners';
 
 const keyFrameImage = keyframes`
   0% {
@@ -28,6 +29,12 @@ const EventImg = styled.div`
 
   animation: ${keyFrameImage} 20s 2;
   animation-delay: 2s;
+`;
+
+const LoadingContainer = styled.div`
+  position:relative;
+  top:10em;
+  left:10em;
 `;
 
 class EventDetail extends Component {
@@ -58,10 +65,9 @@ class EventDetail extends Component {
     return (
       <div>
         <EventImg image={event.image} />
-       
-        {loading && <div>loading...</div>}
-        {!loading && <EventCard event={event} user={user} />}
 
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        {!loading && <EventCard event={event} user={user} />}
       </div >
     );
   }

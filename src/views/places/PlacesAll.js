@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import placeService from "../../services/placeService";
+import { DualRing } from 'react-awesome-spinners';
 
 class PlacesAll extends Component {
   state = {
@@ -28,7 +29,7 @@ class PlacesAll extends Component {
     return (
       <div>
         <h1>PlacesAll</h1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         {!loading && places.map((place) => {
           return (
             <div key={place._id}>

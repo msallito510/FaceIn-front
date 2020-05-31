@@ -5,6 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
@@ -115,7 +116,7 @@ class AddEvent extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a Event</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         <div>
           <label htmlFor="title">Title</label>
           <InputDark

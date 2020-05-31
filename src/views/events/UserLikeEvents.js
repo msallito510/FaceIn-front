@@ -4,6 +4,8 @@ import { withTheme } from "../../context/themeContext";
 
 import userService from "../../services/userService";
 import UserCardList from "../../components/UserCardList";
+import { DualRing } from 'react-awesome-spinners';
+
 import {
   TitleEventsLh1,
   HeaderBackground,
@@ -47,7 +49,7 @@ class UserLikeEvents extends Component {
           <TitleEventsLh1>Events I like</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <div>loading...</div>}
+          {loading && <DualRing />}
           {!loading && <UserCardList user={user} />}
         </GeneralBackground>
       </div>

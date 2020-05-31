@@ -5,6 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 // import { Image } from 'cloudinary-react';
 
 import {
@@ -159,7 +160,7 @@ class EditEvent extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Event</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <DualRing />}
         <div>
           <label htmlFor="name">Title</label>
           <InputDark
