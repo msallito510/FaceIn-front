@@ -7,6 +7,8 @@ import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
 import styled from 'styled-components';
 import { DualRing } from 'react-awesome-spinners';
+import 'react-rater/lib/react-rater.css';
+import Rater from 'react-rater';
 
 import {
   // TitleDh1,
@@ -23,12 +25,11 @@ import {
 
 } from "../../styles/styledComponents";
 
-import { GeneralContainer, Button, LoadingContainer } from "../../styles/commonStyle";
+import { TitleH1, GeneralContainer, Button, LoadingContainer } from "../../styles/commonStyle";
 
-const TitleH1 = styled.h1`
-  font-size: 1.7em;
-  text-align: center;
-  color: ${props => props.color};
+const TitleH2 = styled.h1`
+  font-size: 1.2em;
+  font-style: italic;
 `;
 
 const CommentsBackground = styled.div`
@@ -57,6 +58,12 @@ const CommentContainer = styled.div`
   justify-content: center;
 	align-items: center;
   padding:2em;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 6em 1em;
 `;
 
 class PlaceDetail extends Component {
@@ -112,9 +119,13 @@ class PlaceDetail extends Component {
                 <TitleDh2Secundary>Comments</TitleDh2Secundary>
                 {ratings.map((rating) =>
                   <CommentContainer>
-                    <h2>{rating.title}</h2>
+                    <div>
+                      <TitleH2>{rating.title}</TitleH2>
+                      <Rater rating={rating.stars} total={5} interactive={false} />
+                      {/* {rating.stars} */}
+                    </div>
                     <p>{rating.description}</p>
-                    <p>stars - {rating.stars}</p>
+
                   </CommentContainer>
                 )}
               </ContainerRow>
@@ -124,8 +135,8 @@ class PlaceDetail extends Component {
 
         <CommentsContainer>
           {isOwner ?
-            <div>
-              <LinkContainer color={theme.color} background={theme.background}>
+            <ButtonsContainer>
+              <LinkContainer color={theme.color} background={theme.primaryButton}>
                 <StyledLink to={`/place-edit/${place._id}`}>edit</StyledLink>
               </LinkContainer>
               <div>
@@ -133,7 +144,7 @@ class PlaceDetail extends Component {
                   delete
                 </Button>
               </div>
-            </div> :
+            </ButtonsContainer> :
             <LinkContainer color={theme.color} background={theme.background}>
               <Link to={`/rating/${place._id}`}>Rating</Link>
             </LinkContainer>
