@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { InputLight, ContinerAlineCenter } from "../styles/styledComponents";
+import { Input, ContinerAlineCenter } from "../styles/styledComponents";
 
 export default class SearchBar extends Component {
   state = {
@@ -20,14 +20,14 @@ export default class SearchBar extends Component {
     return (
       <div>
         <ContinerAlineCenter>
-          <InputLight
+          <Input
             id="search"
             type="text"
             name="search"
             value={search}
             onChange={this.handleInput}
             placeholder="Search..."
-          ></InputLight>
+          ></Input>
           <span >
             <i aria-hidden="true"></i>
           </span>

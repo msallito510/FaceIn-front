@@ -6,6 +6,8 @@ import { withTheme } from "../context/themeContext";
 import { Base64 } from 'js-base64';
 import { DualRing } from 'react-awesome-spinners';
 
+import { LoadingContainer } from "../styles/commonStyle";
+
 class UserCard extends Component {
   state = {
     loading: true,
@@ -49,7 +51,7 @@ class UserCard extends Component {
     };
     return (
       <div>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading && (
           <div>
             {userPhoto ? <img className="user-img" src={userPhoto} styles={styles} alt="user pic" /> : <div></div>}

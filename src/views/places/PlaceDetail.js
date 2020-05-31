@@ -23,7 +23,7 @@ import {
 
 } from "../../styles/styledComponents";
 
-import { GeneralContainer, Button } from "../../styles/commonStyle";
+import { GeneralContainer, Button, LoadingContainer } from "../../styles/commonStyle";
 
 const TitleH1 = styled.h1`
   font-size: 1.7em;
@@ -101,7 +101,7 @@ class PlaceDetail extends Component {
     return (
       <GeneralContainer>
         <TitleH1 color={theme.color}>Place Detail</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading &&
           <FormWrapper>
             <div>

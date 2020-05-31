@@ -7,7 +7,7 @@ import { DualRing } from 'react-awesome-spinners';
 import placeService from "../../services/placeService";
 import {
   FormWrapper,
-  InputDark
+  Input
 } from "../../styles/styledComponents";
 
 import {
@@ -93,7 +93,7 @@ class AddPlace extends Component {
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="name">Place name</label>
-          <InputDark
+          <Input
             type="text"
             value={placeName}
             name="placeName"
@@ -102,7 +102,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Address</label>
-          <InputDark
+          <Input
             type="text"
             value={address}
             name="address"
@@ -111,7 +111,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">City</label>
-          <InputDark
+          <Input
             type="text"
             value={city}
             name="city"
@@ -120,7 +120,7 @@ class AddPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Country</label>
-          <InputDark
+          <Input
             type="text"
             value={country}
             name="country"

@@ -103,7 +103,7 @@ export const FormWrapper = styled.section`
   color: #000;  
 `;
 
-export const InputDark = styled.input`
+export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #ddd;
   border-radius: 6px;
@@ -112,17 +112,8 @@ export const InputDark = styled.input`
   font-size: 16px;
   opacity: 1;
   color: #61637B;
-`;
-
-export const InputLight = styled.input`
-  border: none;
-  border-bottom: 1px solid #dff;
-  border-radius: 6px;
-  outline: none;
-  height: 30px;
-  font-size: 16px;
-  opacity: 1;
-  color: #fff;
+  margin: 0.1em;
+  padding: 0 0 0 0.5em;
 `;
 
 export const ContinerAlineCenter = styled.div`

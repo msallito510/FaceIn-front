@@ -11,7 +11,7 @@ import {
   HeaderBackground,
 } from "../../styles/styledComponents";
 
-import { GeneralBackground } from "../../styles/commonStyle";
+import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class UserLikeEvents extends Component {
   state = {
@@ -49,7 +49,7 @@ class UserLikeEvents extends Component {
           <TitleEventsLh1>Events I like</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <DualRing />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && <UserCardList user={user} />}
         </GeneralBackground>
       </div>

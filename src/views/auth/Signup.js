@@ -4,7 +4,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import {
   EventCardWrapper,
-  InputDark,
+  Input,
   ButtonPLeft,
   Span
 } from "../../styles/styledComponents";
@@ -59,21 +59,21 @@ class Signup extends Component {
       <EventCardWrapper>
         <TitleH1 color={theme.color}>Sign up</TitleH1>
         <form onSubmit={this.handleFormSubmit}>
-          <InputDark
+          <Input
             type="text"
             name="username"
             value={username}
             onChange={this.handleChange}
             placeholder="username"
           />
-          <InputDark
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
             placeholder="password"
           />
-          <InputDark
+          <Input
             type="email"
             name="email"
             value={email}

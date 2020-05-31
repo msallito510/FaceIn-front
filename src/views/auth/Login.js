@@ -4,7 +4,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import {
   EventCardWrapper,
-  InputDark,
+  Input,
   ButtonPLeft,
   Span
 } from "../../styles/styledComponents";
@@ -41,7 +41,7 @@ class Login extends Component {
           username,
           password,
         });
-        toast.success('🦄 Welcome!');
+        toast.success(`🦄 Welcome! ${username}`);
       } catch (error) {
         toast.error('There was an ERROR!');
       }
@@ -58,7 +58,7 @@ class Login extends Component {
         <TitleH1 color={theme.color}>Login</TitleH1>
         <form onSubmit={this.handleFormSubmit}>
 
-          <InputDark
+          <Input
             type="text"
             name="username"
             id="username"
@@ -66,7 +66,7 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="username"
           />
-          <InputDark
+          <Input
             type="password"
             name="password"
             id="password"

@@ -4,8 +4,8 @@ import { withTheme } from "../../context/themeContext";
 import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
-import { FormWrapper, InputDark } from "../../styles/styledComponents";
-import { TitleH1, Submit } from "../../styles/commonStyle";
+import { FormWrapper, Input } from "../../styles/styledComponents";
+import { TitleH1, Submit, LoadingContainer } from "../../styles/commonStyle";
 import { DualRing } from 'react-awesome-spinners';
 
 class EditPlace extends Component {
@@ -86,10 +86,10 @@ class EditPlace extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Place</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="name">Place name</label>
-          <InputDark
+          <Input
             type="text"
             value={placeName}
             name="placeName"
@@ -98,7 +98,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Address</label>
-          <InputDark
+          <Input
             type="text"
             value={address}
             name="address"
@@ -107,7 +107,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">City</label>
-          <InputDark
+          <Input
             type="text"
             value={city}
             name="city"
@@ -116,7 +116,7 @@ class EditPlace extends Component {
         </div>
         <div>
           <label htmlFor="name">Country</label>
-          <InputDark
+          <Input
             type="text"
             value={country}
             name="country"

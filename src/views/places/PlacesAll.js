@@ -5,6 +5,8 @@ import { withTheme } from "../../context/themeContext";
 import placeService from "../../services/placeService";
 import { DualRing } from 'react-awesome-spinners';
 
+import { LoadingContainer } from "../../styles/commonStyle";
+
 class PlacesAll extends Component {
   state = {
     places: [],
@@ -29,7 +31,7 @@ class PlacesAll extends Component {
     return (
       <div>
         <h1>PlacesAll</h1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading && places.map((place) => {
           return (
             <div key={place._id}>

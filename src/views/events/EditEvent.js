@@ -10,7 +10,7 @@ import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
-  InputDark
+  Input
 } from "../../styles/styledComponents";
 
 import {
@@ -164,7 +164,7 @@ class EditEvent extends Component {
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="name">Title</label>
-          <InputDark
+          <Input
             type="text"
             value={title}
             name="title"
@@ -173,7 +173,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Description</label>
-          <InputDark
+          <Input
             type="text"
             value={description}
             name="description"
@@ -182,7 +182,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Frequency</label>
-          <InputDark
+          <Input
             type="text"
             value={frequency}
             name="frequency"
@@ -191,7 +191,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date Start</label>
-          <InputDark
+          <Input
             type="date"
             value={dateStart}
             name="dateStart"
@@ -200,7 +200,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Date End</label>
-          <InputDark
+          <Input
             type="date"
             value={dateEnd}
             name="dateEnd"
@@ -209,7 +209,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time Start</label>
-          <InputDark
+          <Input
             type="time"
             value={timeStart}
             name="timeStart"
@@ -218,7 +218,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <InputDark
+          <Input
             type="time"
             value={timeEnd}
             name="timeEnd"
@@ -227,7 +227,7 @@ class EditEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <InputDark
+          <Input
             type="number"
             value={price}
             name="price"

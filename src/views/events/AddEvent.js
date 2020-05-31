@@ -9,7 +9,7 @@ import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
-  InputDark
+  Input
 } from "../../styles/styledComponents";
 
 import {
@@ -120,7 +120,7 @@ class AddEvent extends Component {
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <div>
           <label htmlFor="title">Title</label>
-          <InputDark
+          <Input
             type="text"
             value={title}
             name="title"
@@ -129,7 +129,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="description">Description</label>
-          <InputDark
+          <Input
             type="text"
             value={description}
             name="description"
@@ -138,7 +138,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="frequency">Frequency</label>
-          <InputDark
+          <Input
             type="text"
             value={frequency}
             name="frequency"
@@ -147,7 +147,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="dateStart">Date Start</label>
-          <InputDark
+          <Input
             type="date"
             value={dateStart}
             name="dateStart"
@@ -156,7 +156,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="dateEnd">Date End</label>
-          <InputDark
+          <Input
             type="date"
             value={dateEnd}
             name="dateEnd"
@@ -165,7 +165,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="timeStart">Time Start</label>
-          <InputDark
+          <Input
             type="time"
             value={timeStart}
             name="timeStart"
@@ -174,7 +174,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="name">Time End</label>
-          <InputDark
+          <Input
             type="time"
             value={timeEnd}
             name="timeEnd"
@@ -183,7 +183,7 @@ class AddEvent extends Component {
         </div>
         <div>
           <label htmlFor="price">Price</label>
-          <InputDark
+          <Input
             type="number"
             value={price}
             name="price"

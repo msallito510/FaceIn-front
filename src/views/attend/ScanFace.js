@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
-import { GeneralContainer, Button, TitleH1 } from "../../styles/commonStyle";
+import { GeneralContainer, Button, TitleH1, LoadingContainer } from "../../styles/commonStyle";
 
 const HeaderWebCam = styled.div`
   display: flex;
@@ -117,7 +117,7 @@ class ScanFace extends Component {
     return (
       <HeaderWebCam>
         <TitleH1>Scan participant face</TitleH1>
-        {loading && <DualRing />}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading && (
           <GeneralContainer>
             <UserPhotoContainer>

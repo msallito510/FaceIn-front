@@ -16,7 +16,7 @@ import {
   TimeEventCardLh3
 } from "../../styles/styledComponents";
 
-import { GeneralBackground } from "../../styles/commonStyle";
+import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class Events extends Component {
   state = {
@@ -50,7 +50,7 @@ class Events extends Component {
           <TitleEventsLh1>All Events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <DualRing />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>
