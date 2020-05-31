@@ -56,7 +56,7 @@ class WhatIsHotEvents extends Component {
               <CardContainer key={event._id}>
                 <StyledLink to={`/events/${event._id}`}>
                   <EventCardContainer>
-                    <ContentEventCard>
+                    <ContentEventCard image={event.image}>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
                       <TimeEventCardLh3>
                         <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />

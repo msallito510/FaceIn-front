@@ -58,9 +58,7 @@ class EventDetail extends Component {
     return (
       <div>
         <EventImg image={event.image} />
-
-        {/* <img id="eventImg" src='https://res.cloudinary.com/marcesallito/image/upload/v1589976758/face-in/home-bcn_ifptga.jpg' alt="event" ></img> */}
-
+       
         {loading && <div>loading...</div>}
         {!loading && <EventCard event={event} user={user} />}
 

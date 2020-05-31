@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { Base64 } from 'js-base64';
-import UserCard from './UserCard';
+import UserCard from '../components/UserCard';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 
@@ -17,8 +17,7 @@ const HeaderWebCam = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 3em;
-  
+  margin: 3em;  
 `;
 
 const UserPhotoContainer = styled.div`

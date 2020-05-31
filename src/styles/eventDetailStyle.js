@@ -52,8 +52,11 @@ export const TimeInfoContainer = styled.h3`
 `;
 
 export const SocialTitle = styled.h2`
+  position: relative;
+  right: 1em;
   color: #2D9CDB;
   font-weight: bold;
+  padding: 0.5em 0 0;
 `;
 
 export const Paragraph = styled.p`
@@ -125,4 +128,19 @@ export const InfoMapPlaceContainer = styled.div`
   height: 22em;
   margin: 0.3em;
   padding:0.5em;
+`;
+
+export const SocialPhoto = styled.img`
+  padding: 0.5em 0 0;
+  width: 3em;
+  border-radius: 50%;
+`;
+
+export const SocialCounter = styled.p`
+    background: #2D9CDB;
+    height: 1em;
+    border-radius: 0.5em;
+    padding: 0 0.5em;
+    font-weight: bold;
+    color:#E3E5F3;
 `;

@@ -27,12 +27,13 @@ import {
   LikeButtonContainer,
   SocialContainer,
   InfoContainer,
-  InfoMapPlaceContainer
-
+  InfoMapPlaceContainer,
+  SocialPhoto,
+  SocialCounter
 
 } from "../styles/eventDetailStyle";
 
-import { CardContainer, ContainerRow } from "../styles/styledComponents"
+import { CardContainer, ContainerRow, StyledLink } from "../styles/styledComponents";
 
 import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
 
@@ -65,11 +66,10 @@ class EventCard extends Component {
     await eventService.attendEvent(_id)
       .then(() => {
         toast.success('Confirmed!');
-
       })
       .catch(error => {
         toast.error(`ERROR. Cannot be confirmed - ${error}`);
-      })
+      });
 
     this.renderButtonState();
     this.resetState();
@@ -137,7 +137,7 @@ class EventCard extends Component {
       dateStart,
       timeStart,
       price,
-      owner: { username },
+      owner: { username, imageTwo },
       participants,
       belongsToPlace,
     },
@@ -158,20 +158,30 @@ class EventCard extends Component {
             <TitleEventDetailH2>Social</TitleEventDetailH2>
             <ContainerRow>
               <div>
-                <Link to={`/attend/${eventId}`}>
+                <StyledLink to={`/attend/${eventId}`}>
                   <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
-                    {participants.slice(0, 2).map((item) =>
-                      <Paragraph>
-                        {item.participant.username}
-                      </Paragraph>)}
-                    {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
+                    {participants.slice(0, 2).map((item) => {
+                      return (<div>
+
+                        {item.participant.imageTwo ?
+                          <SocialPhoto src={item.participant.imageTwo} alt={item.participant.username} />
+                          : <Paragraph>{item.participant.username}</Paragraph>}
+                      </div>)
+                    })
+                    }
+                    {
+                      participants.length < 2 ? "" :
+                        <SocialCounter>+ {participants.length - 2}</SocialCounter>
+                    }
                   </ContainerRow>
-                </Link>
+                </StyledLink>
               </div>
               <div>
                 <SocialTitle>Owner</SocialTitle>
-                <Paragraph>{username}</Paragraph>
+                {imageTwo ? <SocialPhoto src={imageTwo} alt={imageTwo} /> :
+                  <Paragraph>{username}</Paragraph>
+                }
               </div>
             </ContainerRow>
           </SocialContainer>

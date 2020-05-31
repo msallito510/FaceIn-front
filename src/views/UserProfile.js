@@ -2,7 +2,7 @@ import React from "react";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import styled from 'styled-components';
-import UserCard from './UserCard';
+import UserCard from '../components/UserCard';
 
 import {
   // TitleLh1,
@@ -113,7 +113,6 @@ const PhotoProfile = styled.div`
 
 const UserProfile = ({ user, theme }) => {
 
-
   return (
     <UserHeaderBackground>
       <div>
@@ -121,7 +120,8 @@ const UserProfile = ({ user, theme }) => {
       </div>
       <PhotoContainer>
         <PhotoProfile>
-          <UserCard user={user} />
+          {user.imageTwo ? <UserCard user={user} /> :
+            <img className="user-img" src='/images/logo.jpeg' alt='default avatar' />}
         </PhotoProfile>
         <div>
           <StyledLink to="/react-webcam">

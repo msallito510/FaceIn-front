@@ -3,7 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import userService from "../../services/userService";
-import UserCard from "../../components/UserCard";
+import UserCardList from "../../components/UserCardList";
 import {
   TitleEventsLh1,
   HeaderBackground,
@@ -48,7 +48,7 @@ class UserLikeEvents extends Component {
         </HeaderBackground>
         <GeneralBackground background={theme}>
           {loading && <div>loading...</div>}
-          {!loading && <UserCard user={user} />}
+          {!loading && <UserCardList user={user} />}
         </GeneralBackground>
       </div>
     );
