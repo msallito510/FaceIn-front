@@ -3,6 +3,7 @@ import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 
 import eventService from "../services/eventService";
+import userService from "../services/userService";
 
 import PlaceCard from '../views/places/PlaceCard';
 import DateFormat from "../components/DateFormat";
@@ -37,10 +38,6 @@ import { CardContainer, ContainerRow, StyledLink } from "../styles/styledCompone
 
 import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
 
-const INIT_STATE = {
-  isLiked: "",
-  loading: true,
-};
 
 const MapReadOnly = styled.div`
   pointer-events: none;
@@ -49,10 +46,22 @@ const MapReadOnly = styled.div`
 class EventCard extends Component {
 
   state = {
-    ...INIT_STATE,
+    isLiked: false,
+    loading: true,
+    currentUser: "",
+    eventId: "",
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { event: { _id: eventId }, user: { _id: userId } } = this.props;
+
+    const currentUser = await userService.getUserById(userId);
+
+    this.setState({
+      currentUser,
+      eventId,
+    })
+
     this.handleSetState();
   }
 
@@ -76,43 +85,34 @@ class EventCard extends Component {
   };
 
   handleLike = async () => {
-    const { event: { _id } } = this.props;
+    const { eventId } = this.state;
     try {
-      await eventService.addLike(_id);
+      await eventService.addLike(eventId)
+        .then(() => {
+          this.handleSetState();
+        })
 
     } catch (error) {
       console.log(error);
     }
-    this.handleSetState();
+
   };
 
   renderButtonState = () => {
     this.refs.btn.setAttribute("disabled", "disabled");
   }
 
-  // renderIcon = () => {
-  //   return !!this.state.isLiked ? <EventHeartFilled /> : <EventAddLike />;
-  // }
+  handleSetState = async () => {
 
-  handleSetState = () => {
-    this.resetState();
-    const { event: { likes }, user: { _id: userId } } = this.props;
+    const { eventId } = this.state;
 
-    // const isLiked = likes.map((item) => item.likeGivenBy._id.toString() === userId.toString() ? true : false).filter(Boolean)[0];
-
-
-    // nIsLiked = likes.map((item) => {
-    //   if (item.likeGivenBy._id.toString() === userId.toString()) {
-    //     return true;
-    //   }
-    // }).filter(Boolean)[0];
+    const event = await eventService.getEventById(eventId)
 
     let givenLikeByUser = "";
 
-    givenLikeByUser = likes.find(item => item.likeGivenBy._id === userId)
-
-
-    // if (typeof nIsLiked === "boolean") {
+    if (this.state.currentUser !== "" && event.likes.length !== 0) {
+      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === this.state.currentUser._id)
+    }
 
     let isLiked = givenLikeByUser !== "" ? true : false;
 
@@ -121,13 +121,7 @@ class EventCard extends Component {
       loading: false
     })
 
-    this.resetState();
-    // }
   }
-
-  resetState = () => {
-    this.setState({ ...INIT_STATE });
-  };
 
   render() {
     const { event: {
@@ -143,7 +137,7 @@ class EventCard extends Component {
     },
       theme } = this.props;
 
-    const isLiked = this.state;
+    const { isLiked } = this.state;
     return (
 
       <EventDetailBackground background={theme}>
@@ -212,8 +206,10 @@ class EventCard extends Component {
 
         <LikeButtonContainer>
           <button onClick={this.handleLike}>
-            {/* {this.renderIcon()} */}
-            {!!isLiked ? <EventHeartFilled color={theme} /> : <EventAddLike color={theme} />}
+
+            {isLiked ?
+              <EventHeartFilled color={theme} /> :
+              <EventAddLike color={theme} />}
           </button>
         </LikeButtonContainer>
 

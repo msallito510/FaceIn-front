@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
-import { toast } from 'react-toastify';
 import DateFormat from "../../components/DateFormat";
 import styled from 'styled-components';
 import { DualRing } from 'react-awesome-spinners';
@@ -21,7 +20,6 @@ import {
 
 import {
   TitleH1,
-  Button,
   LoadingContainer
 } from "../../styles/commonStyle";
 
