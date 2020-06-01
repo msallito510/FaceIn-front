@@ -6,7 +6,6 @@ import eventService from "../../services/eventService";
 import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
-// import { Image } from 'cloudinary-react';
 
 import {
   FormWrapper,
@@ -16,8 +15,12 @@ import {
 import {
   TitleH1,
   Submit,
-  LoadingContainer
+  LoadingContainer,
+  PlaceContainerAlign,
+  PlaceContainer,
+  Label
 } from "../../styles/commonStyle";
+
 
 class EditEvent extends Component {
   state = {
@@ -152,7 +155,7 @@ class EditEvent extends Component {
       timeEnd,
       price,
       imageName,
-      tags,
+      // tags,
       loading
     } = this.state;
 
@@ -162,80 +165,84 @@ class EditEvent extends Component {
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Event</TitleH1>
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        <PlaceContainer>
+          <PlaceContainerAlign>
+            <div>
+              <Label color={theme.color}>Title</Label>
+              <Input
+                type="text"
+                value={title}
+                name="title"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Description</Label>
+              <Input
+                type="text"
+                value={description}
+                name="description"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Frequency</Label>
+              <Input
+                type="text"
+                value={frequency}
+                name="frequency"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Date Start</Label>
+              <Input
+                type="date"
+                value={dateStart}
+                name="dateStart"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Date End</Label>
+              <Input
+                type="date"
+                value={dateEnd}
+                name="dateEnd"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time Start</Label>
+              <Input
+                type="time"
+                value={timeStart}
+                name="timeStart"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time End</Label>
+              <Input
+                type="time"
+                value={timeEnd}
+                name="timeEnd"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time End</Label>
+              <Input
+                type="number"
+                value={price}
+                name="price"
+                onChange={this.handleInput}
+              />
+            </div>
+          </PlaceContainerAlign>
+        </PlaceContainer>
         <div>
-          <label htmlFor="name">Title</label>
-          <Input
-            type="text"
-            value={title}
-            name="title"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Description</label>
-          <Input
-            type="text"
-            value={description}
-            name="description"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Frequency</label>
-          <Input
-            type="text"
-            value={frequency}
-            name="frequency"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Date Start</label>
-          <Input
-            type="date"
-            value={dateStart}
-            name="dateStart"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Date End</label>
-          <Input
-            type="date"
-            value={dateEnd}
-            name="dateEnd"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time Start</label>
-          <Input
-            type="time"
-            value={timeStart}
-            name="timeStart"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time End</label>
-          <Input
-            type="time"
-            value={timeEnd}
-            name="timeEnd"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time End</label>
-          <Input
-            type="number"
-            value={price}
-            name="price"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Upload an event image</label>
+          <Label color={theme.color}>Upload an event image</Label>
           <input
             id="myFileUpload"
             type="file"
@@ -245,17 +252,9 @@ class EditEvent extends Component {
             accept=".jpg, .png"
           />
         </div>
-
-
-        {/* <input
-              id=“file-input1”
-              type=“file”
-              onChange={e => handleChangeFile(e, setImage1)}
-            /> */}
-
-        <div>
+        {/* <div>
           <form>
-            <label htmlFor="name"># Tag</label>
+            <Label color={theme.color}># Tag</Label>
 
             <select type="text" name="tagId" value="tagId" onChange={this.handleInput}>
               {!loading && tags.map((tag) => {
@@ -265,9 +264,10 @@ class EditEvent extends Component {
               })}
             </select>
           </form>
-        </div>
+        </div> */}
+
         <div>
-          <Submit
+          <Submit color={theme.color} background={theme.primaryButton}
             type="button"
             value="Add Event"
             name="submit"

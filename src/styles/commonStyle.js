@@ -43,6 +43,13 @@ export const TitleH3 = styled.h3`
   color: ${props => props.color};
 `;
 
+export const Label = styled.label`  
+  font-size: 1.2em;
+  text-align: center;
+  padding-right: 1em;
+  color: ${ (props) => props.color};
+`;
+
 export const Submit = styled.input.attrs({
   type: 'submit'
 })`
@@ -90,4 +97,16 @@ export const LoadingContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	align-content: stretch;
+`;
+
+export const PlaceContainerAlign = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const PlaceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 `;

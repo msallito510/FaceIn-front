@@ -5,8 +5,17 @@ import { toast } from 'react-toastify';
 
 import placeService from "../../services/placeService";
 import { FormWrapper, Input } from "../../styles/styledComponents";
-import { TitleH1, Submit, LoadingContainer } from "../../styles/commonStyle";
 import { DualRing } from 'react-awesome-spinners';
+
+import {
+  TitleH1,
+  Submit,
+  LoadingContainer,
+  PlaceContainerAlign,
+  PlaceContainer,
+  Label
+} from "../../styles/commonStyle";
+
 
 class EditPlace extends Component {
   state = {
@@ -69,8 +78,8 @@ class EditPlace extends Component {
       .catch(error => {
         toast.error(`ERROR. The place was not edited! - ${error}`);
       })
-
   };
+
 
   render() {
     const {
@@ -87,50 +96,55 @@ class EditPlace extends Component {
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Place</TitleH1>
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        <PlaceContainer>
+          <PlaceContainerAlign>
+            <div>
+              <Label color={theme.color}>Place name</Label>
+              <Input
+                type="text"
+                value={placeName}
+                name="placeName"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Address</Label>
+              <Input
+                type="text"
+                value={address}
+                name="address"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>City</Label>
+              <Input
+                type="text"
+                value={city}
+                name="city"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Country</Label>
+              <Input
+                type="text"
+                value={country}
+                name="country"
+                onChange={this.handleInput}
+              />
+            </div>
+          </PlaceContainerAlign>
+        </PlaceContainer>
         <div>
-          <label htmlFor="name">Place name</label>
-          <Input
-            type="text"
-            value={placeName}
-            name="placeName"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Address</label>
-          <Input
-            type="text"
-            value={address}
-            name="address"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">City</label>
-          <Input
-            type="text"
-            value={city}
-            name="city"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Country</label>
-          <Input
-            type="text"
-            value={country}
-            name="country"
-            onChange={this.handleInput}
-          />
-        </div>
-
-        <div>
-          <Submit color={theme.color} background={theme.primaryButton}
-            type="button"
-            value="Edit Place"
-            name="submit"
-            onClick={this.handleSubmit}
-          />
+          <div>
+            <Submit color={theme.color} background={theme.primaryButton}
+              type="button"
+              value="Edit Place"
+              name="submit"
+              onClick={this.handleSubmit}
+            />
+          </div>
         </div>
       </FormWrapper>
     )

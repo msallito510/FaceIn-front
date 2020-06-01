@@ -13,8 +13,12 @@ import {
 import {
   TitleH1,
   Submit,
-  LoadingContainer
+  LoadingContainer,
+  PlaceContainerAlign,
+  PlaceContainer
 } from "../../styles/commonStyle";
+
+import { Label } from "../../styles/commonStyle";
 
 class AddPlace extends Component {
   state = {
@@ -91,50 +95,55 @@ class AddPlace extends Component {
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a Place</TitleH1>
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        <PlaceContainer>
+          <PlaceContainerAlign>
+            <div>
+              <Label color={theme.color}>Place name</Label>
+              <Input
+                type="text"
+                value={placeName}
+                name="placeName"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Address</Label>
+              <Input
+                type="text"
+                value={address}
+                name="address"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>City</Label>
+              <Input
+                type="text"
+                value={city}
+                name="city"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Country</Label>
+              <Input
+                type="text"
+                value={country}
+                name="country"
+                onChange={this.handleInput}
+              />
+            </div>
+          </PlaceContainerAlign>
+        </PlaceContainer>
         <div>
-          <label htmlFor="name">Place name</label>
-          <Input
-            type="text"
-            value={placeName}
-            name="placeName"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Address</label>
-          <Input
-            type="text"
-            value={address}
-            name="address"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">City</label>
-          <Input
-            type="text"
-            value={city}
-            name="city"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Country</label>
-          <Input
-            type="text"
-            value={country}
-            name="country"
-            onChange={this.handleInput}
-          />
-        </div>
-
-        <div>
-          <Submit
-            type="button"
-            value="Add Place"
-            name="submit"
-            onClick={this.handleSubmit}
-          />
+          <div>
+            <Submit color={theme.color} background={theme.primaryButton}
+              type="button"
+              value="Add Place"
+              name="submit"
+              onClick={this.handleSubmit}
+            />
+          </div>
         </div>
       </FormWrapper>
     )
