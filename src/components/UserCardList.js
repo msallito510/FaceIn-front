@@ -22,7 +22,7 @@ export default class UserCardList extends Component {
             <CardContainer key={event._id}>
               <StyledLink to={`/events/${event.likeForEvent._id}`}>
                 <EventCardContainer>
-                  <ContentEventCard image={event.image}>
+                  <ContentEventCard image={event.likeForEvent.image}>
                     <TitleEventCardLh1>{event.likeForEvent.title}</TitleEventCardLh1>
                     <TimeEventCardLh3>
                       <DateFormat dateStart={event.likeForEvent.dateStart} timeStart={event.likeForEvent.timeStart} />

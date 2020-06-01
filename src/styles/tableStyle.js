@@ -22,21 +22,27 @@ export const Th = styled.th`
 
 export const TdLeft = styled.td`
   position: relative;
-  left: 4em;
+  left: 8em;
   padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;
 
 export const TdRight = styled.td`
   position: relative;
-  right: -1em;
+  left: 3em;
   padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;
 
 export const Thead = styled.thead`
-  ${'' /* background: transparent; */}
   border: 2px solid #F57873;
   color: #F57873;
+  font-size: 1.5em;
+`;
+
+export const TdScan = styled.td`
+  position: relative;
+  right: 7em;
+  padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;

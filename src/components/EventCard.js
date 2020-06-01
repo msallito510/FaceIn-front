@@ -74,14 +74,14 @@ class EventCard extends Component {
 
     await eventService.attendEvent(_id)
       .then(() => {
-        toast.success('Confirmed!');
+        toast.success('You have been confirmed for the event!');
       })
       .catch(error => {
         toast.error(`ERROR. Cannot be confirmed - ${error}`);
       });
 
     this.renderButtonState();
-    this.resetState();
+
   };
 
   handleLike = async () => {
@@ -152,7 +152,7 @@ class EventCard extends Component {
             <TitleEventDetailH2>Social</TitleEventDetailH2>
             <ContainerRow>
               <div>
-                <StyledLink to={`/attend/${eventId}`}>
+                <StyledLink to={`/participants-event/${eventId}`}>
                   <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
                     {participants.slice(0, 2).map((item) => {

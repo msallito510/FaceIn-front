@@ -5,8 +5,9 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
-import { Container, Table, Th, TdRight, TdLeft, Thead } from "../../styles/tableStyle";
+import { Container, Table, Th, TdRight, TdLeft, TdScan, Thead } from "../../styles/tableStyle";
 import { TitleH1, GeneralContainer, LoadingContainer } from "../../styles/commonStyle";
+import { PlayCircleIcon } from "../../styles/icon-style";
 import { DualRing } from 'react-awesome-spinners';
 
 class Attend extends Component {
@@ -43,6 +44,7 @@ class Attend extends Component {
             <tr>
               <Th>user</Th>
               <Th>face Scanned</Th>
+              <th></th>
             </tr>
           </Thead>
           {!loading && participants.map((item) => {
@@ -51,12 +53,14 @@ class Attend extends Component {
                 <tr>
                   <Container key={item.participant._id}>
 
-                    <Link to={`/scan-face/${item._id}`}>
-                      <TdRight>{item.participant.username}
-                      </TdRight>
-                    </Link>
+                    <TdRight>{item.participant.username}
+                    </TdRight>
                     <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
-
+                    <Link to={`/scan-face/${item._id}`}>
+                      <TdScan>
+                        <PlayCircleIcon />
+                      </TdScan>
+                    </Link>
                   </Container>
                 </tr>
               </tbody>

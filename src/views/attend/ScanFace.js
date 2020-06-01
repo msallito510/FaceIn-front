@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import participantService from '../../services/participantService';
-import { Link } from "react-router-dom";
+
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import { Base64 } from 'js-base64';
-// import UserCard from '../UserCard';
+
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
@@ -83,7 +83,7 @@ class ScanFace extends Component {
     try {
       const isFaceMatched = await participantService.faceMatch(imgSrc, participant._id);
 
-      if (isFaceMatched) {
+      if (isFaceMatched.faceScanned) {
         toast.success('🎉 yay! you have been recognized by Face-in 🥳');
         history.goBack();
       } else {
@@ -103,6 +103,11 @@ class ScanFace extends Component {
       });
     }
   };
+
+  handleCancel = (e) => {
+    const { history } = this.props;
+    history.goBack();
+  }
 
   render() {
     const { loading, imgSrc } = this.state;
@@ -138,13 +143,11 @@ class ScanFace extends Component {
                 <div>
                   <UserPhotoTitleH2>Scan</UserPhotoTitleH2>
                   <img src={imgSrc} alt="source pic" />
-                  <Button color={theme.color} background={theme.secundaryButton} onClick={this.handleSubmit}>
+                  <Button color={theme.color} background={theme.primaryButton} onClick={this.handleSubmit}>
                     Send to scan
                   </Button>
-                  <Button color={theme.color}>
-                    <Link to={"/user-profile"}>
-                      <p>Cancel</p>
-                    </Link>
+                  <Button background={theme.secundaryButton} onClick={this.handleCancel}>
+                    Cancel
                   </Button>
                 </div>
               )}

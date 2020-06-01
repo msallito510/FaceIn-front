@@ -3,7 +3,6 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
@@ -31,21 +30,15 @@ class AddEvent extends Component {
     timeStart: 0,
     timeEnd: 0,
     price: 0.0,
-    tagId: "",
-    tags: [],
     loading: true
   }
 
   async componentDidMount() {
 
     try {
-      const tags = await tagService.getAllTags();
-      const tagId = tags[0]._id;
 
       this.setState({
-        tags,
-        tagId,
-        loading: false
+        loading: false,
       })
     } catch (error) {
       console.log(error);
@@ -86,10 +79,9 @@ class AddEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      tagId
     } = this.state;
 
-    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price, tagId)
+    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price)
       .then(() => {
         push(`/user-profile`);
         toast.success('the event was added successfully');
@@ -111,7 +103,6 @@ class AddEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      // tags,
       loading
     } = this.state;
 

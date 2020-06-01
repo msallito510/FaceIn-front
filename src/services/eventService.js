@@ -24,7 +24,6 @@ class EventService {
     timeStart,
     timeEnd,
     price,
-    // tagId, 
   ) {
     return this.axios
       .post(`/api/events/add`, {
@@ -36,7 +35,6 @@ class EventService {
         timeStart,
         timeEnd,
         price,
-        // tagId,
       })
       .then(({ data }) => data);
   }

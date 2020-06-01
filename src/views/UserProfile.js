@@ -18,7 +18,7 @@ import {
   UserProfileLabelContent
 } from "../styles/styledComponents";
 import { TitleH1, TitleH2, TitleH3 } from "../styles/commonStyle";
-import { PlusCircleIcon, EditIcon, PlayCircleIcon, CameraIcon } from "../styles/icon-style";
+import { PlusCircleIcon, EditIcon, CameraIcon } from "../styles/icon-style";
 
 const UserHeaderBackground = styled.div`
   display:flex;
@@ -145,18 +145,8 @@ const UserProfile = ({ user, theme }) => {
             <MenuBarLi>
               {user ? <StyledLink to="/user-events" user={user}>
                 <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>List</TitleH3>
+                  <TitleH3 color={theme.color}>Edit</TitleH3>
                   <EditIcon color={theme.color} />
-                </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
-            </MenuBarLi>
-            <MenuBarLi>
-
-              {user ? <StyledLink to="/attend" user={user}>
-
-                <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Attend</TitleH3>
-                  <PlayCircleIcon color={theme.color} />
                 </UserProfileLabelContent>
               </StyledLink> : <div></div>}
             </MenuBarLi>
