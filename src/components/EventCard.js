@@ -74,14 +74,14 @@ class EventCard extends Component {
 
     await eventService.attendEvent(_id)
       .then(() => {
-        toast.success('Confirmed!');
+        toast.success('You have been confirmed for the event!');
       })
       .catch(error => {
         toast.error(`ERROR. Cannot be confirmed - ${error}`);
       });
 
     this.renderButtonState();
-    this.resetState();
+
   };
 
   handleLike = async () => {
