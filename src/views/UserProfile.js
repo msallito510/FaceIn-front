@@ -122,7 +122,7 @@ const UserProfile = ({ user, theme }) => {
       <PhotoContainer>
         <PhotoProfile>
           {user.imageCam ? <UserCard user={user} /> :
-            <img className="user-img" src={user.imageTwo} alt='default avatar' />}
+            <img className="user-img" src="/images/user.png" alt='default avatar' />}
         </PhotoProfile>
         <div>
           <StyledLink to="/react-webcam">
