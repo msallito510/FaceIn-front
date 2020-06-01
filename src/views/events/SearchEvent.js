@@ -56,6 +56,8 @@ class SearchEvent extends Component {
 
   render() {
     const { filter, loading } = this.state;
+    const { theme } = this.props;
+
     return (
       <div>
         <HeaderBackground>
@@ -64,13 +66,13 @@ class SearchEvent extends Component {
           <SearchBar onChange={this.handleFilter} />
         </HeaderBackground>
 
-        <SearchBackground>
+        <SearchBackground background={theme}>
           {!loading && filter.map((event) => {
             return (
-              <CardContainer>
+              <CardContainer key={event._id}>
                 <StyledLink to={`/events/${event._id}`}>
                   <EventCardContainer>
-                    <ContentEventCard>
+                    <ContentEventCard image={event.image}>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
                       <TimeEventCardLh3>
                         <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />

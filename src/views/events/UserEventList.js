@@ -69,20 +69,20 @@ class UserEventList extends Component {
     }
   }
 
-  handleDelete = async (eventId) => {
-    const { history: { push } } = this.props;
+  // handleDelete = async (eventId) => {
+  //   const { history: { push } } = this.props;
 
-    await eventService.deleteEvent(eventId)
-      .then(() => {
-        push(`/user-profile`);
-        toast.success('the event was deleted.');
+  //   await eventService.deleteEvent(eventId)
+  //     .then(() => {
+  //       push(`/user-profile`);
+  //       toast.success('the event was deleted.');
 
-      })
-      .catch(error => {
-        toast.error(`ERROR. The event was not deleted! - ${error}`);
-      })
+  //     })
+  //     .catch(error => {
+  //       toast.error(`ERROR. The event was not deleted! - ${error}`);
+  //     })
 
-  };
+  // };
 
   render() {
     const { events, loading } = this.state;
@@ -111,11 +111,11 @@ class UserEventList extends Component {
                     <LinkContainer color={theme.color} background={theme.primaryButton}>
                       <StyledLink to={`/event-edit/${event._id}`}>edit</StyledLink>
                     </LinkContainer>
-                    <div>
+                    {/* <div>
                       <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(event._id)} >
                         delete
                       </Button>
-                    </div>
+                    </div> */}
                   </ContainerRow>
 
                 </EventCardContainer>

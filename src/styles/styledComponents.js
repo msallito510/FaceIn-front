@@ -169,7 +169,7 @@ export const Span = styled.span`
 `;
 
 export const SearchBackground = styled.div`
-  background: #fff;
+  background: ${props => props.background};
   overflow: hidden;
   overflow-y: scroll;
   bottom: 0em;

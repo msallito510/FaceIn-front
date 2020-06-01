@@ -3,7 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-import tagService from "../../services/tagService";
+// import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
@@ -18,6 +18,7 @@ import {
   LoadingContainer,
   PlaceContainerAlign,
   PlaceContainer,
+  Button,
   Label
 } from "../../styles/commonStyle";
 
@@ -35,8 +36,8 @@ class EditEvent extends Component {
     price: 0.0,
     imageUrl: "",
     imageName: "",
-    tagId: "",
-    tags: [],
+    // tagId: "",
+    // tags: [],
     loading: true
   }
 
@@ -45,8 +46,8 @@ class EditEvent extends Component {
 
     try {
       const event = await eventService.getEventById(id);
-      const tags = await tagService.getAllTags();
-      const tagId = await tagService.getTagById(event.tag._id);
+      // const tags = await tagService.getAllTags();
+      // const tagId = await tagService.getTagById(event.tag._id);
       // const tagId = tags[0]._id;
 
       this.setState({
@@ -60,8 +61,8 @@ class EditEvent extends Component {
         timeEnd: event.timeEnd,
         price: event.price,
         // imageUrl: event.image,
-        tags,
-        tagId: tagId._id,
+        // tags,
+        // tagId: tagId._id,
         loading: false
       })
     } catch (error) {
@@ -121,8 +122,8 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      // imageUrl,
-      tagId
+      // imageUrl,,
+      // tagId
     } = this.state;
 
     await eventService.updateEvent(
@@ -135,7 +136,7 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      tagId,
+      // tagId,
     ).then(() => {
       push(`/user-profile`);
       toast.success('the event was edited successfully');
@@ -143,6 +144,22 @@ class EditEvent extends Component {
     }).catch(error => {
       toast.error(`ERROR. The event was not edited! - ${error}`);
     })
+  };
+
+  handleDelete = async () => {
+    const { history: { push } } = this.props;
+    const { eventId } = this.state;
+
+    await eventService.deleteEvent(eventId)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the event was deleted.');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The event was not deleted! - ${error}`);
+      })
+
   };
 
   render() {
@@ -269,10 +286,15 @@ class EditEvent extends Component {
         <div>
           <Submit color={theme.color} background={theme.primaryButton}
             type="button"
-            value="Add Event"
+            value="Update"
             name="submit"
             onClick={this.handleSubmit}
           />
+        </div>
+        <div>
+          <Button color={theme.color} background={theme.secundaryButton} onClick={this.handleDelete} >
+            delete
+          </Button>
         </div>
       </FormWrapper>
     )
