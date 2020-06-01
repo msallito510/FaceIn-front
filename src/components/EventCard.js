@@ -152,7 +152,7 @@ class EventCard extends Component {
             <TitleEventDetailH2>Social</TitleEventDetailH2>
             <ContainerRow>
               <div>
-                <StyledLink to={`/attend/${eventId}`}>
+                <StyledLink to={`/participants-event/${eventId}`}>
                   <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
                     {participants.slice(0, 2).map((item) => {

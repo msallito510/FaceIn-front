@@ -101,8 +101,8 @@ position: relative;
 `;
 
 export const PlayCircleIcon = styled(PlayCircle)`
-position: relative;
-  right: 3em;
+${'' /* position: relative; */}
+  right: 4em;
   float: left;
   bottom: 2em;
   font-size: 1.1em;
