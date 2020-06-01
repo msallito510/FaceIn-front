@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import DateFormat from "../../components/DateFormat";
+import { DualRing } from 'react-awesome-spinners';
 
 import eventService from "../../services/eventService";
 import {
@@ -15,7 +16,7 @@ import {
   TimeEventCardLh3
 } from "../../styles/styledComponents";
 
-import { GeneralBackground } from "../../styles/commonStyle";
+import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class Events extends Component {
   state = {
@@ -49,13 +50,13 @@ class Events extends Component {
           <TitleEventsLh1>All Events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <div>loading...</div>}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>
                 <StyledLink to={`/events/${event._id}`}>
                   <EventCardContainer>
-                    <ContentEventCard>
+                    <ContentEventCard image={event.image}>
                       <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
                       <TimeEventCardLh3>
                         <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />

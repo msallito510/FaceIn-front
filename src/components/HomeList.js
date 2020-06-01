@@ -36,7 +36,10 @@ class HomeList extends Component {
     const { theme, user } = this.props;
     return (
       <HomeImageBackground>
-        <TitleLh1>Barcelona</TitleLh1>       
+        {/* <div className="eventDetail-image">
+          <img id="eventImg" src={event.image} alt="event" ></img>
+        </div> */}
+        <TitleLh1>Barcelona</TitleLh1>
         <HomeBackgroundDark color={theme}>
           <CardContainer>
             {user ? <StyledLink to="/events">

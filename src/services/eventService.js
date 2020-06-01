@@ -24,7 +24,8 @@ class EventService {
     timeStart,
     timeEnd,
     price,
-    tagId, ) {
+    // tagId, 
+  ) {
     return this.axios
       .post(`/api/events/add`, {
         title,
@@ -35,7 +36,7 @@ class EventService {
         timeStart,
         timeEnd,
         price,
-        tagId,
+        // tagId,
       })
       .then(({ data }) => data);
   }
@@ -83,7 +84,9 @@ class EventService {
     timeStart,
     timeEnd,
     price,
-    tagId, ) {
+    image,
+    // tagId, 
+  ) {
     return this.axios
       .put(`/api/events/${eventId}/edit`, {
         title,
@@ -94,7 +97,8 @@ class EventService {
         timeStart,
         timeEnd,
         price,
-        tagId,
+        image,
+        // tagId,
       })
       .then(({ data }) => data);
   }
@@ -107,10 +111,10 @@ class EventService {
   // }
 
   // solo para owner
-  deleteEvent(event) {
+  deleteEvent(eventId) {
     return this.axios
-      .delete(`/api/events/${event._id}/delete`, event)
-      .then(({ data: event }) => event);
+      .delete(`/api/events/${eventId}/delete`, eventId)
+      .then(({ data }) => data);
   }
 }
 

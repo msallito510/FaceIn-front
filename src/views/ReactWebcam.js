@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import { Base64 } from 'js-base64';
-import UserCard from './UserCard';
+import UserCard from '../components/UserCard';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import { DualRing } from 'react-awesome-spinners';
 
-import { GeneralContainer, Button, TitleH1 } from "../styles/commonStyle";
+import { GeneralContainer, Button, TitleH1, LoadingContainer } from "../styles/commonStyle";
 
 const HeaderWebCam = styled.div`
   display: flex;
@@ -17,8 +18,7 @@ const HeaderWebCam = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 3em;
-  
+  margin: 3em;  
 `;
 
 const UserPhotoContainer = styled.div`
@@ -107,7 +107,7 @@ class ReactWebcam extends Component {
     return (
       <HeaderWebCam>
         <TitleH1>Profile photo</TitleH1>
-        {loading && <div>Loading...</div>}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading && (
           <GeneralContainer>
             <UserPhotoContainer>

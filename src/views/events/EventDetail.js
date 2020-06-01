@@ -4,8 +4,38 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import EventCard from "../../components/EventCard";
+import styled, { keyframes } from 'styled-components';
+import { DualRing } from 'react-awesome-spinners';
 
-import "../../styles/customEventImage.css";
+const keyFrameImage = keyframes`
+  0% {
+  }
+  50% {
+    background-position: Calc(-35vw - 40px) 50%;
+  }
+`;
+
+const EventImg = styled.div`
+  position: absolute;
+  background-image: url(${ (props) => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+  width: 100%;
+  height: 376px;
+  top: 10em;
+  transform: translateY(-50%);
+
+  animation: ${keyFrameImage} 20s 2;
+  animation-delay: 2s;
+`;
+
+const LoadingContainer = styled.div`
+  position:relative;
+  top:10em;
+  left:10em;
+`;
 
 class EventDetail extends Component {
   state = {
@@ -34,13 +64,11 @@ class EventDetail extends Component {
     const { user } = this.props;
     return (
       <div>
-        <div className="eventDetail-image">
-          <img id="eventImg" src={event.image} alt="event" ></img>
-        </div>
-        {loading && <div>loading...</div>}
-        {!loading && <EventCard event={event} user={user} />}
+        <EventImg image={event.image} />
 
-      </div>
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        {!loading && <EventCard event={event} user={user} />}
+      </div >
     );
   }
 }

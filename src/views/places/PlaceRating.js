@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import {
   FormWrapper,
-  InputDark
+  Input
 } from "../../styles/styledComponents";
 
 import {
@@ -59,7 +59,7 @@ class PlaceRating extends Component {
         <TitleH1 color={theme.color}>Add a comment</TitleH1>
         <div>
           <label htmlFor="name">Title</label>
-          <InputDark
+          <Input
             type="text"
             value={title}
             name="title"
@@ -68,7 +68,7 @@ class PlaceRating extends Component {
         </div>
         <div>
           <label htmlFor="name">Description</label>
-          <InputDark
+          <Input
             type="text"
             value={description}
             name="description"

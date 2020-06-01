@@ -3,6 +3,7 @@ import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 
 import eventService from "../services/eventService";
+import userService from "../services/userService";
 
 import PlaceCard from '../views/places/PlaceCard';
 import DateFormat from "../components/DateFormat";
@@ -27,19 +28,16 @@ import {
   LikeButtonContainer,
   SocialContainer,
   InfoContainer,
-  InfoMapPlaceContainer
-
+  InfoMapPlaceContainer,
+  SocialPhoto,
+  SocialCounter
 
 } from "../styles/eventDetailStyle";
 
-import { CardContainer, ContainerRow } from "../styles/styledComponents"
+import { CardContainer, ContainerRow, StyledLink } from "../styles/styledComponents";
 
 import { EventAddLike, EventHeartFilled } from "../styles/icon-style";
 
-const INIT_STATE = {
-  isLiked: "",
-  loading: true,
-};
 
 const MapReadOnly = styled.div`
   pointer-events: none;
@@ -48,10 +46,22 @@ const MapReadOnly = styled.div`
 class EventCard extends Component {
 
   state = {
-    ...INIT_STATE,
+    isLiked: false,
+    loading: true,
+    currentUser: "",
+    eventId: "",
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { event: { _id: eventId }, user: { _id: userId } } = this.props;
+
+    const currentUser = await userService.getUserById(userId);
+
+    this.setState({
+      currentUser,
+      eventId,
+    })
+
     this.handleSetState();
   }
 
@@ -65,54 +75,44 @@ class EventCard extends Component {
     await eventService.attendEvent(_id)
       .then(() => {
         toast.success('Confirmed!');
-
       })
       .catch(error => {
         toast.error(`ERROR. Cannot be confirmed - ${error}`);
-      })
+      });
 
     this.renderButtonState();
     this.resetState();
   };
 
   handleLike = async () => {
-    const { event: { _id } } = this.props;
+    const { eventId } = this.state;
     try {
-      await eventService.addLike(_id);
+      await eventService.addLike(eventId)
+        .then(() => {
+          this.handleSetState();
+        })
 
     } catch (error) {
       console.log(error);
     }
-    this.handleSetState();
+
   };
 
   renderButtonState = () => {
     this.refs.btn.setAttribute("disabled", "disabled");
   }
 
-  // renderIcon = () => {
-  //   return !!this.state.isLiked ? <EventHeartFilled /> : <EventAddLike />;
-  // }
+  handleSetState = async () => {
 
-  handleSetState = () => {
-    this.resetState();
-    const { event: { likes }, user: { _id: userId } } = this.props;
+    const { eventId } = this.state;
 
-    // const isLiked = likes.map((item) => item.likeGivenBy._id.toString() === userId.toString() ? true : false).filter(Boolean)[0];
-
-
-    // nIsLiked = likes.map((item) => {
-    //   if (item.likeGivenBy._id.toString() === userId.toString()) {
-    //     return true;
-    //   }
-    // }).filter(Boolean)[0];
+    const event = await eventService.getEventById(eventId)
 
     let givenLikeByUser = "";
 
-    givenLikeByUser = likes.find(item => item.likeGivenBy._id === userId)
-
-
-    // if (typeof nIsLiked === "boolean") {
+    if (this.state.currentUser !== "" && event.likes.length !== 0) {
+      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === this.state.currentUser._id)
+    }
 
     let isLiked = givenLikeByUser !== "" ? true : false;
 
@@ -121,13 +121,7 @@ class EventCard extends Component {
       loading: false
     })
 
-    this.resetState();
-    // }
   }
-
-  resetState = () => {
-    this.setState({ ...INIT_STATE });
-  };
 
   render() {
     const { event: {
@@ -137,13 +131,13 @@ class EventCard extends Component {
       dateStart,
       timeStart,
       price,
-      owner: { username },
+      owner: { username, imageTwo },
       participants,
       belongsToPlace,
     },
       theme } = this.props;
 
-    const isLiked = this.state;
+    const { isLiked } = this.state;
     return (
 
       <EventDetailBackground background={theme}>
@@ -152,26 +146,36 @@ class EventCard extends Component {
           <DateFormat dateStart={dateStart} timeStart={timeStart} />
         </TimeInfoContainer>
         <TitleEventDetailH1>{title}</TitleEventDetailH1>
-        <TitleEventDetailH3>€ {price}</TitleEventDetailH3>
+        <TitleEventDetailH3>Price: {price}€</TitleEventDetailH3>
         <CardContainer>
           <SocialContainer>
             <TitleEventDetailH2>Social</TitleEventDetailH2>
             <ContainerRow>
               <div>
-                <Link to={`/attend/${eventId}`}>
+                <StyledLink to={`/attend/${eventId}`}>
                   <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
-                    {participants.slice(0, 2).map((item) =>
-                      <Paragraph>
-                        {item.participant.username}
-                      </Paragraph>)}
-                    {participants.length >= 1 ? <p style={{ padding: "0.5em" }}>+ {participants.length - 2}</p> : ""}
+                    {participants.slice(0, 2).map((item) => {
+                      return (<div>
+
+                        {item.participant.imageTwo ?
+                          <SocialPhoto src={item.participant.imageTwo} alt={item.participant.username} />
+                          : <Paragraph>{item.participant.username}</Paragraph>}
+                      </div>)
+                    })
+                    }
+                    {
+                      participants.length < 2 ? "" :
+                        <SocialCounter>+ {participants.length - 2}</SocialCounter>
+                    }
                   </ContainerRow>
-                </Link>
+                </StyledLink>
               </div>
               <div>
                 <SocialTitle>Owner</SocialTitle>
-                <Paragraph>{username}</Paragraph>
+                {imageTwo ? <SocialPhoto src={imageTwo} alt={imageTwo} /> :
+                  <Paragraph>{username}</Paragraph>
+                }
               </div>
             </ContainerRow>
           </SocialContainer>
@@ -202,8 +206,10 @@ class EventCard extends Component {
 
         <LikeButtonContainer>
           <button onClick={this.handleLike}>
-            {/* {this.renderIcon()} */}
-            {!!isLiked ? <EventHeartFilled color={theme} /> : <EventAddLike color={theme} />}
+
+            {isLiked ?
+              <EventHeartFilled color={theme} /> :
+              <EventAddLike color={theme} />}
           </button>
         </LikeButtonContainer>
 

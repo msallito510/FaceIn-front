@@ -103,7 +103,7 @@ export const FormWrapper = styled.section`
   color: #000;  
 `;
 
-export const InputDark = styled.input`
+export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #ddd;
   border-radius: 6px;
@@ -112,17 +112,8 @@ export const InputDark = styled.input`
   font-size: 16px;
   opacity: 1;
   color: #61637B;
-`;
-
-export const InputLight = styled.input`
-  border: none;
-  border-bottom: 1px solid #dff;
-  border-radius: 6px;
-  outline: none;
-  height: 30px;
-  font-size: 16px;
-  opacity: 1;
-  color: #fff;
+  margin: 0.1em;
+  padding: 0 0 0 0.5em;
 `;
 
 export const ContinerAlineCenter = styled.div`
@@ -178,7 +169,7 @@ export const Span = styled.span`
 `;
 
 export const SearchBackground = styled.div`
-  background: #fff;
+  background: ${props => props.background};
   overflow: hidden;
   overflow-y: scroll;
   bottom: 0em;
@@ -229,11 +220,10 @@ export const HomeUserLikes = styled.div`
 `;
 
 export const ContentEventCard = styled.div`
-  ${'' /* background-image: url('https://res.cloudinary.com/marcesallito/image/upload/v1589976874/face-in/go-party-like-a-vip-in-barcelona-party-955x508_fhikm8.jpg'); */}
+  background-image: url(${ (props) => props.image});
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  background: #9599C5;
+  align-items: flex-start; 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;

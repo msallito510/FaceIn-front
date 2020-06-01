@@ -39,7 +39,7 @@ export const MenuBarUl = styled.ul`
   margin: 0;
   padding: 0;
   background: ${ (props) => props.color};
-  z-index: 10;
+  z-index: 9999;
   overflow: hidden;
   box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
   @media (max-width: 768px) {

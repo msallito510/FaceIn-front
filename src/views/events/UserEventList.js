@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
-import { toast } from 'react-toastify';
 import DateFormat from "../../components/DateFormat";
 import styled from 'styled-components';
+import { DualRing } from 'react-awesome-spinners';
 
 import eventService from "../../services/eventService";
 import {
@@ -18,7 +18,10 @@ import {
   ContainerRow
 } from "../../styles/styledComponents";
 
-import { TitleH1, Button } from "../../styles/commonStyle";
+import {
+  TitleH1,
+  LoadingContainer
+} from "../../styles/commonStyle";
 
 const TitleEditEvent = styled.h3`
   position: relative;
@@ -64,20 +67,20 @@ class UserEventList extends Component {
     }
   }
 
-  handleDelete = async (eventId) => {
-    const { history: { push } } = this.props;
+  // handleDelete = async (eventId) => {
+  //   const { history: { push } } = this.props;
 
-    await eventService.deleteEvent(eventId)
-      .then(() => {
-        push(`/user-profile`);
-        toast.success('the event was deleted.');
+  //   await eventService.deleteEvent(eventId)
+  //     .then(() => {
+  //       push(`/user-profile`);
+  //       toast.success('the event was deleted.');
 
-      })
-      .catch(error => {
-        toast.error(`ERROR. The event was not deleted! - ${error}`);
-      })
+  //     })
+  //     .catch(error => {
+  //       toast.error(`ERROR. The event was not deleted! - ${error}`);
+  //     })
 
-  };
+  // };
 
   render() {
     const { events, loading } = this.state;
@@ -87,7 +90,7 @@ class UserEventList extends Component {
       <FormWrapper>
         <SimpleContainerScroll>
           <TitleH1 color={theme.color}>User event list</TitleH1>
-          {loading && <div>loading...</div>}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
           {!loading && events.map((event) => {
             return (
               <CardContainer key={event._id}>
@@ -106,11 +109,11 @@ class UserEventList extends Component {
                     <LinkContainer color={theme.color} background={theme.primaryButton}>
                       <StyledLink to={`/event-edit/${event._id}`}>edit</StyledLink>
                     </LinkContainer>
-                    <div>
+                    {/* <div>
                       <Button color={theme.color} background={theme.secundaryButton} onClick={() => this.handleDelete(event._id)} >
                         delete
                       </Button>
-                    </div>
+                    </div> */}
                   </ContainerRow>
 
                 </EventCardContainer>

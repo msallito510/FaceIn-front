@@ -3,19 +3,25 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-import tagService from "../../services/tagService";
+// import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
-// import { Image } from 'cloudinary-react';
+import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
-  InputDark
+  Input
 } from "../../styles/styledComponents";
 
 import {
   TitleH1,
-  Submit
+  Submit,
+  LoadingContainer,
+  PlaceContainerAlign,
+  PlaceContainer,
+  Button,
+  Label
 } from "../../styles/commonStyle";
+
 
 class EditEvent extends Component {
   state = {
@@ -30,8 +36,8 @@ class EditEvent extends Component {
     price: 0.0,
     imageUrl: "",
     imageName: "",
-    tagId: "",
-    tags: [],
+    // tagId: "",
+    // tags: [],
     loading: true
   }
 
@@ -40,8 +46,8 @@ class EditEvent extends Component {
 
     try {
       const event = await eventService.getEventById(id);
-      const tags = await tagService.getAllTags();
-      const tagId = await tagService.getTagById(event.tag._id);
+      // const tags = await tagService.getAllTags();
+      // const tagId = await tagService.getTagById(event.tag._id);
       // const tagId = tags[0]._id;
 
       this.setState({
@@ -55,8 +61,8 @@ class EditEvent extends Component {
         timeEnd: event.timeEnd,
         price: event.price,
         // imageUrl: event.image,
-        tags,
-        tagId: tagId._id,
+        // tags,
+        // tagId: tagId._id,
         loading: false
       })
     } catch (error) {
@@ -116,8 +122,8 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      // imageUrl,
-      tagId
+      // imageUrl,,
+      // tagId
     } = this.state;
 
     await eventService.updateEvent(
@@ -130,7 +136,7 @@ class EditEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      tagId,
+      // tagId,
     ).then(() => {
       push(`/user-profile`);
       toast.success('the event was edited successfully');
@@ -138,6 +144,22 @@ class EditEvent extends Component {
     }).catch(error => {
       toast.error(`ERROR. The event was not edited! - ${error}`);
     })
+  };
+
+  handleDelete = async () => {
+    const { history: { push } } = this.props;
+    const { eventId } = this.state;
+
+    await eventService.deleteEvent(eventId)
+      .then(() => {
+        push(`/user-profile`);
+        toast.success('the event was deleted.');
+
+      })
+      .catch(error => {
+        toast.error(`ERROR. The event was not deleted! - ${error}`);
+      })
+
   };
 
   render() {
@@ -150,7 +172,7 @@ class EditEvent extends Component {
       timeEnd,
       price,
       imageName,
-      tags,
+      // tags,
       loading
     } = this.state;
 
@@ -159,81 +181,85 @@ class EditEvent extends Component {
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Edit a Event</TitleH1>
-        {loading && <div>loading...</div>}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        <PlaceContainer>
+          <PlaceContainerAlign>
+            <div>
+              <Label color={theme.color}>Title</Label>
+              <Input
+                type="text"
+                value={title}
+                name="title"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Description</Label>
+              <Input
+                type="text"
+                value={description}
+                name="description"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Frequency</Label>
+              <Input
+                type="text"
+                value={frequency}
+                name="frequency"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Date Start</Label>
+              <Input
+                type="date"
+                value={dateStart}
+                name="dateStart"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Date End</Label>
+              <Input
+                type="date"
+                value={dateEnd}
+                name="dateEnd"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time Start</Label>
+              <Input
+                type="time"
+                value={timeStart}
+                name="timeStart"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time End</Label>
+              <Input
+                type="time"
+                value={timeEnd}
+                name="timeEnd"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Time End</Label>
+              <Input
+                type="number"
+                value={price}
+                name="price"
+                onChange={this.handleInput}
+              />
+            </div>
+          </PlaceContainerAlign>
+        </PlaceContainer>
         <div>
-          <label htmlFor="name">Title</label>
-          <InputDark
-            type="text"
-            value={title}
-            name="title"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Description</label>
-          <InputDark
-            type="text"
-            value={description}
-            name="description"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Frequency</label>
-          <InputDark
-            type="text"
-            value={frequency}
-            name="frequency"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Date Start</label>
-          <InputDark
-            type="date"
-            value={dateStart}
-            name="dateStart"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Date End</label>
-          <InputDark
-            type="date"
-            value={dateEnd}
-            name="dateEnd"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time Start</label>
-          <InputDark
-            type="time"
-            value={timeStart}
-            name="timeStart"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time End</label>
-          <InputDark
-            type="time"
-            value={timeEnd}
-            name="timeEnd"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Time End</label>
-          <InputDark
-            type="number"
-            value={price}
-            name="price"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Upload an event image</label>
+          <Label color={theme.color}>Upload an event image</Label>
           <input
             id="myFileUpload"
             type="file"
@@ -243,17 +269,9 @@ class EditEvent extends Component {
             accept=".jpg, .png"
           />
         </div>
-
-
-        {/* <input
-              id=“file-input1”
-              type=“file”
-              onChange={e => handleChangeFile(e, setImage1)}
-            /> */}
-
-        <div>
+        {/* <div>
           <form>
-            <label htmlFor="name"># Tag</label>
+            <Label color={theme.color}># Tag</Label>
 
             <select type="text" name="tagId" value="tagId" onChange={this.handleInput}>
               {!loading && tags.map((tag) => {
@@ -263,14 +281,20 @@ class EditEvent extends Component {
               })}
             </select>
           </form>
-        </div>
+        </div> */}
+
         <div>
-          <Submit
+          <Submit color={theme.color} background={theme.primaryButton}
             type="button"
-            value="Add Event"
+            value="Update"
             name="submit"
             onClick={this.handleSubmit}
           />
+        </div>
+        <div>
+          <Button color={theme.color} background={theme.secundaryButton} onClick={this.handleDelete} >
+            delete
+          </Button>
         </div>
       </FormWrapper>
     )

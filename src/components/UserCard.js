@@ -1,40 +1,64 @@
 import React, { Component } from 'react';
-import DateFormat from "../components/DateFormat";
 
-import {
-  StyledLink,
-  CardContainer,
-  EventCardContainer,
-  ContentEventCard,
-  TitleEventCardLh1,
-  TimeEventCardLh3
-} from "../styles/styledComponents";
+import userService from '../services/userService';
+import { withAuth } from "../context/authContext";
+import { withTheme } from "../context/themeContext";
+import { Base64 } from 'js-base64';
+import { DualRing } from 'react-awesome-spinners';
 
+import { LoadingContainer } from "../styles/commonStyle";
 
-export default class UserCard extends Component {
+class UserCard extends Component {
+  state = {
+    loading: true,
+    user: {},
+    userPhoto: "",
+  };
+
+  webcamRef = React.createRef();
+  async componentDidMount() {
+    const { user: { _id } } = this.props;
+
+    try {
+      const user = await userService.getUserById(_id)
+      if (user.imageCam) {
+        const userPhotoBase64 = await userService.getProfilePhoto(_id)
+
+        const userPhoto = await Base64.decode(userPhotoBase64);
+        this.setState({
+          userPhoto,
+        })
+      }
+      this.setState({
+        user,
+        loading: false,
+      })
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        loading: false,
+      })
+    }
+  }
+
 
   render() {
-    const { user: { likesGiven } } = this.props;
+    const { loading, userPhoto } = this.state;
+
+    const styles = {
+      width: 200,
+      height: 200,
+    };
     return (
       <div>
-        {likesGiven.map((event) => {
-          return (
-            <CardContainer key={event._id}>
-              <StyledLink to={`/events/${event.likeForEvent._id}`}>
-                <EventCardContainer>
-                  <ContentEventCard>
-                    <TitleEventCardLh1>{event.likeForEvent.title}</TitleEventCardLh1>
-                    <TimeEventCardLh3>
-                      <DateFormat dateStart={event.likeForEvent.dateStart} timeStart={event.likeForEvent.timeStart} />
-
-                    </TimeEventCardLh3>
-                  </ContentEventCard>
-                </EventCardContainer>
-              </StyledLink>
-            </CardContainer>
-          );
-        })}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+        {!loading && (
+          <div>
+            {userPhoto ? <img className="user-img" src={userPhoto} styles={styles} alt="user pic" /> : <div></div>}
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
+export default withAuth(withTheme(UserCard));

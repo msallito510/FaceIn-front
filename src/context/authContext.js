@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
+import { DualRing } from 'react-awesome-spinners';
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
@@ -142,7 +143,7 @@ export default class AuthProvider extends Component {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
     if (isLoading) {
-      return <div>Loading...</div>
+      return <DualRing />
     } else {
       return (
         <Provider

@@ -34,7 +34,7 @@ class Events extends Component {
     return (
       <div>
         <h1>All Events</h1>
-        {loading && <div>loading...</div>}
+        {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         {!loading && events.map((event) => {
           return (
             <div key={event._id}>

@@ -3,13 +3,15 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import userService from "../../services/userService";
-import UserCard from "../../components/UserCard";
+import UserCardList from "../../components/UserCardList";
+import { DualRing } from 'react-awesome-spinners';
+
 import {
   TitleEventsLh1,
   HeaderBackground,
 } from "../../styles/styledComponents";
 
-import { GeneralBackground } from "../../styles/commonStyle";
+import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class UserLikeEvents extends Component {
   state = {
@@ -47,8 +49,8 @@ class UserLikeEvents extends Component {
           <TitleEventsLh1>Events I like</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
-          {loading && <div>loading...</div>}
-          {!loading && <UserCard user={user} />}
+          {loading && <LoadingContainer><DualRing /></LoadingContainer>}
+          {!loading && <UserCardList user={user} />}
         </GeneralBackground>
       </div>
     );
