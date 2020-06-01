@@ -107,6 +107,7 @@ const PhotoProfile = styled.div`
   width: 10em;
   padding:2em;
   .user-img{
+    width: 200px;
     border-radius: 50%;
   }
 `;
@@ -120,8 +121,8 @@ const UserProfile = ({ user, theme }) => {
       </div>
       <PhotoContainer>
         <PhotoProfile>
-          {user.imageTwo ? <UserCard user={user} /> :
-            <img className="user-img" src='/images/logo.jpeg' alt='default avatar' />}
+          {user.imageCam ? <UserCard user={user} /> :
+            <img className="user-img" src={user.imageTwo} alt='default avatar' />}
         </PhotoProfile>
         <div>
           <StyledLink to="/react-webcam">
