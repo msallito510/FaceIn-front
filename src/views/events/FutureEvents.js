@@ -4,7 +4,6 @@ import { withTheme } from "../../context/themeContext";
 import DateFormat from "../../components/DateFormat";
 import { DualRing } from 'react-awesome-spinners';
 
-import eventService from "../../services/eventService";
 import userService from "../../services/userService";
 
 import {
@@ -54,7 +53,7 @@ class FutureEvents extends Component {
     return (
       <div>
         <HeaderBackground>
-          <TitleEventsLh1>Events I have registered</TitleEventsLh1>
+          <TitleEventsLh1>My future events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
           {loading && <LoadingContainer><DualRing /></LoadingContainer>}
