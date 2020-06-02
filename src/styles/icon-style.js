@@ -14,6 +14,7 @@ import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 import { LogOut } from '@styled-icons/feather/LogOut';
 import { AddAPhoto } from "@styled-icons/material-outlined/AddAPhoto";
 import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
+import { List } from "@styled-icons/feather/List";
 
 
 export const SearchIcon = styled(Search)`
@@ -71,11 +72,23 @@ export const CameraIcon = styled(AddAPhoto)`
   width: 2em;
 `;
 
+
 export const BackArrow = styled(ChevronLeft)`
   position: absolute;
   top: 0;
   width: 2em;
   color: #61637B;
+`;
+
+export const ListIcon = styled(List)`
+  position: relative;
+  right: 3em;
+  float: left;
+  bottom: 2em;
+  font-size: 1.1em;
+  text-align: left;
+  width: 1.5em;
+  color: ${ (props) => props.color};
 `;
 
 export const PlusCircleIcon = styled(PlusCircle)`

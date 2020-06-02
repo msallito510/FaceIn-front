@@ -15,7 +15,6 @@ import {
 } from "../../styles/commonStyle";
 
 import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 class Signup extends Component {
   state = {
@@ -45,8 +44,9 @@ class Signup extends Component {
           password,
           email,
         });
+        toast.success(`🦄 Welcome! ${username}`);
       } catch (error) {
-        console.error('Error');
+        toast.error('There was an ERROR!');
       }
     }
   };

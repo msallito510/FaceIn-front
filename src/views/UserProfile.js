@@ -1,19 +1,10 @@
-import React from "react";
+import React, { Component } from 'react';
 import { withAuth } from "../context/authContext";
 import { withTheme } from "../context/themeContext";
 import styled from 'styled-components';
 import UserCard from '../components/UserCard';
 
 import {
-  // TitleLh1,
-  // TitleDh2,
-  // TitleDh3,
-  // HeaderBackground,
-  // ProfileBackground,
-  // SecondaryWrapperLeft,
-  // SecondaryWrapperRight,
-  // PhotoProfile,
-  // PhotoContainer,
   StyledLink,
   UserProfileLabelContent
 } from "../styles/styledComponents";
@@ -112,70 +103,73 @@ const PhotoProfile = styled.div`
   }
 `;
 
-const UserProfile = ({ user, theme }) => {
+class UserProfile extends Component {
+  render() {
+    const { user, theme } = this.props;
 
-  return (
-    <UserHeaderBackground>
-      <div>
-        <TitleH1>{user.username}'s profile</TitleH1>
-      </div>
-      <PhotoContainer>
-        <PhotoProfile>
-          {user.imageCam ? <UserCard user={user} /> :
-            <img className="user-img" src="/images/user.png" alt='default avatar' />}
-        </PhotoProfile>
+    return (
+      <UserHeaderBackground>
         <div>
-          <StyledLink to="/react-webcam">
-            <CameraIcon />
-          </StyledLink>
+          <TitleH1>{user.username}'s profile</TitleH1>
         </div>
-      </PhotoContainer>
-      <ProfileBackground background={theme.background}>
-        <SecondaryWrapperLeft backgroundTwo={theme.backgroundTwo}>
-          <TitleH2 color={theme.color}>Event</TitleH2>
-          <UserProfileBarUl>
-            <MenuBarLi>
-              {user ? <StyledLink to="/add-event" user={user._id}>
-                <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Add</TitleH3>
-                  <PlusCircleIcon color={theme.color} />
-                </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
-            </MenuBarLi>
-            <MenuBarLi>
-              {user ? <StyledLink to="/user-events" user={user}>
-                <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Edit</TitleH3>
-                  <EditIcon color={theme.color} />
-                </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
-            </MenuBarLi>
-          </UserProfileBarUl>
-        </SecondaryWrapperLeft>
-        <SecondaryWrapperRight backgroundTwo={theme.backgroundTwo}>
-          <TitleH2 color={theme.color}>Place</TitleH2>
-          <UserProfileBarUl>
-            <MenuBarLi>
-              {user ? <StyledLink to="/add-place">
-                <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Add</TitleH3>
-                  <PlusCircleIcon color={theme.color} />
-                </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
-            </MenuBarLi>
-            <MenuBarLi>
-              {user ? <StyledLink to={`/places/${user.hasPlace}`}>
-                <UserProfileLabelContent>
-                  <TitleH3 color={theme.color}>Edit</TitleH3>
-                  <EditIcon color={theme.color} />
-                </UserProfileLabelContent>
-              </StyledLink> : <div></div>}
-            </MenuBarLi>
-          </UserProfileBarUl>
-        </SecondaryWrapperRight>
-      </ProfileBackground>
-    </UserHeaderBackground>
-  );
-};
+        <PhotoContainer>
+          <PhotoProfile>
+            {user.imageCam ? <UserCard user={user} /> :
+              <img className="user-img" src="/images/user.png" alt='default avatar' />}
+          </PhotoProfile>
+          <div>
+            <StyledLink to="/react-webcam">
+              <CameraIcon />
+            </StyledLink>
+          </div>
+        </PhotoContainer>
+        <ProfileBackground background={theme.background}>
+          <SecondaryWrapperLeft backgroundTwo={theme.backgroundTwo}>
+            <TitleH2 color={theme.color}>Event</TitleH2>
+            <UserProfileBarUl>
+              <MenuBarLi>
+                {user ? <StyledLink to="/add-event" user={user._id}>
+                  <UserProfileLabelContent>
+                    <TitleH3 color={theme.color}>Add</TitleH3>
+                    <PlusCircleIcon color={theme.color} />
+                  </UserProfileLabelContent>
+                </StyledLink> : <div></div>}
+              </MenuBarLi>
+              <MenuBarLi>
+                {user ? <StyledLink to="/user-events" user={user}>
+                  <UserProfileLabelContent>
+                    <TitleH3 color={theme.color}>Edit</TitleH3>
+                    <EditIcon color={theme.color} />
+                  </UserProfileLabelContent>
+                </StyledLink> : <div></div>}
+              </MenuBarLi>
+            </UserProfileBarUl>
+          </SecondaryWrapperLeft>
+          <SecondaryWrapperRight backgroundTwo={theme.backgroundTwo}>
+            <TitleH2 color={theme.color}>Place</TitleH2>
+            <UserProfileBarUl>
+              <MenuBarLi>
+                {user ? <StyledLink to="/add-place">
+                  <UserProfileLabelContent>
+                    <TitleH3 color={theme.color}>Add</TitleH3>
+                    <PlusCircleIcon color={theme.color} />
+                  </UserProfileLabelContent>
+                </StyledLink> : <div></div>}
+              </MenuBarLi>
+              <MenuBarLi>
+                {user ? <StyledLink to={`/places/${user.hasPlace}`}>
+                  <UserProfileLabelContent>
+                    <TitleH3 color={theme.color}>Edit</TitleH3>
+                    <EditIcon color={theme.color} />
+                  </UserProfileLabelContent>
+                </StyledLink> : <div></div>}
+              </MenuBarLi>
+            </UserProfileBarUl>
+          </SecondaryWrapperRight>
+        </ProfileBackground>
+      </UserHeaderBackground>
+    );
+  }
+}
 
 export default withAuth(withTheme(UserProfile));
