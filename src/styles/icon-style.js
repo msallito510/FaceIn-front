@@ -14,7 +14,7 @@ import { PlayCircle } from '@styled-icons/feather/PlayCircle';
 import { LogOut } from '@styled-icons/feather/LogOut';
 import { AddAPhoto } from "@styled-icons/material-outlined/AddAPhoto";
 import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
-import { List } from "@styled-icons/feather/List";
+import { CheckCircle } from "@styled-icons/feather/CheckCircle";
 
 
 export const SearchIcon = styled(Search)`
@@ -80,7 +80,7 @@ export const BackArrow = styled(ChevronLeft)`
   color: #61637B;
 `;
 
-export const ListIcon = styled(List)`
+export const CheckIcon = styled(CheckCircle)`
   position: relative;
   right: 3em;
   float: left;

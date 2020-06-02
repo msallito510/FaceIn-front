@@ -4,12 +4,14 @@ import { withTheme } from "../context/themeContext";
 import styled from 'styled-components';
 import UserCard from '../components/UserCard';
 
+import userService from '../services/userService';
+
 import {
   StyledLink,
   UserProfileLabelContent
 } from "../styles/styledComponents";
 import { TitleH1, TitleH2, TitleH3 } from "../styles/commonStyle";
-import { PlusCircleIcon, EditIcon, CameraIcon } from "../styles/icon-style";
+import { PlusCircleIcon, EditIcon, CheckIcon, CameraIcon } from "../styles/icon-style";
 
 const UserHeaderBackground = styled.div`
   display:flex;
@@ -103,9 +105,49 @@ const PhotoProfile = styled.div`
   }
 `;
 
+const CustomTitleH3 = styled.h3`
+  position: relative;
+  width: 6em;
+  float: right;
+  bottom: 2em;
+  font-size: 1em;
+  text-align: left;
+  color: ${props => props.color};
+`;
+
 class UserProfile extends Component {
+
+  state = {
+    loading: true,
+    user: {},
+    userId: "",
+    placeId: "",
+  };
+
+  async componentDidMount() {
+    const { user } = this.props;
+    const userId = user._id;
+    try {
+      const user = await userService.getUserById(userId)
+      const placeId = user.hasPlace._id;
+
+      this.setState({
+        placeId,
+        user,
+        userId,
+        loading: false,
+      })
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        loading: false,
+      })
+    }
+  }
+
   render() {
-    const { user, theme } = this.props;
+    const { theme } = this.props;
+    const { placeId, user } = this.state;
 
     return (
       <UserHeaderBackground>
@@ -138,8 +180,16 @@ class UserProfile extends Component {
               <MenuBarLi>
                 {user ? <StyledLink to="/user-events" user={user}>
                   <UserProfileLabelContent>
-                    <TitleH3 color={theme.color}>Edit</TitleH3>
+                    <TitleH3 color={theme.color}>List</TitleH3>
                     <EditIcon color={theme.color} />
+                  </UserProfileLabelContent>
+                </StyledLink> : <div></div>}
+              </MenuBarLi>
+              <MenuBarLi>
+                {user ? <StyledLink to="/future-events" user={user}>
+                  <UserProfileLabelContent>
+                    <CustomTitleH3 color={theme.color}>I'll go</CustomTitleH3>
+                    <CheckIcon color={theme.color} />
                   </UserProfileLabelContent>
                 </StyledLink> : <div></div>}
               </MenuBarLi>
@@ -157,7 +207,7 @@ class UserProfile extends Component {
                 </StyledLink> : <div></div>}
               </MenuBarLi>
               <MenuBarLi>
-                {user ? <StyledLink to={`/places/${user.hasPlace}`}>
+                {user ? <StyledLink to={`/place-edit/${placeId}`}>
                   <UserProfileLabelContent>
                     <TitleH3 color={theme.color}>Edit</TitleH3>
                     <EditIcon color={theme.color} />

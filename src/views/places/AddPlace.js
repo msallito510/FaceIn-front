@@ -39,13 +39,13 @@ class AddPlace extends Component {
       const currentUser = await userService.getUserById(_id);
       const hasPlace = currentUser.hasPlace.length !== 0 ? true : false;
 
-      const places = await placeService.getAllPlaces();
+      // const places = await placeService.getAllPlaces();
 
       this.setState({
-        placeName: places.placeName,
-        address: places.address,
-        city: places.city,
-        country: places.country,
+        // placeName: places.placeName,
+        // address: places.address,
+        // city: places.city,
+        // country: places.country,
         loading: false,
         hasPlace,
       })
