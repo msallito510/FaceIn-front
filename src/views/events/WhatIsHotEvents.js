@@ -27,7 +27,8 @@ class WhatIsHotEvents extends Component {
   async componentDidMount() {
 
     try {
-      const events = await eventService.getAllEvents()
+      const events = await eventService.getSortEvents();
+
       this.setState({
         events,
         loading: false
@@ -39,7 +40,6 @@ class WhatIsHotEvents extends Component {
       })
     }
   }
-
 
   render() {
     const { events, loading } = this.state;

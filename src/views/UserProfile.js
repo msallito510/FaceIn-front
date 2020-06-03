@@ -125,11 +125,13 @@ class UserProfile extends Component {
   };
 
   async componentDidMount() {
-    const { user } = this.props;
-    const userId = user._id;
+    const { user: { _id: userId } } = this.props;
+
     try {
-      const user = await userService.getUserById(userId)
-      const placeId = user.hasPlace._id;
+      const user = await userService.getUserById(userId);
+
+
+      const placeId = user.hasPlace !== undefined ? user.hasPlace._id : "";
 
       this.setState({
         placeId,
@@ -207,7 +209,7 @@ class UserProfile extends Component {
                 </StyledLink> : <div></div>}
               </MenuBarLi>
               <MenuBarLi>
-                {user ? <StyledLink to={`/place-edit/${placeId}`}>
+                {placeId !== "" ? <StyledLink to={`/place-edit/${placeId}`}>
                   <UserProfileLabelContent>
                     <TitleH3 color={theme.color}>Edit</TitleH3>
                     <EditIcon color={theme.color} />
