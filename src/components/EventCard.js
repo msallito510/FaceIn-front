@@ -51,13 +51,15 @@ class EventCard extends Component {
     loading: true,
     currentUser: "",
     eventId: "",
-    participants: []
+    participants: [],
+    isAParticipant: false,
   }
 
   async componentDidMount() {
     const { event: { _id: eventId, participants }, user: { _id: userId } } = this.props;
 
     const currentUser = await userService.getUserById(userId);
+
 
     this.setState({
       currentUser,
@@ -74,9 +76,9 @@ class EventCard extends Component {
 
   handleAttend = async () => {
     const { event: { _id } } = this.props;
-    const { participants } = this.state;
+    const { isAParticipant } = this.state;
 
-    if (participants.length === 0) {
+    if (!isAParticipant) {
       await eventService.attendEvent(_id)
         .then(() => {
           toast.success('You have been confirmed for the event!');
@@ -108,22 +110,31 @@ class EventCard extends Component {
 
   handleSetState = async () => {
 
-    const { eventId } = this.state;
+    const { eventId, currentUser } = this.state;
 
     const event = await eventService.getEventById(eventId)
 
     let givenLikeByUser = "";
+    let participantId = "";
 
-    if (this.state.currentUser !== "" && event.likes.length !== 0) {
-      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === this.state.currentUser._id)
+    if (currentUser !== "" && event.likes.length !== 0) {
+      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === currentUser._id)
     }
 
     let isLiked = givenLikeByUser !== "" ? true : false;
 
+
+    if (currentUser.participantEvents.length !== 0) {
+      participantId = currentUser.participantEvents.find(item => item.participant === currentUser._id)
+    }
+
+    const isAParticipant = participantId._id ? true : false;
+
     this.setState({
       isLiked: isLiked,
       participants: event.participants,
-      loading: false
+      isAParticipant,
+      loading: false,
     })
 
   }
