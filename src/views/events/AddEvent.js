@@ -3,6 +3,7 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
+import userService from "../../services/userService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
@@ -30,15 +31,20 @@ class AddEvent extends Component {
     timeStart: 0,
     timeEnd: 0,
     price: 0.0,
-    loading: true
+    loading: true,
+    hasPlace: false,
   }
 
   async componentDidMount() {
+    const { user: { _id } } = this.props;
 
     try {
+      const currentUser = await userService.getUserById(_id);
+      const hasPlace = currentUser.hasPlace.length !== 0 ? true : false;
 
       this.setState({
         loading: false,
+        hasPlace,
       })
     } catch (error) {
       console.log(error);
@@ -103,7 +109,8 @@ class AddEvent extends Component {
       timeStart,
       timeEnd,
       price,
-      loading
+      loading,
+      hasPlace
     } = this.state;
 
     const { theme } = this.props;
@@ -186,29 +193,17 @@ class AddEvent extends Component {
                 onChange={this.handleInput}
               />
             </div>
-            {/* <div>
-              <form>
-                <label htmlFor="tagId"># Tag</label>
 
-                <select type="text" name="tagId" value="tagId" onChange={this.handleInput}>
-                  {!loading && tags.map((tag) => {
-                    return (
-                      <option value={tag._id}>{tag.tagName}</option>
-                    );
-                  })}
-                </select>
-              </form>
-            </div> */}
           </PlaceContainerAlign>
         </PlaceContainer>
-        <div>
+        {hasPlace ? <div>
           <Submit color={theme.color} background={theme.primaryButton}
             type="button"
             value="Add Event"
             name="submit"
             onClick={this.handleSubmit}
           />
-        </div>
+        </div> : <Label color={theme.color}>It is necessary to have created a Place before creating an Event</Label>}
       </FormWrapper>
     )
   }

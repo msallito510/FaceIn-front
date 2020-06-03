@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { withAuth } from '../../context/authContext';
 import { withTheme } from '../../context/themeContext';
 import placeService from "../../services/placeService";
+import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import 'react-rater/lib/react-rater.css';
+import Rater from 'react-rater';
 
 import {
   FormWrapper,
@@ -11,14 +14,27 @@ import {
 
 import {
   TitleH1,
-  Submit
+  Submit,
+  PlaceContainerAlign,
+  PlaceContainer,
+  Label
 } from "../../styles/commonStyle";
+
+const SubmitContainer = styled.div`
+  margin-top: 5em;
+`;
+
+const RatingContainer = styled.div`
+  position: relative;
+  right: 3em;
+  padding: 1em;
+`;
 
 class PlaceRating extends Component {
   state = {
     title: "",
     description: "",
-    rating: 4
+    stars: 4
   }
 
   handleInput = (e) => {
@@ -26,17 +42,25 @@ class PlaceRating extends Component {
       this.setState({
         [e.target.name]: e.target.value,
       });
-    } else if (e.target.type === "number") {
-      this.setState(
-        { [e.target.name]: parseFloat(e.target.value) });
     }
   };
 
+  handleRate({ rating }) {
+    const { rating: lastRating } = this.state;
+    if (rating === lastRating) {
+      return
+    }
+
+    this.setState({
+      stars: rating,
+    })
+  }
+
   handleRating = async () => {
-    const { title, description, rating } = this.state;
+    const { title, description, stars } = this.state;
     const { match: { params: { id } }, history: { push } } = this.props;
 
-    const place = { id, title, description, rating };
+    const place = { id, title, description, stars };
 
     await placeService.addRating(place)
       .then(() => {
@@ -51,53 +75,46 @@ class PlaceRating extends Component {
   };
 
   render() {
-    const { title, description, rating } = this.state;
+    const { title, description, stars } = this.state;
     const { theme } = this.props;
 
     return (
       <FormWrapper>
         <TitleH1 color={theme.color}>Add a comment</TitleH1>
-        <div>
-          <label htmlFor="name">Title</label>
-          <Input
-            type="text"
-            value={title}
-            name="title"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Description</label>
-          <Input
-            type="text"
-            value={description}
-            name="description"
-            onChange={this.handleInput}
-          />
-        </div>
-        <div>
-          <form>
-            <label htmlFor="name">Rating</label>
-
-            <select type="number" name="rating" value={rating} onChange={this.handleInput}>
-              return (
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4" selected="selected">4</option>
-              <option value="5">5</option>
-                );
-            </select>
-          </form>
-        </div>
-        <div>
+        <PlaceContainer>
+          <PlaceContainerAlign>
+            <div>
+              <Label color={theme.color}>Title</Label>
+              <Input
+                type="text"
+                value={title}
+                name="title"
+                onChange={this.handleInput}
+              />
+            </div>
+            <div>
+              <Label color={theme.color}>Description</Label>
+              <Input
+                type="text"
+                value={description}
+                name="description"
+                onChange={this.handleInput}
+              />
+            </div>
+            <RatingContainer>
+              <Label color={theme.color}>Rating</Label>
+              <Rater rating={stars} total={5} onRate={this.handleRate.bind(this)} />
+            </RatingContainer>
+          </PlaceContainerAlign>
+        </PlaceContainer>
+        <SubmitContainer>
           <Submit
             type="button"
             value="Rate"
             name="submit"
             onClick={this.handleRating}
           />
-        </div>
+        </SubmitContainer>
       </FormWrapper>
     )
   }

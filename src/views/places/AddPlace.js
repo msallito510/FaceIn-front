@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
 import placeService from "../../services/placeService";
+import userService from "../../services/userService";
+
 import {
   FormWrapper,
   Input
@@ -26,20 +28,26 @@ class AddPlace extends Component {
     address: "",
     city: "",
     country: "",
-    loading: true
+    loading: true,
+    hasPlace: false,
   }
 
   async componentDidMount() {
+    const { user: { _id } } = this.props;
 
     try {
-      const places = await placeService.getAllPlaces();
+      const currentUser = await userService.getUserById(_id);
+      const hasPlace = currentUser.hasPlace.length !== 0 ? true : false;
+
+      // const places = await placeService.getAllPlaces();
 
       this.setState({
-        placeName: places.placeName,
-        address: places.address,
-        city: places.city,
-        country: places.country,
-        loading: false
+        // placeName: places.placeName,
+        // address: places.address,
+        // city: places.city,
+        // country: places.country,
+        loading: false,
+        hasPlace,
       })
     } catch (error) {
       console.log(error);
@@ -86,7 +94,8 @@ class AddPlace extends Component {
       address,
       city,
       country,
-      loading
+      loading,
+      hasPlace
     } = this.state;
 
     const { theme } = this.props;
@@ -135,7 +144,7 @@ class AddPlace extends Component {
             </div>
           </PlaceContainerAlign>
         </PlaceContainer>
-        <div>
+        {!hasPlace ? <div>
           <div>
             <Submit color={theme.color} background={theme.primaryButton}
               type="button"
@@ -144,7 +153,7 @@ class AddPlace extends Component {
               onClick={this.handleSubmit}
             />
           </div>
-        </div>
+        </div> : <Label color={theme.color}>It is only possible to create one place per user.</Label>}
       </FormWrapper>
     )
   }

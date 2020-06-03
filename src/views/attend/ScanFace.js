@@ -84,10 +84,10 @@ class ScanFace extends Component {
       const isFaceMatched = await participantService.faceMatch(imgSrc, participant._id);
 
       if (isFaceMatched.faceScanned) {
-        toast.success('🎉 yay! you have been recognized by Face-in 🥳');
+        toast.success('🎉 yay! You have been recognized by Face-in 🥳');
         history.goBack();
       } else {
-        toast.error('you have not recognized by Face-in. Try again');
+        toast.error('You have not recognized by Face-in. Try again');
       }
     } catch (error) {
       console.log(error);

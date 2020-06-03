@@ -50,6 +50,11 @@ class EventService {
       .then(({ data: events }) => events);
   }
 
+  getSortEvents() {
+    return this.axios.get("/api/events/sort")
+      .then(({ data: events }) => events);
+  }
+
   getAllEventsByOwner() {
     return this.axios.get("/api/events/owner")
       .then(({ data: events }) => events);

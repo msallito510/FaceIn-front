@@ -24,6 +24,12 @@ class UserService {
       .then(({ data: user }) => user);
   }
 
+  getMyFutureEvents(id) {
+    return this.axios
+      .get(`/api/users/${id}/futureEvents`)
+      .then(({ data: user }) => user);
+  }
+
   updateUser(user) {
     return this.axios
       .put(`/api/users/${user._id}/update`, user)

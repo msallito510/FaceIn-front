@@ -28,6 +28,7 @@ import UserEventList from './views/events/UserEventList';
 import EditEvent from './views/events/EditEvent';
 import SearchEvent from './views/events/SearchEvent';
 import WhatIsHotEvents from './views/events/WhatIsHotEvents';
+import FutureEvents from './views/events/FutureEvents';
 import UserLikes from './views/events/UserLikeEvents';
 import ParticipantsEvent from './views/events/ParticipantsEvent';
 
@@ -74,6 +75,7 @@ class App extends Component {
             <PrivateRoute exact path="/participants-event/:id" component={ParticipantsEvent} />
 
             <PrivateRoute exact path="/whatishot" component={WhatIsHotEvents} />
+            <PrivateRoute exact path="/future-events" component={FutureEvents} />
             <PrivateRoute exact path="/likes" component={UserLikes} />
 
             <PrivateRoute exact path="/places" component={PlacesAll} />

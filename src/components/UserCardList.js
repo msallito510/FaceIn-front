@@ -33,7 +33,7 @@ export default class UserCardList extends Component {
             </CardContainer>
           );
         }) :
-          <h2>you still haven't given any likes</h2>
+          <h2>You still haven't given any likes</h2>
         }
       </div>
     )

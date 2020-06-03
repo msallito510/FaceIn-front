@@ -4,7 +4,8 @@ import { withTheme } from "../../context/themeContext";
 import DateFormat from "../../components/DateFormat";
 import { DualRing } from 'react-awesome-spinners';
 
-import eventService from "../../services/eventService";
+import userService from "../../services/userService";
+
 import {
   TitleEventsLh1,
   HeaderBackground,
@@ -18,19 +19,21 @@ import {
 
 import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
-class WhatIsHotEvents extends Component {
+class FutureEvents extends Component {
   state = {
     events: [],
     loading: true,
   }
 
   async componentDidMount() {
+    const { user: { _id } } = this.props;
 
     try {
-      const events = await eventService.getSortEvents();
+
+      const futureEvents = await userService.getMyFutureEvents(_id);
 
       this.setState({
-        events,
+        events: futureEvents.participantEvents,
         loading: false
       })
     } catch (error) {
@@ -41,37 +44,40 @@ class WhatIsHotEvents extends Component {
     }
   }
 
+
   render() {
     const { events, loading } = this.state;
     const { theme } = this.props;
 
+
     return (
       <div>
         <HeaderBackground>
-          <TitleEventsLh1>Most popular events</TitleEventsLh1>
+          <TitleEventsLh1>My future events</TitleEventsLh1>
         </HeaderBackground>
         <GeneralBackground background={theme}>
           {loading && <LoadingContainer><DualRing /></LoadingContainer>}
-          {!loading && events.map((event) => {
+          {!loading && events.length !== 0 ? events.map((item) => {
             return (
-              <CardContainer key={event._id}>
-                <StyledLink to={`/events/${event._id}`}>
+              <CardContainer key={item.event._id}>
+                <StyledLink to={`/events/${item.event._id}`}>
                   <EventCardContainer>
-                    <ContentEventCard image={event.image}>
-                      <TitleEventCardLh1>{event.title}</TitleEventCardLh1>
+                    <ContentEventCard image={item.event.image}>
+                      <TitleEventCardLh1>{item.event.title}</TitleEventCardLh1>
                       <TimeEventCardLh3>
-                        <DateFormat dateStart={event.dateStart} timeStart={event.timeStart} />
+                        <DateFormat dateStart={item.event.dateStart} timeStart={item.event.timeStart} />
                       </TimeEventCardLh3>
                     </ContentEventCard>
                   </EventCardContainer>
                 </StyledLink>
+
               </CardContainer>
             );
-          })}
+          }) : <h2>You still haven't given any future events</h2>}
         </GeneralBackground>
       </div>
     );
   }
 }
 
-export default withAuth(withTheme(WhatIsHotEvents));
+export default withAuth(withTheme(FutureEvents));

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 import placeService from "../../services/placeService";
-import ratingService from "../../services/ratingService";
 import PlaceCard from '../places/PlaceCard';
 import styled from 'styled-components';
 import { DualRing } from 'react-awesome-spinners';
@@ -11,18 +9,11 @@ import 'react-rater/lib/react-rater.css';
 import Rater from 'react-rater';
 
 import {
-  // TitleDh1,
   TitleDh2Secundary,
-  // CommentsBackground,
   FormWrapper,
-  // CommentContainer,
   ContainerRow,
-
   LinkContainer,
   StyledLink,
-  // CommentsContainer,
-  // GeneralContainer
-
 } from "../../styles/styledComponents";
 
 import { TitleH1, GeneralContainer, Button, LoadingContainer } from "../../styles/commonStyle";
@@ -66,6 +57,12 @@ const ButtonsContainer = styled.div`
   margin: 0 6em 1em;
 `;
 
+const EmptyCommentMsg = styled.h2`
+  position: absolute;
+  top: 3em;
+  
+`;
+
 class PlaceDetail extends Component {
   state = {
     place: {},
@@ -79,12 +76,11 @@ class PlaceDetail extends Component {
 
     try {
       const place = await placeService.getPlaceById(id);
-      const ratings = await ratingService.getAllRatings();
 
       this.setState({
         place,
         isOwner: (user.hasPlace === id) ? true : false,
-        ratings,
+        ratings: place.ratings.length === undefined ? [] : place.ratings,
         loading: false
       })
     } catch (error) {
@@ -117,18 +113,19 @@ class PlaceDetail extends Component {
             <CommentsBackground>
               <ContainerRow>
                 <TitleDh2Secundary>Comments</TitleDh2Secundary>
-                {ratings.map((rating) =>
-                  <CommentContainer>
-                    <div>
-                      <TitleH2>{rating.title}</TitleH2>
-                      <Rater rating={rating.stars} total={5} interactive={false} />
-                      {/* {rating.stars} */}
-                    </div>
-                    <p>{rating.description}</p>
-
-                  </CommentContainer>
-                )}
               </ContainerRow>
+              {ratings.length > 0 ? ratings.map((rating) =>
+                <CommentContainer>
+                  <div>
+                    <TitleH2>{rating.title}</TitleH2>
+                    <Rater rating={rating.stars} total={5} interactive={false} />
+                  </div>
+                  <p>{rating.description}</p>
+
+                </CommentContainer>
+              ) : <EmptyCommentMsg>there are not any comments yet</EmptyCommentMsg>
+              }
+
             </CommentsBackground>
           </FormWrapper>
         }
@@ -145,8 +142,8 @@ class PlaceDetail extends Component {
                 </Button>
               </div>
             </ButtonsContainer> :
-            <LinkContainer color={theme.color} background={theme.background}>
-              <Link to={`/rating/${place._id}`}>Rating</Link>
+            <LinkContainer color={theme.color} background={theme.primaryButton}>
+              <StyledLink to={`/rating/${place._id}`}>Rating</StyledLink>
             </LinkContainer>
 
           }

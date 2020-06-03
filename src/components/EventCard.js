@@ -43,6 +43,7 @@ const MapReadOnly = styled.div`
   pointer-events: none;
   `;
 
+
 class EventCard extends Component {
 
   state = {
@@ -50,16 +51,20 @@ class EventCard extends Component {
     loading: true,
     currentUser: "",
     eventId: "",
+    participants: [],
+    isAParticipant: false,
   }
 
   async componentDidMount() {
-    const { event: { _id: eventId }, user: { _id: userId } } = this.props;
+    const { event: { _id: eventId, participants }, user: { _id: userId } } = this.props;
 
     const currentUser = await userService.getUserById(userId);
+
 
     this.setState({
       currentUser,
       eventId,
+      participants,
     })
 
     this.handleSetState();
@@ -71,16 +76,21 @@ class EventCard extends Component {
 
   handleAttend = async () => {
     const { event: { _id } } = this.props;
+    const { isAParticipant } = this.state;
 
-    await eventService.attendEvent(_id)
-      .then(() => {
-        toast.success('You have been confirmed for the event!');
-      })
-      .catch(error => {
-        toast.error(`ERROR. Cannot be confirmed - ${error}`);
-      });
+    if (!isAParticipant) {
+      await eventService.attendEvent(_id)
+        .then(() => {
+          toast.success('You have been confirmed for the event!');
+          this.handleSetState();
+        })
+        .catch(error => {
+          toast.error(`ERROR. Cannot be confirmed - ${error}`);
+        });
 
-    this.renderButtonState();
+    } else {
+      toast.warning('You have alredy registered in the event.');
+    }
 
   };
 
@@ -98,27 +108,33 @@ class EventCard extends Component {
 
   };
 
-  renderButtonState = () => {
-    this.refs.btn.setAttribute("disabled", "disabled");
-  }
-
   handleSetState = async () => {
 
-    const { eventId } = this.state;
+    const { eventId, currentUser } = this.state;
 
     const event = await eventService.getEventById(eventId)
 
     let givenLikeByUser = "";
+    let participantId = "";
 
-    if (this.state.currentUser !== "" && event.likes.length !== 0) {
-      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === this.state.currentUser._id)
+    if (currentUser !== "" && event.likes.length !== 0) {
+      givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === currentUser._id)
     }
 
     let isLiked = givenLikeByUser !== "" ? true : false;
 
+
+    if (currentUser.participantEvents.length !== 0) {
+      participantId = currentUser.participantEvents.find(item => item.participant === currentUser._id)
+    }
+
+    const isAParticipant = participantId._id ? true : false;
+
     this.setState({
       isLiked: isLiked,
-      loading: false
+      participants: event.participants,
+      isAParticipant,
+      loading: false,
     })
 
   }
@@ -132,12 +148,12 @@ class EventCard extends Component {
       timeStart,
       price,
       owner: { username, imageTwo },
-      participants,
+      // participants,
       belongsToPlace,
     },
       theme } = this.props;
 
-    const { isLiked } = this.state;
+    const { isLiked, participants } = this.state;
     return (
 
       <EventDetailBackground background={theme}>

@@ -60,7 +60,7 @@ export const BoldTitleCardDh1 = styled.h1`
 
 export const TitleEventCardLh1 = styled.h3`
   position: relative;
-  top: 7em;
+  top: 6em;
   opacity: 1;
   padding: 0.3em;
   font-weight: 900;

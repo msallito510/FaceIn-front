@@ -31,14 +31,14 @@ class EditPlace extends Component {
     const { match: { params: { id } } } = this.props;
 
     try {
-      const places = await placeService.getPlaceById(id);
+      const place = await placeService.getPlaceById(id);
 
       this.setState({
-        placeId: places._id,
-        placeName: places.placeName,
-        address: places.address,
-        city: places.city,
-        country: places.country,
+        placeId: place._id,
+        placeName: place.placeName,
+        address: place.address,
+        city: place.city,
+        country: place.country,
         loading: false
       })
     } catch (error) {
