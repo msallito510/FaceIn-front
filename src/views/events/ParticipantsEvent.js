@@ -15,6 +15,11 @@ const Img = styled.img`
 `;
 
 const ParticipantsContainer = styled.div`
+  position: relative;
+  bottom: 6em;
+`;
+
+const ParticipantsContainerTable = styled.div`
   position: absolute;
   margin: 2em;
   right: 12em;
@@ -50,33 +55,35 @@ class ParticipantsEvent extends Component {
         <TitleH1>Participants who will attend the event</TitleH1>
         {loading && <LoadingContainer><DualRing /></LoadingContainer>}
         <ParticipantsContainer>
-          <Table>
-            <thead>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            {!loading && participants.map((item) => {
-              return (
-                <tbody>
-                  <tr>
-                    <Container key={item.participant._id}>
+          <ParticipantsContainerTable>
+            <Table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              {!loading && participants.map((item) => {
+                return (
+                  <tbody>
+                    <tr>
+                      <Container key={item.participant._id}>
 
 
-                      <TdRight>{item.participant.username}
-                      </TdRight>
+                        <TdRight>{item.participant.username}
+                        </TdRight>
 
-                      <TdLeft> <Img src={item.participant.imageTwo} alt={item.participant.username} /></TdLeft>
+                        <TdLeft> <Img src={item.participant.imageTwo} alt={item.participant.username} /></TdLeft>
 
-                    </Container>
-                  </tr>
-                </tbody>
+                      </Container>
+                    </tr>
+                  </tbody>
 
-              );
-            })
-            }
-          </Table>
+                );
+              })
+              }
+            </Table>
+          </ParticipantsContainerTable>
         </ParticipantsContainer>
       </GeneralContainer>
     );
