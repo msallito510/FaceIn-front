@@ -9,7 +9,8 @@ import Rater from 'react-rater';
 
 import {
   FormWrapper,
-  Input
+  Input,
+  Textarea
 } from "../../styles/styledComponents";
 
 import {
@@ -94,8 +95,8 @@ class PlaceRating extends Component {
             </div>
             <div>
               <Label color={theme.color}>Description</Label>
-              <Input
-                type="text"
+              <Textarea
+                type="textarea"
                 value={description}
                 name="description"
                 onChange={this.handleInput}

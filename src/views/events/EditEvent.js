@@ -8,7 +8,8 @@ import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
-  Input
+  Input,
+  Textarea
 } from "../../styles/styledComponents";
 
 import {
@@ -162,8 +163,8 @@ class EditEvent extends Component {
             </div>
             <div>
               <Label color={theme.color}>Description</Label>
-              <Input
-                type="text"
+              <Textarea
+                type="textarea"
                 value={description}
                 name="description"
                 onChange={this.handleInput}

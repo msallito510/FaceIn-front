@@ -116,6 +116,20 @@ export const Input = styled.input`
   padding: 0 0 0 0.5em;
 `;
 
+export const Textarea = styled.textarea`
+  border: none;
+  border-bottom: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  height: 30px;
+  font-size: 16px;
+  opacity: 1;
+  color: #61637B;
+  margin: 0.1em;
+  padding: 0 0 0 0.5em;
+  height: 7em;
+`;
+
 export const ContinerAlineCenter = styled.div`
   display: flex;
   flex-direction: column;
