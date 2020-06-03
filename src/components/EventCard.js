@@ -125,7 +125,6 @@ class EventCard extends Component {
 
 
     if (currentUser.participantEvents.length !== 0) {
-      // participantId = currentUser.participantEvents.find(item => item.event._id.toString() === eventId.toString())
       participantId = event.participants.find(item => item.participant._id === currentUser._id)
     }
 

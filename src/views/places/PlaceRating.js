@@ -95,7 +95,7 @@ class PlaceRating extends Component {
             </div>
             <div>
               <Label color={theme.color}>Description</Label>
-              <Textarea
+              <Input
                 type="textarea"
                 value={description}
                 name="description"
@@ -109,7 +109,7 @@ class PlaceRating extends Component {
           </PlaceContainerAlign>
         </PlaceContainer>
         <SubmitContainer>
-          <Submit
+          <Submit color={theme.color} background={theme.primaryButton}
             type="button"
             value="Rate"
             name="submit"
