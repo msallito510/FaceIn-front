@@ -79,7 +79,7 @@ class AddPlace extends Component {
     await placeService.addPlace(placeName, address, city, country)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the place was added successfully');
+        toast.success('The place was added successfully');
 
       })
       .catch(error => {

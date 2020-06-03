@@ -62,6 +62,7 @@ class Signup extends Component {
           <Input
             type="text"
             name="username"
+            autocomplete="on"
             value={username}
             onChange={this.handleChange}
             placeholder="username"
@@ -69,6 +70,7 @@ class Signup extends Component {
           <Input
             type="password"
             name="password"
+            autocomplete="on"
             value={password}
             onChange={this.handleChange}
             placeholder="password"
@@ -76,6 +78,7 @@ class Signup extends Component {
           <Input
             type="email"
             name="email"
+            autocomplete="on"
             value={email}
             onChange={this.handleChange}
             placeholder="email"

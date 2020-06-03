@@ -34,6 +34,7 @@ class Attend extends Component {
 
   render() {
     const { event: { participants }, loading } = this.state;
+    const { theme } = this.props;
 
     return (
       <GeneralContainer>
@@ -52,19 +53,17 @@ class Attend extends Component {
               <tbody>
                 <tr>
                   <Container key={item.participant._id}>
-
                     <TdRight>{item.participant.username}
                     </TdRight>
                     <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
                     <Link to={`/scan-face/${item._id}`}>
                       <TdScan>
-                        <PlayCircleIcon />
+                        <PlayCircleIcon color={theme.color} />
                       </TdScan>
                     </Link>
                   </Container>
                 </tr>
               </tbody>
-
             );
           })
           }

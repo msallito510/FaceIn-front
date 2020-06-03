@@ -3,13 +3,13 @@ import { withAuth } from "../../context/authContext";
 import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
-// import tagService from "../../services/tagService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
 
 import {
   FormWrapper,
-  Input
+  Input,
+  Textarea
 } from "../../styles/styledComponents";
 
 import {
@@ -28,7 +28,6 @@ class EditEvent extends Component {
     eventId: "",
     title: "",
     description: "",
-    frequency: "",
     dateStart: "",
     dateEnd: "",
     timeStart: 0,
@@ -36,8 +35,6 @@ class EditEvent extends Component {
     price: 0.0,
     imageUrl: "",
     imageName: "",
-    // tagId: "",
-    // tags: [],
     loading: true
   }
 
@@ -46,23 +43,16 @@ class EditEvent extends Component {
 
     try {
       const event = await eventService.getEventById(id);
-      // const tags = await tagService.getAllTags();
-      // const tagId = await tagService.getTagById(event.tag._id);
-      // const tagId = tags[0]._id;
 
       this.setState({
         eventId: event._id,
         title: event.title,
         description: event.description,
-        frequency: event.frequency,
         dateStart: event.dateStart,
         dateEnd: event.dateEnd,
         timeStart: event.timeStart,
         timeEnd: event.timeEnd,
         price: event.price,
-        // imageUrl: event.image,
-        // tags,
-        // tagId: tagId._id,
         loading: false
       })
     } catch (error) {
@@ -73,38 +63,23 @@ class EditEvent extends Component {
     }
   }
 
-  handleInput = async (e) => {
-    if (e.target.type === "text") {
-      this.setState({
-        [e.target.name]: e.target.value,
+  handleInput = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  handlePhoto = async (e) => {
+
+    const imgForm = new FormData();
+    imgForm.append("imageUrl", e.target.files[0]);
+    await eventService.uploadPhoto(this.state.eventId, imgForm)
+      .then(() => {
+        toast.success('The image was added successfully');
+      })
+      .catch(error => {
+        toast.error(`ERROR. The image was not added! - ${error}`);
       });
-
-    } else if (e.target.type === "number") {
-      this.setState(
-        { [e.target.name]: parseFloat(e.target.value) });
-
-    } else if (e.target.type === "date" && e.target.value !== "") {
-      this.setState(
-        { [e.target.name]: new Date(e.target.value).toISOString() });
-
-    } else if (e.target.type === "time") {
-      this.setState(
-        { [e.target.name]: e.target.value });
-    } else if (e.target.type === "file") {
-
-      const imgForm = new FormData();
-      imgForm.append("imageUrl", e.target.files[0]);
-      await eventService.uploadPhoto(this.state.eventId, imgForm)
-        .then(() => {
-          toast.success('the image was added successfully');
-        })
-        .catch(error => {
-          toast.error(`ERROR. The image was not added! - ${error}`);
-        });
-
-
-
-    };
   };
 
   handleSubmit = async (e) => {
@@ -116,30 +91,25 @@ class EditEvent extends Component {
       eventId,
       title,
       description,
-      frequency,
       dateStart,
       dateEnd,
       timeStart,
       timeEnd,
       price,
-      // imageUrl,,
-      // tagId
     } = this.state;
 
     await eventService.updateEvent(
       eventId,
       title,
       description,
-      frequency,
       dateStart,
       dateEnd,
       timeStart,
       timeEnd,
       price,
-      // tagId,
     ).then(() => {
       push(`/user-profile`);
-      toast.success('the event was edited successfully');
+      toast.success('The event was edited successfully');
 
     }).catch(error => {
       toast.error(`ERROR. The event was not edited! - ${error}`);
@@ -153,7 +123,7 @@ class EditEvent extends Component {
     await eventService.deleteEvent(eventId)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the event was deleted.');
+        toast.success('The event was deleted.');
 
       })
       .catch(error => {
@@ -165,14 +135,12 @@ class EditEvent extends Component {
   render() {
     const { title,
       description,
-      frequency,
       dateStart,
       dateEnd,
       timeStart,
       timeEnd,
       price,
       imageName,
-      // tags,
       loading
     } = this.state;
 
@@ -195,19 +163,10 @@ class EditEvent extends Component {
             </div>
             <div>
               <Label color={theme.color}>Description</Label>
-              <Input
-                type="text"
+              <Textarea
+                type="textarea"
                 value={description}
                 name="description"
-                onChange={this.handleInput}
-              />
-            </div>
-            <div>
-              <Label color={theme.color}>Frequency</Label>
-              <Input
-                type="text"
-                value={frequency}
-                name="frequency"
                 onChange={this.handleInput}
               />
             </div>
@@ -265,24 +224,10 @@ class EditEvent extends Component {
             type="file"
             value={imageName}
             name="imageName"
-            onChange={this.handleInput}
+            onChange={this.handlePhoto}
             accept=".jpg, .png"
           />
         </div>
-        {/* <div>
-          <form>
-            <Label color={theme.color}># Tag</Label>
-
-            <select type="text" name="tagId" value="tagId" onChange={this.handleInput}>
-              {!loading && tags.map((tag) => {
-                return (
-                  <option value={tag._id}>{tag.tagName}</option>
-                );
-              })}
-            </select>
-          </form>
-        </div> */}
-
         <div>
           <Submit color={theme.color} background={theme.primaryButton}
             type="button"

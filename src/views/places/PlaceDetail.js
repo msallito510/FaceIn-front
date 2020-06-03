@@ -60,7 +60,7 @@ const ButtonsContainer = styled.div`
 const EmptyCommentMsg = styled.h2`
   position: absolute;
   top: 3em;
-  
+  left: 8em;
 `;
 
 class PlaceDetail extends Component {
@@ -123,7 +123,7 @@ class PlaceDetail extends Component {
                   <p>{rating.description}</p>
 
                 </CommentContainer>
-              ) : <EmptyCommentMsg>there are not any comments yet</EmptyCommentMsg>
+              ) : <EmptyCommentMsg>No comments yet.</EmptyCommentMsg>
               }
 
             </CommentsBackground>

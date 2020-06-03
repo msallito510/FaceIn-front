@@ -9,7 +9,8 @@ import Rater from 'react-rater';
 
 import {
   FormWrapper,
-  Input
+  Input,
+  Textarea
 } from "../../styles/styledComponents";
 
 import {
@@ -65,7 +66,7 @@ class PlaceRating extends Component {
     await placeService.addRating(place)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the rating was edited successfully');
+        toast.success('The rating was edited successfully');
 
       })
       .catch(error => {
@@ -95,7 +96,7 @@ class PlaceRating extends Component {
             <div>
               <Label color={theme.color}>Description</Label>
               <Input
-                type="text"
+                type="textarea"
                 value={description}
                 name="description"
                 onChange={this.handleInput}
@@ -108,7 +109,7 @@ class PlaceRating extends Component {
           </PlaceContainerAlign>
         </PlaceContainer>
         <SubmitContainer>
-          <Submit
+          <Submit color={theme.color} background={theme.primaryButton}
             type="button"
             value="Rate"
             name="submit"
