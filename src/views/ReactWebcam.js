@@ -87,7 +87,7 @@ class ReactWebcam extends Component {
 
     userService
       .addProfilePhoto(imgSrc, userId)
-      .then(() => { toast.success('📸 your photo has been stored'); })
+      .then(() => { toast.success('📸 Your photo has been stored'); })
       .then(() => {
         push(`/user-profile`)
       })

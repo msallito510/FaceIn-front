@@ -113,18 +113,19 @@ class PlaceDetail extends Component {
             <CommentsBackground>
               <ContainerRow>
                 <TitleDh2Secundary>Comments</TitleDh2Secundary>
-                {ratings.length > 0 ? ratings.map((rating) =>
-                  <CommentContainer>
-                    <div>
-                      <TitleH2>{rating.title}</TitleH2>
-                      <Rater rating={rating.stars} total={5} interactive={false} />
-                    </div>
-                    <p>{rating.description}</p>
-
-                  </CommentContainer>
-                ) : <EmptyCommentMsg>there are not any comments yet</EmptyCommentMsg>
-                }
               </ContainerRow>
+              {ratings.length > 0 ? ratings.map((rating) =>
+                <CommentContainer>
+                  <div>
+                    <TitleH2>{rating.title}</TitleH2>
+                    <Rater rating={rating.stars} total={5} interactive={false} />
+                  </div>
+                  <p>{rating.description}</p>
+
+                </CommentContainer>
+              ) : <EmptyCommentMsg>there are not any comments yet</EmptyCommentMsg>
+              }
+
             </CommentsBackground>
           </FormWrapper>
         }

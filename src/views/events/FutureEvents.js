@@ -57,7 +57,7 @@ class FutureEvents extends Component {
         </HeaderBackground>
         <GeneralBackground background={theme}>
           {loading && <LoadingContainer><DualRing /></LoadingContainer>}
-          {!loading && events.map((item) => {
+          {!loading && events.length !== 0 ? events.map((item) => {
             return (
               <CardContainer key={item.event._id}>
                 <StyledLink to={`/events/${item.event._id}`}>
@@ -70,9 +70,10 @@ class FutureEvents extends Component {
                     </ContentEventCard>
                   </EventCardContainer>
                 </StyledLink>
+
               </CardContainer>
             );
-          })}
+          }) : <h2>You still haven't given any future events</h2>}
         </GeneralBackground>
       </div>
     );
