@@ -147,7 +147,7 @@ class EventCard extends Component {
       dateStart,
       timeStart,
       price,
-      owner: { username, imageTwo },
+      owner: { username, imageUrl },
       // participants,
       belongsToPlace,
     },
@@ -174,8 +174,8 @@ class EventCard extends Component {
                     {participants.slice(0, 2).map((item) => {
                       return (<div>
 
-                        {item.participant.imageTwo ?
-                          <SocialPhoto src={item.participant.imageTwo} alt={item.participant.username} />
+                        {item.participant.imageUrl ?
+                          <SocialPhoto src={item.participant.imageUrl} alt={item.participant.username} />
                           : <Paragraph>{item.participant.username}</Paragraph>}
                       </div>)
                     })
@@ -189,7 +189,7 @@ class EventCard extends Component {
               </div>
               <div>
                 <SocialTitle>Owner</SocialTitle>
-                {imageTwo ? <SocialPhoto src={imageTwo} alt={imageTwo} /> :
+                {imageUrl ? <SocialPhoto src={imageUrl} alt={imageUrl} /> :
                   <Paragraph>{username}</Paragraph>
                 }
               </div>
