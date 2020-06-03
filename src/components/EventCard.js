@@ -125,10 +125,11 @@ class EventCard extends Component {
 
 
     if (currentUser.participantEvents.length !== 0) {
-      participantId = currentUser.participantEvents.find(item => item.participant === currentUser._id)
+      // participantId = currentUser.participantEvents.find(item => item.event._id.toString() === eventId.toString())
+      participantId = event.participants.find(item => item.participant._id === currentUser._id)
     }
 
-    const isAParticipant = participantId._id ? true : false;
+    const isAParticipant = participantId === undefined ? false : true;
 
     this.setState({
       isLiked: isLiked,
@@ -148,7 +149,6 @@ class EventCard extends Component {
       timeStart,
       price,
       owner: { username, imageUrl },
-      // participants,
       belongsToPlace,
     },
       theme } = this.props;

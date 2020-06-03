@@ -42,7 +42,7 @@ export const Thead = styled.thead`
 
 export const TdScan = styled.td`
   position: relative;
-  right: 7em;
+  right: 6em;
   padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;
