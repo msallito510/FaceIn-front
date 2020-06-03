@@ -72,7 +72,7 @@ class EditPlace extends Component {
     placeService.updatePlace(placeId, placeName, address, city, country)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the place was edited successfully');
+        toast.success('The place was edited successfully');
 
       })
       .catch(error => {

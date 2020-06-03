@@ -25,7 +25,6 @@ class AddEvent extends Component {
   state = {
     title: "",
     description: "",
-    frequency: "",
     dateStart: "",
     dateEnd: "",
     timeStart: 0,
@@ -55,21 +54,11 @@ class AddEvent extends Component {
   }
 
   handleInput = (e) => {
-    if (e.target.type === "text") {
-      this.setState({
-        [e.target.name]: e.target.value,
-      });
-    } else if (e.target.type === "number") {
-      this.setState(
-        { [e.target.name]: parseFloat(e.target.value) });
-    } else if (e.target.type === "date" && e.target.value !== "") {
-      this.setState(
-        { [e.target.name]: new Date(e.target.value).toISOString() });
 
-    } else if (e.target.type === "time") {
-      this.setState(
-        { [e.target.name]: e.target.value });
-    }
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+
   };
 
   handleSubmit = async (e) => {
@@ -79,7 +68,6 @@ class AddEvent extends Component {
     const {
       title,
       description,
-      frequency,
       dateStart,
       dateEnd,
       timeStart,
@@ -87,23 +75,20 @@ class AddEvent extends Component {
       price,
     } = this.state;
 
-    await eventService.addEvent(title, description, frequency, dateStart, dateEnd, timeStart, timeEnd, price)
+    await eventService.addEvent(title, description, dateStart, dateEnd, timeStart, timeEnd, price)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the event was added successfully');
+        toast.success('The event was added successfully');
 
       })
       .catch(error => {
         toast.error(`ERROR. The event was not created! - ${error}`);
       })
-
-    // await eventService.addEvent(event)
   };
 
   render() {
     const { title,
       description,
-      frequency,
       dateStart,
       dateEnd,
       timeStart,
@@ -136,15 +121,6 @@ class AddEvent extends Component {
                 type="text"
                 value={description}
                 name="description"
-                onChange={this.handleInput}
-              />
-            </div>
-            <div>
-              <Label color={theme.color}>Frequency</Label>
-              <Input
-                type="text"
-                value={frequency}
-                name="frequency"
                 onChange={this.handleInput}
               />
             </div>

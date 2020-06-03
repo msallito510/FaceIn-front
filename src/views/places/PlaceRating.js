@@ -65,7 +65,7 @@ class PlaceRating extends Component {
     await placeService.addRating(place)
       .then(() => {
         push(`/user-profile`);
-        toast.success('the rating was edited successfully');
+        toast.success('The rating was edited successfully');
 
       })
       .catch(error => {

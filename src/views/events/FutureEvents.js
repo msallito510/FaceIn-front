@@ -73,7 +73,7 @@ class FutureEvents extends Component {
 
               </CardContainer>
             );
-          }) : <h2>You still haven't given any future events</h2>}
+          }) : <h2>You still haven't registered any event.</h2>}
         </GeneralBackground>
       </div>
     );

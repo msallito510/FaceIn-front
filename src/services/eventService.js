@@ -9,16 +9,9 @@ class EventService {
     });
   }
 
-  // addEvent(event) {
-  //   return this.axios
-  //     .post(`/api/events/add`, event)
-  //     .then(({ data: event }) => event);
-  // }
-
   addEvent(
     title,
     description,
-    frequency,
     dateStart,
     dateEnd,
     timeStart,
@@ -29,7 +22,6 @@ class EventService {
       .post(`/api/events/add`, {
         title,
         description,
-        frequency,
         dateStart,
         dateEnd,
         timeStart,
@@ -81,39 +73,27 @@ class EventService {
     eventId,
     title,
     description,
-    frequency,
     dateStart,
     dateEnd,
     timeStart,
     timeEnd,
     price,
     image,
-    // tagId, 
   ) {
     return this.axios
       .put(`/api/events/${eventId}/edit`, {
         title,
         description,
-        frequency,
         dateStart,
         dateEnd,
         timeStart,
         timeEnd,
         price,
         image,
-        // tagId,
       })
       .then(({ data }) => data);
   }
 
-
-  // updateEvent(event) {
-  //   return this.axios
-  //     .put(`/api/events/${event._id}/edit`, event)
-  //     .then(({ data: event }) => event);
-  // }
-
-  // solo para owner
   deleteEvent(eventId) {
     return this.axios
       .delete(`/api/events/${eventId}/delete`, eventId)
