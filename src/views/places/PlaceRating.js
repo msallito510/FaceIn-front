@@ -9,8 +9,7 @@ import Rater from 'react-rater';
 
 import {
   FormWrapper,
-  Input,
-  Textarea
+  Input
 } from "../../styles/styledComponents";
 
 import {
