@@ -16,7 +16,7 @@ const ThemeButton = styled.img`
 `;
 
 class NavbarTop extends Component {
- 
+
   render() {
     const { location: { pathname }, history, user, handleLogout, theme, changeTheme } = this.props;
 
@@ -26,16 +26,16 @@ class NavbarTop extends Component {
         {pathname !== "/" && <nav>
           <MenuBarUlTop color={theme}>
             <MenuBarLiTop>
-              {user ? <button onClick={history.goBack}><BackArrow color={theme} /></button> : <div></div>}
+              {user ? <div onClick={history.goBack}><BackArrow color={theme} /></div> : <div></div>}
             </MenuBarLiTop>
             <MenuBarLiTop>
-            <button onClick={changeTheme}>
-              {theme.name === "light" ? <ThemeButton src="/icons/moon.svg" alt="light"/> : 
-              <ThemeButton src="/icons/sun.svg" alt="dark"/>}
-            </button>
+              <div type="button" onClick={changeTheme}>
+                {theme.name === "light" ? <ThemeButton src="/icons/moon.svg" alt="light" /> :
+                  <ThemeButton src="/icons/sun.svg" alt="dark" />}
+              </div>
             </MenuBarLiTop>
             <MenuBarLiTop>
-              {user ? <button onClick={handleLogout}><LogOutIcon color={theme} /></button> : <div></div>}
+              {user ? <div onClick={handleLogout}><LogOutIcon color={theme} /></div> : <div></div>}
             </MenuBarLiTop>
           </MenuBarUlTop>
         </nav>}

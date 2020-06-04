@@ -220,12 +220,12 @@ class EventCard extends Component {
         </SubmitContainer>
 
         <LikeButtonContainer>
-          <button onClick={this.handleLike}>
+          <div onClick={this.handleLike}>
 
             {isLiked ?
               <EventHeartFilled color={theme} /> :
               <EventAddLike color={theme} />}
-          </button>
+          </div>
         </LikeButtonContainer>
 
       </EventDetailBackground>

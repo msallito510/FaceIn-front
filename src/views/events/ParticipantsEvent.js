@@ -70,7 +70,11 @@ class ParticipantsEvent extends Component {
                       <Container key={item.participant._id}>
                         <TdRight>{item.participant.username}
                         </TdRight>
-                        <TdLeft> <Img src={item.participant.imageUrl} alt={item.participant.username} /></TdLeft>
+                        <TdLeft>
+                          {item.participant.imageUrl ?
+                            <Img src={item.participant.imageUrl} alt={item.participant.username} />
+                            : <Img src="/images/user.png" alt='default avatar' />}
+                        </TdLeft>
                       </Container>
                     </tr>
                   </tbody>
