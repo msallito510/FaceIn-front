@@ -114,6 +114,10 @@ export const Input = styled.input`
   color: #61637B;
   margin: 0.1em;
   padding: 0 0 0 0.5em;
+  width:23.2em;
+  @media (max-width: 767px) {
+    width: 10.5em;
+  }
 `;
 
 export const Textarea = styled.textarea`

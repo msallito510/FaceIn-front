@@ -20,6 +20,8 @@ import {
 import { GeneralBackground, LoadingContainer } from "../../styles/commonStyle";
 
 class FutureEvents extends Component {
+  _isMounted = false;
+
   state = {
     events: [],
     loading: true,
@@ -27,6 +29,7 @@ class FutureEvents extends Component {
 
   async componentDidMount() {
     const { user: { _id } } = this.props;
+    this._isMounted = true;
 
     try {
 
@@ -44,6 +47,9 @@ class FutureEvents extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const { events, loading } = this.state;

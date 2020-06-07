@@ -23,6 +23,8 @@ import {
 import { Label } from "../../styles/commonStyle";
 
 class AddPlace extends Component {
+  _isMounted = false;
+
   state = {
     placeName: "",
     address: "",
@@ -34,18 +36,13 @@ class AddPlace extends Component {
 
   async componentDidMount() {
     const { user: { _id } } = this.props;
+    this._isMounted = true;
 
     try {
       const currentUser = await userService.getUserById(_id);
       const hasPlace = currentUser.hasPlace.length !== 0 ? true : false;
 
-      // const places = await placeService.getAllPlaces();
-
       this.setState({
-        // placeName: places.placeName,
-        // address: places.address,
-        // city: places.city,
-        // country: places.country,
         loading: false,
         hasPlace,
       })
@@ -55,6 +52,10 @@ class AddPlace extends Component {
         loading: false,
       })
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   handleInput = (e) => {

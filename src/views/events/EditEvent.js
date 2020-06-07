@@ -5,6 +5,8 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
 import { DualRing } from 'react-awesome-spinners';
+import moment from 'moment';
+
 
 import {
   FormWrapper,
@@ -30,8 +32,8 @@ class EditEvent extends Component {
     description: "",
     dateStart: "",
     dateEnd: "",
-    timeStart: 0,
-    timeEnd: 0,
+    timeStart: "00:00",
+    timeEnd: "00:00",
     price: 0.0,
     imageUrl: "",
     imageName: "",
@@ -44,12 +46,16 @@ class EditEvent extends Component {
     try {
       const event = await eventService.getEventById(id);
 
+
+      const dateStart = moment(event.dateStart).format('yyyy-MM-DD');
+      const dateEnd = moment(event.dateEnd).format('yyyy-MM-DD');
+
       this.setState({
         eventId: event._id,
         title: event.title,
         description: event.description,
-        dateStart: event.dateStart,
-        dateEnd: event.dateEnd,
+        dateStart,
+        dateEnd,
         timeStart: event.timeStart,
         timeEnd: event.timeEnd,
         price: event.price,

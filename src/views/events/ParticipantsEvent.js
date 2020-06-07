@@ -5,7 +5,7 @@ import { withTheme } from "../../context/themeContext";
 import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import { Container, Table, TdRight, TdLeft } from "../../styles/tableStyle";
+import { Tr, Table, TdRight, TdLeft } from "../../styles/tableStyle";
 import { TitleH1, GeneralContainer, LoadingContainer } from "../../styles/commonStyle";
 import { DualRing } from 'react-awesome-spinners';
 
@@ -63,20 +63,18 @@ class ParticipantsEvent extends Component {
                   <th></th>
                 </tr>
               </thead>
-              {!loading && participants.map((item) => {
+              {!loading && participants.map((item, index) => {
                 return (
-                  <tbody>
-                    <tr>
-                      <Container key={item.participant._id}>
-                        <TdRight>{item.participant.username}
-                        </TdRight>
-                        <TdLeft>
-                          {item.participant.imageUrl ?
-                            <Img src={item.participant.imageUrl} alt={item.participant.username} />
-                            : <Img src="/images/user.png" alt='default avatar' />}
-                        </TdLeft>
-                      </Container>
-                    </tr>
+                  <tbody key={index}>
+                    <Tr>
+                      <TdRight>{item.participant.username}
+                      </TdRight>
+                      <TdLeft>
+                        {item.participant.imageUrl ?
+                          <Img src={item.participant.imageUrl} alt={item.participant.username} />
+                          : <Img src="/images/user.png" alt='default avatar' />}
+                      </TdLeft>
+                    </Tr>
                   </tbody>
 
                 );

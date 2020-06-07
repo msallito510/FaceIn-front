@@ -15,6 +15,12 @@ export const Table = styled.table`
   margin-left: auto;
 `;
 
+export const Tr = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Th = styled.th`
   padding: 0.1em 0.1em;
   text-transform: capitalize;
