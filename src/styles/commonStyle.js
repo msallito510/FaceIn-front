@@ -108,5 +108,5 @@ export const PlaceContainerAlign = styled.div`
 export const PlaceContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
 `;

@@ -114,6 +114,10 @@ export const Input = styled.input`
   color: #61637B;
   margin: 0.1em;
   padding: 0 0 0 0.5em;
+  width:23.2em;
+  @media (max-width: 767px) {
+    width: 10.5em;
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -166,11 +170,11 @@ export const CardContainer = styled.div`
   height: 9em;
 `;
 
-export const ButtonPLeft = styled.a`
+export const ButtonPLeft = styled.div`
   float: left;
 `;
 
-export const ButtonPRight = styled.a`
+export const ButtonPRight = styled.div`
   float: right;
 `;
 

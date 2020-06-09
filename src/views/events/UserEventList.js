@@ -57,12 +57,16 @@ const AccessLink = styled(Link)`
 `;
 
 class UserEventList extends Component {
+  _isMounted = false;
+
   state = {
     events: [],
     loading: true,
   }
 
   async componentDidMount() {
+    this._isMounted = true;
+
     try {
       const events = await eventService.getAllEventsByOwner();
 
@@ -76,6 +80,10 @@ class UserEventList extends Component {
         loading: false,
       })
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

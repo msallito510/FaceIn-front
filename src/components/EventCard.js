@@ -170,8 +170,8 @@ class EventCard extends Component {
                 <StyledLink to={`/participants-event/${eventId}`}>
                   <SocialTitle>Attend</SocialTitle>
                   <ContainerRow>
-                    {participants.slice(0, 2).map((item) => {
-                      return (<div>
+                    {participants.slice(0, 2).map((item, index) => {
+                      return (<div key={index}>
 
                         {item.participant.imageUrl ?
                           <SocialPhoto src={item.participant.imageUrl} alt={item.participant.username} />

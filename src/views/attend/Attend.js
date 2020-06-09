@@ -4,13 +4,20 @@ import { withTheme } from "../../context/themeContext";
 
 import eventService from "../../services/eventService";
 import { toast } from 'react-toastify';
-import { Link } from "react-router-dom";
-import { Container, Table, Th, TdRight, TdLeft, TdScan, Thead } from "../../styles/tableStyle";
+import { Tr, Table, Th, TdRight, TdLeft, TdScan, Thead } from "../../styles/tableStyle";
 import { TitleH1, GeneralContainer, LoadingContainer } from "../../styles/commonStyle";
 import { PlayCircleIcon } from "../../styles/icon-style";
 import { DualRing } from 'react-awesome-spinners';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: transparent;
+  padding: 0.1em; 
+`;
 
 class Attend extends Component {
+  _isMounted = false;
+
   state = {
     event: {},
     loading: true,
@@ -18,6 +25,8 @@ class Attend extends Component {
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
+    this._isMounted = true;
+
     try {
       const event = await eventService.getEventById(id);
       this.setState({
@@ -30,6 +39,14 @@ class Attend extends Component {
         loading: false,
       })
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  handleScanFace = (e, participantId) => {
+    this.props.history.push(`/scan-face/${participantId}`)
   }
 
   render() {
@@ -48,21 +65,19 @@ class Attend extends Component {
               <th></th>
             </tr>
           </Thead>
-          {!loading && participants.map((item) => {
+          {!loading && participants.map((item, index) => {
             return (
-              <tbody>
-                <tr>
-                  <Container key={item.participant._id}>
-                    <TdRight>{item.participant.username}
-                    </TdRight>
-                    <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
-                    <Link to={`/scan-face/${item._id}`}>
-                      <TdScan>
-                        <PlayCircleIcon color={theme.color} />
-                      </TdScan>
-                    </Link>
-                  </Container>
-                </tr>
+              <tbody key={index}>
+                <Tr>
+                  <TdRight>{item.participant.username}
+                  </TdRight>
+                  <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
+                  <TdScan>
+                    <Button onClick={(e) => this.handleScanFace(e, item._id)}>
+                      <PlayCircleIcon color={theme.color} />
+                    </Button>
+                  </TdScan>
+                </Tr>
               </tbody>
             );
           })
