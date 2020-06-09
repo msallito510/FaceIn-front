@@ -63,9 +63,10 @@ class FutureEvents extends Component {
         </HeaderBackground>
         <GeneralBackground background={theme}>
           {loading && <LoadingContainer><DualRing /></LoadingContainer>}
-          {!loading && events.length !== 0 ? events.map((item) => {
+          {!loading && events.length !== 0 ? events.map((
+            item, index) => {
             return (
-              <CardContainer key={item.event._id}>
+              <CardContainer key={index}>
                 <StyledLink to={`/events/${item.event._id}`}>
                   <EventCardContainer>
                     <ContentEventCard image={item.event.image}>

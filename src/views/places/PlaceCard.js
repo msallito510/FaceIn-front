@@ -17,6 +17,9 @@ const PlaceCard = (props) => {
         style={{ height: "300px", width: "100%" }}
         center={[Latitude, Longitude]}
         zoom={17}
+        scrollWheelZoom={false}
+        zoomControl={false}
+        touchExtend={false}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

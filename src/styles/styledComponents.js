@@ -170,11 +170,11 @@ export const CardContainer = styled.div`
   height: 9em;
 `;
 
-export const ButtonPLeft = styled.a`
+export const ButtonPLeft = styled.div`
   float: left;
 `;
 
-export const ButtonPRight = styled.a`
+export const ButtonPRight = styled.div`
   float: right;
 `;
 
