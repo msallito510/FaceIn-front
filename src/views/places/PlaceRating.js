@@ -58,15 +58,14 @@ class PlaceRating extends Component {
 
   handleRating = async () => {
     const { title, description, stars } = this.state;
-    const { match: { params: { id } }, history: { push } } = this.props;
+    const { match: { params: { id } }, history } = this.props;
 
     const place = { id, title, description, stars };
 
     await placeService.addRating(place)
       .then(() => {
-        push(`/user-profile`);
         toast.success('The rating was edited successfully');
-
+        history.goBack();
       })
       .catch(error => {
         toast.error(`ERROR. The rating was not edited! - ${error}`);
