@@ -121,7 +121,7 @@ class EventCard extends Component {
       givenLikeByUser = event.likes.find(item => item.likeGivenBy._id === currentUser._id)
     }
 
-    let isLiked = givenLikeByUser !== "" ? true : false;
+    let isLiked = givenLikeByUser === undefined || givenLikeByUser === "" ? false : true;
 
 
     if (event.participants.length !== 0) {
@@ -129,6 +129,7 @@ class EventCard extends Component {
     }
 
     const isAParticipant = participantId === undefined || participantId === "" ? false : true;
+
 
     this.setState({
       isLiked: isLiked,
