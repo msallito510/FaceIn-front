@@ -61,7 +61,7 @@ class Attend extends Component {
           <Thead>
             <tr>
               <Th>user</Th>
-              <Th>face Scanned</Th>
+              <Th>Access</Th>
               <th></th>
             </tr>
           </Thead>
@@ -69,14 +69,13 @@ class Attend extends Component {
             return (
               <tbody key={index}>
                 <Tr>
-                  <TdRight>{item.participant.username}
-                  </TdRight>
-                  <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
                   <TdScan>
                     <Button onClick={(e) => this.handleScanFace(e, item._id)}>
                       <PlayCircleIcon color={theme.color} />
                     </Button>
                   </TdScan>
+                  <TdRight>{item.participant.username}</TdRight>
+                  <TdLeft>{item.faceScanned.toString() === "false" ? "Not yet" : "Scanned"}</TdLeft>
                 </Tr>
               </tbody>
             );
