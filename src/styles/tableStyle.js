@@ -8,6 +8,9 @@ export const Container = styled.div`
 `;
 
 export const Table = styled.table`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin-top: 5em;
   border-collapse: collapse;
   border-spacing: 0;
@@ -22,33 +25,33 @@ export const Tr = styled.tr`
 `;
 
 export const Th = styled.th`
-  padding: 0.1em 0.1em;
+  padding-left: 4em;
   text-transform: capitalize;
 `;
 
 export const TdLeft = styled.td`
-  position: relative;
   left: 8em;
   padding: 0.1em 0.1em;
-  font-size: 1.5em;
+  font-size: 1.em;
 `;
 
 export const TdRight = styled.td`
-  position: relative;
   left: 3em;
   padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;
 
 export const Thead = styled.thead`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   border: 2px solid #F57873;
   color: #F57873;
   font-size: 1.5em;
 `;
 
 export const TdScan = styled.td`
-  position: relative;
-  right: 6em;
+  right: 6.7em;
   padding: 0.1em 0.1em;
   font-size: 1.5em;
 `;
